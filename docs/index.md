@@ -1,4 +1,4 @@
-## Welcome to my Project Page Where I put my projects
+## Welcome to my Project page 
 
 You can use the [editor on GitHub](https://github.com/Aman-Godara/Projects/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
