@@ -8,3 +8,4 @@ Common ways Str can be misspelled:
 5). replacing a single character with another character
 
 Your code should be able to look for all the above cases and return possible ways Str can be spelled.
+Your code should also return the time taken by the code to perform method check(Str).
