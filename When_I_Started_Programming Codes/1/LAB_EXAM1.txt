@@ -1,0 +1,6 @@
+let rec coinchanger  n l a b c d  = let var1 = l+a in let var2 = l+b in let var3 = l + c in let var4 = l+d in 
+           if (var1 > n ) then 0 else if (var1 = n || var2 = n || var3 = n || var4 = n ) then 1 else if (a != 0) then     
+ 
+(coinchanger n (var1) a b c d ) + (coinchanger  n (var2) 0 b c d ) + ( coinchanger n (var3) 0 0 c d  ) + (coinchanger n (var4) 0 0 0  d  )  else if (a=0 && b !=0) then
+(coinchanger  n (var2) 0 b c d ) + ( coinchanger n (var3) 0 0 c d  ) + (coinchanger n (var4) 0 0 0  d  ) else if (b=0 && c!= 0) then
+( coinchanger n (var3) 0 0 c d  ) + (coinchanger n (var4) 0 0 0  d  )  else if (c =0 && d !=0) then (coinchanger n (var4) 0 0 0  d  ) else 0   ;; 

@@ -1,0 +1,125 @@
+        OCaml version 4.02.3
+
+# type courses = string * string * int ;;
+type courses = string * string * int
+# courses ;;
+Characters 0-7:
+  courses ;;
+  ^^^^^^^
+Error: Unbound value courses
+# let x = (string * string *int ) ;;
+Characters 9-15:
+  let x = (string * string *int ) ;;
+           ^^^^^^
+Error: Unbound value string
+Hint: Did you mean stdin?
+# let x = string * string *int  ;;
+Characters 8-14:
+  let x = string * string *int  ;;
+          ^^^^^^
+Error: Unbound value string
+Hint: Did you mean stdin?
+# let x = ("COL100","Intro to CS",10) ;;
+val x : string * string * int = ("COL100", "Intro to CS", 10)
+# let  x : courses ;;
+Characters 17-19:
+  let  x : courses ;;
+                   ^^
+Error: Syntax error
+# let  x : courses = ("COL10","Intro to CS",10) ;;
+val x : courses = ("COL10", "Intro to CS", 10)
+# x ;;
+- : courses = ("COL10", "Intro to CS", 10)
+# let x = ("COL100","Intro to CS",10) ;;
+val x : string * string * int = ("COL100", "Intro to CS", 10)
+# let x : courses = x ;;
+val x : courses = ("COL100", "Intro to CS", 10)
+# x ;;
+- : courses = ("COL100", "Intro to CS", 10)
+# type nayan = (string * string * string * string) list * (string * string * string ) list ;;
+type nayan =
+    (string * string * string * string) list *
+    (string * string * string) list
+# type tas = string list * string list ;;
+type tas = string list * string list
+# type women_tas = string list
+  ;;
+type women_tas = string list
+# type man_tas = string list ;;
+type man_tas = string list
+# type tas = women_tas * men_tas ;;
+Characters 23-30:
+  type tas = women_tas * men_tas ;;
+                         ^^^^^^^
+Error: Unbound type constructor men_tas
+Hint: Did you mean man_tas?
+# type tas = women_tas * man_tas ;;
+type tas = women_tas * man_tas
+# let x : tas = (["s";"m";"n";"j"],["h","a","p"]) ;;
+Characters 34-45:
+  let x : tas = (["s";"m";"n";"j"],["h","a","p"]) ;;
+                                    ^^^^^^^^^^^
+Error: This expression has type 'a * 'b * 'c
+       but an expression was expected of type string
+# let x : tas = (["s";"m";"n";"j"],["h";"a";"p"]) ;;
+val x : tas = (["s"; "m"; "n"; "j"], ["h"; "a"; "p"])
+# x ;;
+- : tas = (["s"; "m"; "n"; "j"], ["h"; "a"; "p"])
+# let f * m = x ;;
+Characters 6-7:
+  let f * m = x ;;
+        ^
+Error: Syntax error
+# let (f,m) = x in let f : women_tas = f in let m : men_tas = m ;;
+Characters 62-64:
+  let (f,m) = x in let f : women_tas = f in let m : men_tas = m ;;
+                                                                ^^
+Error: Syntax error
+# let (f,m) = x in let f1 : women_tas = f ;;
+Characters 40-42:
+  let (f,m) = x in let f1 : women_tas = f ;;
+                                          ^^
+Error: Syntax error
+# let (f,m) = x  let f1 : women_tas = f ;;
+val f : women_tas = ["s"; "m"; "n"; "j"]
+val m : man_tas = ["h"; "a"; "p"]
+val f1 : women_tas = ["s"; "m"; "n"; "j"]
+# let (f,m) = x  let f1 : women_tas = f let m1 : man_tas = m ;;
+val f : women_tas = ["s"; "m"; "n"; "j"]
+val m : man_tas = ["h"; "a"; "p"]
+val f1 : women_tas = ["s"; "m"; "n"; "j"]
+val m1 : man_tas = ["h"; "a"; "p"]
+# f1 ;;
+- : women_tas = ["s"; "m"; "n"; "j"]
+# m1 ;;
+- : man_tas = ["h"; "a"; "p"]
+# type courses = {coursenum : string ; coursename : string ; rating : int } ;;
+type courses = { coursenum : string; coursename : string; rating : int; }
+# let x : courses = ("COl100","Intro to CS",10) ;;
+Characters 18-45:
+  let x : courses = ("COl100","Intro to CS",10) ;;
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Error: This expression has type 'a * 'b * 'c
+       but an expression was expected of type courses
+# let x : courses = {"COl100","Intro to CS",10} ;;
+Characters 27-28:
+  let x : courses = {"COl100","Intro to CS",10} ;;
+                             ^
+Error: Syntax error
+# let x : courses = {"COl100";"Intro to CS";10} ;;
+Characters 27-28:
+  let x : courses = {"COl100";"Intro to CS";10} ;;
+                             ^
+Error: Syntax error
+# let x : courses = {coursenum = "COl100";coursename = "Intro to CS";rating = 10} ;;
+val x : courses =
+  {coursenum = "COl100"; coursename = "Intro to CS"; rating = 10}
+# let x : courses = {coursename = "COl100";coursenum = "Intro to CS";rating = 10} ;;
+val x : courses =
+  {coursenum = "Intro to CS"; coursename = "COl100"; rating = 10}
+# let to_string x  = match x with
+  | {coursenum = cn ; coursename = cname ; rating = rt } -> cn ^ ", " ^ cname ^ (string_of_int rt ) ;;
+val to_string : courses -> string = <fun>
+# to_string x ;;
+- : string = "Intro to CS, COl10010"
+#

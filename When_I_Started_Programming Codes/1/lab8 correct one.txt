@@ -1,0 +1,223 @@
+type link_one = 
+| Point of (int * int ) 
+| Line of ((int * int ) * (int * int ))
+| Circle of ((int * int ) * int ) 
+| Polygon of (int * int ) list    ;;
+
+
+let prm_line x y = match x,y with 
+
+|(a,b),(c,d) -> let var1 = float_of_int a in let var2= float_of_int b in let var3 = float_of_int c in let var4 = float_of_int d in 
+(sqrt ((var1-.var3)*.(var1-.var3) +. (var2-.var4)*.(var2-.var4)))  ;;
+
+
+
+
+
+let rec for_plgy x = match x with 
+| hd :: tl ::rst -> (hd,tl) :: (for_plgy rst ) 
+| hd :: [] -> (hd,0) :: []
+| [] -> [] ;; 
+
+let rec plygn1 l = match l with
+
+| hd :: tl :: rest -> ( prm_line hd tl ) +. plygn1 (tl :: rest)  
+
+| hd :: [] -> 0.0 
+|[] -> 0.0 ;;
+
+
+
+let plygn l = match l with 
+
+| hd :: rest -> plygn1 (List.rev(hd :: (List.rev l) )) 
+| [] -> 0.0 ;;
+
+
+
+let prm x = match x with
+
+| Point (a,b) -> 0.0
+
+| Line ((a,b),(c,d)) -> prm_line (a,b) (c,d) 
+
+| Circle ((a,b),c) -> (2.0 *. 4.0 *. atan (1.0) *. (float_of_int c)) 
+
+| Polygon l -> plygn l ;; 
+
+let tell x = match x with 
+| Point (a,b) -> "P"
+|Circle ((a,b),c) ->"C"
+|Line ((a,b),(c,d)) -> "L" 
+| Polygon l -> "PLG" ^" " ^  string_of_int ( List.length l )  ;;
+
+let flo x = float_of_int x   ;;
+
+
+
+let rec addish1 l = match l with                     
+| hd :: tl -> let (a,b) = hd in (((flo a) +. addish1 tl ))
+
+| [] -> 0.0 ;;
+ 
+
+
+let rec addish2 l = match l with 
+
+| hd :: tl -> let (a,b) = hd in (((flo b) +. addish2 tl ))  
+
+| [] -> 0.0 ;;
+
+
+
+let bottle x = match x with
+
+| Point (a,b) -> (flo a,flo b)
+
+| Circle ((a,b),c) -> (flo a,flo b)
+
+| Line ((a,b),(c,d)) -> ((((flo a) +. (flo c))/. 2.0),((flo b) +. (flo d))/. 2.0 ) 
+
+| Polygon l ->   ((addish1 l)/.float_of_int (List.length l),(addish2 l)/.float_of_int(List.length l)  ) ;; 
+
+
+
+let prm_line2 x y = match x,y with 
+|(a,b),(c,d) -> let var1 =  a in let var2=  b in let var3 =  c in let var4 =  d in 
+
+(sqrt ((var1-.var3)*.(var1-.var3) +. (var2-.var4)*.(var2-.var4)))  ;;
+
+
+
+
+
+let dist_cen a b = prm_line2 (bottle a) (bottle b) ;;  
+
+let ara x =  match x with 
+| Point (a,b) -> 0.0
+|Line ((a,b),(c,d)) -> 0.0
+| Circle ((a,b),c) -> (4.0 *. atan (1.0 )) *. ((flo c) ** 2.0)
+| Polygon l -> 2.0  ;; 
+
+let prm_line3 x y = match x,y with 
+
+|(a,b),(c,d) -> let var1 =  a in let var2=  b in let var3 =  float_of_int c in let var4 =  float_of_int d in 
+
+(sqrt ((var1-.var3)*.(var1-.var3) +. (var2-.var4)*.(var2-.var4)))  ;;
+
+
+let trail l = match l with 
+| hd :: tl ::rest  -> List.rev(tl :: hd :: List.rev l) 
+| _ -> [] ;; 
+
+
+let ta a b c = 
+let vara = prm_line b c in 
+let varb = prm_line3 a b in 
+let varc = prm_line3 a c in
+let s = (vara +. varb +. varc) /. 2.0 in 
+sqrt (s*. (s-.vara)*.(s-. varb)*.(s-. varc)) ;;
+ 
+
+let rec ply_ara l var1 =  match (l) with 
+| hd1 :: hd2 ::hd3 ::hd4 :: rst -> ( ta var1 (hd1,hd2) (hd3,hd4) ) +. ply_ara (hd3::hd4 :: rst) var1
+| hd  -> 0.0   ;;
+
+
+let ply_ara2 l  = ply_ara (trail l) (bottle( Polygon(for_plgy ( l)) )) ;;
+
+let rec mak l = match l with 
+| hd :: tl -> let (a,b) = hd in a :: b :: mak tl 
+| [] -> [] ;;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let rec ask_anth c n p = try 
+let var1 = int_of_char(String.get c n ) in let var2 = int_of_char(String.get c (n+1) ) in 
+ if var1 = 32 || (var1 = 44 && var2 != 32) then  int_of_string(p) :: (ask_anth c (n+1) (""))
+else if (var1 >= 48 && var1 <= 57 ) then ask_anth c (n+1) (p^(string_of_int(var1 - 48)))
+else ask_anth c (n+1) p 
+with e -> [int_of_string p] ;;
+
+let countf x = let var1 = (List.length x ) in match var1 with 
+| 4 -> let a::b::c::d::[] = x in Circle ((b,c),d) 
+| 3 -> let a::b::c::[] = x in Point (b,c) 
+| 5 -> let a::b::c::d::e ::[] = x in Line ((b,c),(d,e))
+| _ -> let hd :: tl = x in Polygon (for_plgy tl) ;; 
+
+let rec prc_one x n p = try let var1 = int_of_char(String.get x n) in
+if (var1 = 65 || var1 = 68 ||var1 =  84 || var1 =  80) then (prc_one x (n+1) ((string_of_int var1) ^ p ))
+else if var1 = 32 then int_of_string(p) :: (prc_one x (n+1) "") 
+else if ( var1 >= 48 && var1 <= 57 ) then  ( prc_one x (n+1) (p^string_of_int(var1 - 48) ))
+else prc_one x (n+1) p 
+with e -> [int_of_string p] ;;  
+
+
+let call1 n p = match p with 
+| hd :: tl -> if hd = n then "true" else "false"  
+| [] -> "false" ;;
+
+
+let rec call n p = match p with 
+| hd :: tl -> if (call1 n hd ) = "false" then (call n tl) else hd    
+| [] -> [] ;;
+
+
+let rec ask_anth c n p = try 
+let var1 = int_of_char(String.get c n ) in let var2 = int_of_char(String.get c (n+1) ) in 
+ if var1 = 32 || (var1 = 44 && var2 != 32) then  int_of_string(p) :: (ask_anth c (n+1) (""))
+else if (var1 >= 48 && var1 <= 57 ) then ask_anth c (n+1) (p^(string_of_int(var1 - 48)))
+else ask_anth c (n+1) p 
+with e -> [int_of_string p] ;;
+
+let countf x = let var1 = (List.length x ) in match var1 with 
+| 4 -> let a::b::c::d::[] = x in Circle ((b,c),d) 
+| 3 -> let a::b::c::[] = x in Point (b,c) 
+| 5 -> let a::b::c::d::e ::[] = x in Line ((b,c),(d,e))
+| _ -> let hd :: tl = x in Polygon (for_plgy tl) ;; 
+
+
+
+
+
+
+let folw_nxt x n= let hd :: tl :: rest= x in match hd with 
+| 80 -> (string_of_float (prm (countf (call tl n)))) ^("00000")
+| 84 ->  (tell (countf (call tl n)))
+| 65 -> (string_of_float (ara (countf (call tl n)))) ^ ("000000" )
+| 68 -> let hd :: tl ::rt :: []= x in  (string_of_float(dist_cen (countf (call tl n)) (countf (call rt n)))) ^ ("0000" )
+| _  ->    "0.0000"  ;;
+
+
+
+let new_one x n = (folw_nxt (prc_one x 0 "") n) ;;
+
+
+
+
+
+let rec read_input2 () n l =   try let peel = ((read_line ()) ^ " " ) in
+ if (int_of_char(String.get peel 0 ) <= 57 && int_of_char(String.get peel 0 ) >= 48  ) then let add2 = (ask_anth peel 0 "") :: n in 
+(read_input2 () add2 l )  else   read_input2 () n (l ^ ( new_one peel n ) ^"\n" ) 
+  with e -> ( print_string l ) ;;
+
+let read_input () = (read_input2 () [] "" ) ;;
+
+
+
+12: (16,9), (0,0)
+25: (0,0), 8
+D 25 12
+
+

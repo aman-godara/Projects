@@ -1,0 +1,12 @@
+let rec josephus1 n k =
+if n=1 then 1 
+else (((josephus1 (n-1) k )+k-1) mod n )+1;;  
+
+
+
+
+
+
+let  josephus n k x =
+if (x=1 && x<=n) then josephus1 n k 
+else (josephus1 n k) +(x-1);;

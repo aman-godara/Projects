@@ -1,0 +1,13 @@
+ let check x = if x = 1 || x=3 || x = 4 || x =5 then true else   false ;;
+
+let rec haha1 x me he = let var1 = x - ((x +1) / 2) in 
+	let var4 = if (var1 <= 5 && check var1 = true) then he else if ( var1 <= 5 && check var1 = false ) then me else haha1 (var1) he me in 
+
+
+
+
+let var2 = let var3 = x-1 in 
+	if ( var3 <=5 && check var3 = true ) then he else if ( var3 <= 5 && check var3 = false ) then me else haha1 (var3) he me in    
+
+
+    if (var2 = he && var4 = he) then he else if ( var2 = me) then me else if (  var4 = me ) then me else "-3" ;; 

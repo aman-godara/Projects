@@ -1,0 +1,141 @@
+module MyList = struct
+
+
+exception Failure of string ;; 
+
+exception Invalid_argument of string ;;
+
+
+
+
+let rec length l = match l with 
+
+| hd :: tl -> 1 + length (tl) 
+
+| [] -> 0 ;;
+
+
+
+
+let rec nth l a = match l with 
+
+| hd :: tl -> if (a<0 ) then raise (Failure "nth") else if (a >= length l ) then
+ raise (Invalid_argument "List.nth") 
+else if (a = 0) then hd else nth (tl) (a-1) 
+
+| [] -> raise (Invalid_argument "List.nth") ;;
+
+
+
+let rec bag l1 l2 = match l1 with 
+|hd :: tl -> hd :: (bag (tl) (l2))
+|[] -> l2 ;;
+
+let rec flatten l1 = match l1 with 
+| hd :: tl -> bag hd (flatten tl) 
+| [] -> []   ;;
+
+let rec map f l  = match l with 
+
+| [] -> [] 
+
+| hd :: tl -> (f (hd)) :: map (tl) f  ;;
+
+
+let rec rev1 l pt  = match l with 
+
+| ab::cd ::[] -> cd::ab::pt
+
+|hd :: tl:: rest ->  rev1 (rest) (tl :: hd :: pt)
+
+|nr ::[] -> nr :: pt  
+
+|[] -> [] ;;
+
+
+
+let rev l = rev1 l [] ;;
+
+
+
+
+let rec map l f = match l with 
+
+|[] -> [] 
+
+| hd :: tl -> (f (hd)) :: map (tl) f  ;;
+
+
+
+
+
+
+
+
+let rev_map f l  = (map (rev l) f) ;; 
+
+
+let rec fold_left f a l = match l with 
+| hd :: tl  -> let t = (f a hd ) in fold_left f t (tl)
+|  [] -> a;; 
+
+exception Invalid_argument  ;;
+
+let rec fold_right f l b  = match l with 
+| hd :: [] -> f (hd) b  
+| hd :: tl -> f (hd) (fold_right f (tl) b ) 
+| [] -> b  ;;
+
+let rec book1 l = match l with 
+|hd :: tl -> hd 
+|[] -> book1 l;; 
+
+exception Invalid_argument  ;;
+
+let rec book2 l = match l with
+| hd :: tl -> tl 
+|[] -> book2 l ;; 
+
+let rec map2 f l1 l2 = if (length l1 != length l2) then raise Invalid_argument else if (l1 != [] && l2 != [] ) 
+then f (book1 l1) (book1 l2) :: map2 f (book2 l1) (book2 l2)  else  [] ;; 
+
+
+
+let rec length l =
+match l with
+| [] -> 0
+| h::t -> 1 + length t ;;
+
+let rec book1 l = match l with 
+|hd :: tl -> hd 
+|[] -> book1 l;;
+
+
+
+let rec book2 l = match l with
+| hd :: tl -> tl 
+|[] -> book2 l ;; 
+
+
+let rec fold_left2 f a l1 l2 =  
+	if ((length l1) != (length l2)) then raise (Invalid_argument ) else if l1 = [] then a 
+else let var1 = f a (book1 l1) (book1 l2) in 
+fold_left2 f var1 (book2 l1) (book2 l2)   ;;
+
+let rec for_all f l = match l with 
+| hd :: tl :: rest -> if (f hd = true && f tl = true) then (for_all f rest) else false 
+| hd :: [] -> if (f hd = true) then true else false
+| [] -> true  ;;  
+
+
+let rec exists f l = match l with
+| hd :: tl :: rest -> if (f hd = true || f tl = true ) then true else exists f rest 
+| hd :: [] -> if f hd = true then true else false 
+| [] -> false;;
+
+
+let rec filter f l = match l with 
+| hd :: tl -> if ( for_all f [hd] = true ) then hd :: (filter f tl) else filter f (tl) 
+|  [] -> [] ;;
+
+end 

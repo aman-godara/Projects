@@ -1,0 +1,151 @@
+ 1 ;;
+- : int = 1
+# 1.8 ;;
+- : float = 1.8
+# 2.3 ;;
+- : float = 2.3
+# 3.4 ;;
+- : float = 3.4
+# -1 ;;
+- : int = -1
+# -1.2
+  ;;
+- : float = -1.2
+# -34 ;;
+- : int = -34
+# 1.2 +. 2.3 ''
+  ;;
+Characters 11-12:
+  1.2 +. 2.3 ''
+             ^
+Error: Syntax error
+# 1.2 + 2.3 ;;
+Characters 0-3:
+  1.2 + 2.3 ;;
+  ^^^
+Error: This expression has type float but an expression was expected of type
+         int
+# 1.2 +. 2.3 ;;
+- : float = 3.5
+# 2.2 -. 2.3 ''
+  ;;
+Characters 11-12:
+  2.2 -. 2.3 ''
+             ^
+Error: Syntax error
+# 2.2 -. 2.3 ;;
+- : float = -0.099999999999999645
+# let f x u = x+ u ;;
+val f : int -> int -> int = <fun>
+# f 3 4 ;;
+- : int = 7
+# 2.0 -. 1.0 ;;
+- : float = 1.
+# "maay" ;;
+- : string = "maay"
+# "Maya" ;;
+- : string = "Maya"
+# 'a ;;
+Characters 0-1:
+  'a ;;
+  ^
+Error: Syntax error
+# 'a' ;;
+- : char = 'a'
+# 'ab' ;;
+Characters 0-1:
+  'ab' ;;
+  ^
+Error: Syntax error
+# "ab" ;;
+- : string = "ab"
+# 's ' ;;
+Characters 0-1:
+  's ' ;;
+  ^
+Error: Syntax error
+# 's' ;;
+- : char = 's'
+# '3' ;;
+- : char = '3'
+# '#' ;;
+- : char = '#'
+# "#" ;;
+- : string = "#"
+# "3" ;;
+- : string = "3"
+# +(1,2) ;;
+Characters 1-6:
+  +(1,2) ;;
+   ^^^^^
+Error: This expression has type 'a * 'b
+       but an expression was expected of type int
+# (1,2) ;;
+- : int * int = (1, 2)
+# [1;2] ;;
+- : int list = [1; 2]
+# 1 = 2 ;;
+- : bool = false
+# 1= 1 ;;
+- : bool = true
+# 1 ==1 ;;
+- : bool = true
+# 1==2 ;;
+- : bool = false
+# "aman" == "aman" ;
+  ;;
+- : bool = false
+# 1.2 = 1.2 ;;
+- : bool = true
+# 1.2 == 1.2 ;;
+- : bool = false
+# 1 >= 2 ;;
+- : bool = false
+# 1.0 >= 1.2 ;;
+- : bool = false
+# 2 == 2 ;;
+- : bool = true
+# 2.3 == 2.3 ;;
+- : bool = false
+# let f x = if x = 1.2 then true else false ;;
+val f : float -> bool = <fun>
+# f 2.3 ;;
+- : bool = false
+# f 1.2 ;;
+- : bool = true
+# 20 ** 2 ;;
+Characters 0-2:
+  20 ** 2 ;;
+  ^^
+Error: This expression has type int but an expression was expected of type
+         float
+# 20.0 ** 2.0 ;;
+- : float = 400.
+# 2.3 == 2.3 ;;
+- : bool = false
+# 2.3 = 2.3 ;;
+- : bool = true
+# 2.0 = 2 ;;
+Characters 6-7:
+  2.0 = 2 ;;
+        ^
+Error: This expression has type int but an expression was expected of type
+         float
+# 2.3 != 2.3 ;;
+- : bool = true
+# 2.3 != 2.4 ;;
+- : bool = true
+# 2 != 2 ;;
+- : bool = false
+# 2.3 <> 2.3 ;;
+- : bool = false
+# 2.4 <> 2.4 ;;
+- : bool = false
+# 2.3 <> 2.4 ;;
+- : bool = true
+# true || false ;;
+- : bool = true
+# true || true ;;
+- : bool = true
+# true && false ;;
+- : bool = false

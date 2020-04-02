@@ -1,0 +1,35 @@
+let rec incr1 l = match l with 
+| hd :: tl :: rest -> if (hd >= tl && incr1 (tl :: rest) = true ) then true else false 
+| hd :: [] -> true 
+| [] -> true ;;  
+
+
+let rec incr l1 l2  = match l1 with 
+| hd :: tl :: rest -> if ( hd >= tl ) then hd :: (incr (tl :: rest) l2 )  else 
+		incr (tl :: hd :: rest) l2 
+| hd :: [] -> hd :: l2 
+|[] -> l2 ;;
+
+let rec incr2 l = if incr1 l = true then l else incr2 (incr l []) ;; 
+
+
+
+
+
+
+
+
+
+
+
+let rec num_distinct1 l h = match l with 
+| hd :: rest -> if h = hd then 1 + num_distinct1 rest h else num_distinct1 rest h 
+| [] -> 0 ;;  
+
+let rec num_distinct2 l  = match l with 
+|hd :: tl :: rest ->  if hd = tl then  num_distinct2 (tl :: rest) 
+			else (hd, num_distinct1 l hd):: num_distinct2 (tl ::rest) 
+| hd :: [] -> [ ( hd,num_distinct1 l hd ) ]
+| [] -> [] ;;	
+
+let num_distinct l = num_distinct2 (incr2 l )

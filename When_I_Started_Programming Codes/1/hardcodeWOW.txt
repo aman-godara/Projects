@@ -1,0 +1,11 @@
+let check x = if (x = 1 || x =2 || x = 4 || x =5 ) then "a" else if x = 3 then "b" else "c" ;;
+
+
+
+
+
+ let rec khatam n me he = let var1 = n-1 in let var2 = n-2 in let var3 = n-4 in
+ if ( n =5 || n =4 || n = 2 ) 
+then me else if ( n = 3) then he
+else if (check var1 = "a" && check var2 = "a" && check var3 ="a") then (he) else if 
+khatam (var1) he me = me then (me) else if  khatam (var2) he me  = me then (me) else if  khatam (var3) he me = me  then (me) else (he) ;; 

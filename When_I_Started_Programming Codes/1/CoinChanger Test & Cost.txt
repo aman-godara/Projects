@@ -1,0 +1,26 @@
+let rec coinchanger n a b c d = 
+let decider1 p = if p > 0 then coinchanger (n-p) p b c d else 0 in 
+let decider2 p = if p > 0 then coinchanger (n-p) 0 p c d else 0 in 
+let decider3 p = if p > 0 then coinchanger (n-p) 0 0 p d else 0 in 
+if n = 0 then 1 else if n < 0 then 0 else 
+decider1 a + decider2 b + decider3 c  + ( coinchanger (n-d) 0 0 0 d ) ;;  
+
+
+let minimer c a b = if a > 0 && b > 0 then (min (c + a) b) else if (b = 0 && a = 0 ) then 0 else if a = 0 then b else c + a  ;; 
+
+
+let f p x = if x = 0 then 0 else ( p x );; 
+
+
+let rec coinchangercost n a b c d p = 
+let decider1 y = if y > 0 then coinchangercost (n-y) y b c d p else 0 in  
+let decider2 y = if y > 0 then coinchangercost (n-y) 0 y c d p else 0 in 
+let decider3 y = if y > 0 then coinchangercost (n-y) 0 0 y d p else 0 in 
+if n = 0 then 1 else if n < 0 then 0 else 
+minimer ( f p a )  (decider1 a ) ( minimer ( f p b )  (decider2 b ) (minimer ( f p c ) (decider3 c) (minimer (f p d ) (coinchangercost (n-d) 0 0 0 d p ) 0 ) ) ) ;;
+
+let w x = int_of_float( 2.0 ** (float_of_int x )) ;; 
+
+
+let rec coinchanger n a b c d = if n = 0 then 1 else if (a > 0 && n > 0 ) then ( coinchanger (n-a) a b c d + coinchanger n b c d 0 )  
+else if (n < 0) then 0 else 0 ;;

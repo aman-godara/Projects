@@ -1,0 +1,22 @@
+let leap_year n = if n mod 400 = 0 then true else if ( ( n mod 4 = 0 ) && ( n mod 100 != 0 ) ) then true 
+else false ;;
+
+let middle_child x y z = if (x = y && y =z ) then -2 else if ( x = y || y =z || z = x ) then -1   else x + y + z - ( max (x) ( max y z )) - ( min (x) (min y z )) ;; 
+
+let rec prime_checker x p = if ( p >= ((x) ** 0.5) ) then true else if mod_float x p = 0.0 then false else prime_checker x (p +. 1.0) ;;   
+
+let fizzbuzz x = if x mod 15 = 0 then "fizzbuzz" else if x mod 3 = 0 then "buzz" else if x mod 5 = 0 then "fizz" else string_of_int (x) ;; 
+
+let rec fizzbuzz_str x = if x = 1 then  "1" else ( fizzbuzz x ) ^ " " ^ fizzbuzz_str (x-1) ;;
+
+let rec collatz x p = if x = 1 then p else if x mod 2 = 0 then collatz (x / 2) (p + 1) else ( collatz ((3 * x) + 1) (p + 1) ) ;;   
+
+let rec max_collatz x =  if x = 1 then 0 else ( max ( collatz x ) ( max_collatz (x -1) )) ;;
+
+let rec max1 x = if x = 2 then 2 else if let p = ( (collatz x 0)>= collatz ((max1 (x-1))) 0 ) then x else (max1 (x-1)) ;; 
+
+let rec prt_collatz x = if x = 1 then "1" else string_of_int (collatz x 0 ) ^ " " ^ prt_collatz (x-1) ;;
+
+let rec max2 x = if x =1 then 1 else ( max3  collatz x (max2 (x-1))  ) ;;
+
+let max3 f x y = if ( f x 0 ) >= (f y 0) then x else y ;;

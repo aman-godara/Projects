@@ -1,0 +1,33 @@
+let rec collatz n=
+if n=1 then 0 
+else if n mod 2 =0 then (collatz(n/2) +1)
+else (collatz (3*n +1 ) +1);;
+
+
+
+let rec max_collatz1 x =
+ if x=1 then 1 
+else  max(collatz(x)) (max_collatz1(x-1));;
+
+
+let max_collatz x = 
+if collatz n = max_collatz1 x then n 
+else -1;;
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+let max_collatz2 n x = if collatz n = max_collatz x then n else max_collatz2 (n-1) x ;;
+
+let max_collatz x = max_collatz2 x x ;; 

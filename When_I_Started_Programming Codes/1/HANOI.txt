@@ -1,0 +1,10 @@
+let rec check n a b c = if n=1 then "(" ^string_of_int a ^ ", " ^ string_of_int c ^ ")\n"
+        else check (n-1) a c b   ^   "("   ^  string_of_int a   ^  ", " ^  string_of_int c   ^   " )\n"   ^ check (n-1) b a c ;;
+
+
+
+
+
+
+
+let hanoi n = check n 1 2 3 ;;

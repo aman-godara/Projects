@@ -1,0 +1,21 @@
+exception Invalid_argument  ;;
+
+
+let rec length l =
+match l with
+| [] -> 0
+| h::t -> 1 + length t ;;
+
+let book1 l = match l with 
+| hd :: tl  -> hd ;;
+
+let book2 l = match l with 
+| hd :: tl -> tl ;;
+
+let rec map2 f lone ltwo = if length l1 != length l2 then raise Invalid_argument else 
+
+
+match lone with 
+| hd :: tl -> f (book1 lone) (book1 ltwo) :: map2 f (book2 lone) (book2 ltwo)
+| [] -> [] ;; 
+

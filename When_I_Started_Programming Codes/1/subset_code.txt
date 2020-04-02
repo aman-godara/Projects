@@ -1,0 +1,30 @@
+
+
+let rec addin x y = match y with
+| hd :: tl -> (x :: hd ) :: ( addin x tl )
+|  [] ->  [] ;; 
+
+
+let rec div x =  
+match x with 
+|hd :: [] -> [[hd] ; [] ]
+| a :: b ->  let rec frg p = match p with 
+		|hd :: [] -> hd :: addin a (div b) 
+		| hd :: tl -> hd :: frg tl  in
+
+
+(frg (div b))  ;;
+
+
+NEW CODE  FOR SUBSET CODE 
+
+let rec add a b = match b with 
+| hd :: tl -> hd :: (a :: hd ) :: ( add a tl ) 
+| [] -> [] ;;
+
+
+let rec subs x = match x with 
+| hd :: [] -> [[hd] ; []]
+| hd :: tl -> add hd ( subs tl )
+ | [] -> [] ;;
+  

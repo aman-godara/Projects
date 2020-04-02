@@ -1,0 +1,9 @@
+let check x = if x = 1 || x=3 || x = 4 || x =5 then true else   false ;;
+
+
+let rec gulab_jamun x y = let var1 = x - ((x +1) / 2) in let var2 = x-1 in 
+	let var3 = if ( x<= 5 && check var1 = true ) then (-y)  else if ( x <= 5 && check var1 = false) then y  else ( gulab_jamun (var1) (-y) )  
+  in 
+let var4 = if (var2 <= 5 && check var2 = true ) then (-y) else if ( var2 <= 5 && check var2 = false ) then y else gulab_jamun (var2) (-y) in
+
+if var3 = y then y else if var4 = y then y else if ( var3 = -y && var4 = -y ) then (-y) else -1 ;;

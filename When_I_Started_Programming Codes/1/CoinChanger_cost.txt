@@ -1,0 +1,14 @@
+let rec coinChanger1 n a b c d f= if (a = n && a!=0) then 1 else if (n <= 0) then 0 else if (a=0) then 0 else
+ (coinChanger1 (n-a) a b c d f ) + (coinChanger1 n b c d 0 f)  ;; 
+
+
+let func1 n a b c d f = if (n>0 && a>0 ) then coinChanger1 n a b c d f else -1 ;;  
+
+
+let func n a b c d f = if (func1 n a b c d f) > 0 then true else false ;; 
+
+let rec pt n a b c d f = if (n-a) = 0 then f(a) else if ((func (n-a) a b c d f) = true && (func n b c d 0 f)= true ) then (min ( f(a) + pt (n-a) a b c d f ) (pt n b c d 0 f)) 
+else if  ((func (n-a) a b c d f )  = true && (func n b c d 0 f = false)) then f(a) + pt (n-a) a b c d f else if 
+((func (n-a) a b c d f )  = false && (func n b c d 0 f = true))  then  (pt n b c d 0 f)  else -1 ;;
+
+ let f x = int_of_float ( 2.0 ** float_of_int x  ) ;;

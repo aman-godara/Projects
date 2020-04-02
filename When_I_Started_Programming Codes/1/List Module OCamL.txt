@@ -1,0 +1,69 @@
+module MyList = struct ;;
+exception Invalid_age of int ;;
+exception Failure of string ;;
+exception Invalid_argument of string
+exception Invalid_argument ;;
+
+ 
+let rec length l = match l with 
+| hd :: tl -> 1 + length 
+| [] -> 0 ;;
+
+let rec nth l a = if a <0 then raise (Invalid_argument "List.nth" ) else match l with 
+| hd :: tl -> if a = 0 then hd else nth tl (a-1)
+| [] -> raise (Failure "nth") ;;
+
+let rec flatten l = match l with 
+| hd :: tl -> let rec flatten2 x = match x with 
+	      | hd1 :: tl1 -> hd1 :: ( flatten2 tl1 )  
+	      | [] -> flatten tl in  ( flatten2 hd )
+| [] -> [] ;;
+
+let rec map f x = match x with 
+| hd :: tl -> ( f hd ) :: ( map f tl )
+| [] -> [] ;;
+
+
+let rev_map f x = let rec rev_map1 f x p = match x with 
+| hd :: tl -> ( rev_map1 f tl ( (f hd) :: p )) 
+| [] ->  p  in 
+rev_map1 f x [] ;;
+
+
+let rec fold_left f a l = match l with 
+| hd :: tl ->  fold_left f ( f a hd ) tl 
+| [] -> a ;; 
+
+
+let rec fold_right f l b = match l with 
+| hd :: tl -> ( f hd (fold_right f tl b ))
+| [] -> b ;;  
+
+
+let rec map2 f l1 l2 = match l1 ,l2 with 
+| hd1 :: tl1 , hd2::tl2 -> ( f hd1 hd2 ) :: ( map2 f tl1 tl2 )
+| [] , [] -> [] 
+| _ , _ -> raise ( Invalid_argument) ;;
+
+let rec fold_left2 f a l1 l2 = match l1 , l2 with 
+| hd1 :: tl1 , hd2 :: tl2 -> fold_left2 f (f a hd1 hd2 ) tl1 tl2 
+| [] , [] -> a 
+| _ , _ -> raise Invalid_argument ;;
+
+let rec for_all p l = match l with 
+| hd :: tl -> if p hd then for_all p tl else false 
+| [] -> true ;; 	
+
+let rec exists p l = match l with 
+| hd :: tl -> if p hd then true else ( exists p tl )
+| [] -> false ;;
+
+let rec filter p l1 = match l1 with 
+| hd :: tl ->  if p hd then hd :: ( filter p tl ) else filter p tl
+| [] -> [] ;;
+
+
+
+
+
+end ;;

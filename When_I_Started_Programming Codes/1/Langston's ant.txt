@@ -1,0 +1,51 @@
+let rec form1 x y = if x = 0 then [] else y :: (form1 (x-1) (-y)) ;; 
+let rec form x z y = if z = 0 then [] else Array.of_list (form1 x y) :: (form (x) (z-1) (-y)) ;;
+
+let form_l x  = Array.of_list (form x x 1) ;; 
+
+//let trans_l l c d = for i = 0 to Array.length l -1 do 
+			for j = 0 to Array.length (l.(0)) -1 do 
+			if l.(i).(j) = 1 then  l.(i).(j) <- c 
+			else l.(i).(j) <- d 	 ;
+				done ;
+				done ;
+				l ;;
+				
+
+
+let flip_d nt fl = if ( nt + fl = 4 ) then 0 else if ( nt + fl = -1 ) then 3 else if 
+ (nt + fl >= 0) && (nt + fl <= 3) then nt + fl else -1 ;; 
+
+let inc1 pos l = match pos with 
+| (a,b) -> (a + l,b) ;;
+
+
+let inc2 pos l = match pos with 
+| (a,b) -> (a,b + l) ;;
+
+
+let rec nxt_stp pos dirctn m = if dirctn = 0 then inc2 pos m 
+else if dirctn = 1 then nxt_stp pos 0 (-m) else if dirctn = 2 then inc1 pos (-m) 
+else if dirctn = 3 then nxt_stp pos 2 (-m) else (0,0) ;;
+
+let look_it l pos = match pos with 
+|(a,b) -> l.(a).(b) ;;
+
+let chang_f l pos = match pos with 
+| (a,b) -> l.(a).(b) <- (l.(a).(b)) * -1  ;;
+
+let rec turn_up l pos dirctn steps = if steps = 0 then pos else 
+let  m = look_it l pos  in 
+
+chang_f l pos ; 
+turn_up l (nxt_stp pos dirctn m ) ( flip_d dirctn m ) (steps - 1 )  ;;
+
+let finally k pos dirctn steps = let sohm = (form_l k ) in (READ IT AND TRY TO SOLVE THIS PROBLEM) 
+turn_up sohm pos dirctn steps ;;    
+
+
+
+
+
+
+

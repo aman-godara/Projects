@@ -1,0 +1,6 @@
+let rec max_collatz r = max ( collatz r) (max_collatz ( r-1 )) ;;
+   
+
+
+
+ theres a fault in this codec which addish had mentioned that it represnts the max value of collatz out of collatz (x) and collatz (x-1).

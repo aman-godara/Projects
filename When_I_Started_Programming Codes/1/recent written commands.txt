@@ -1,0 +1,1778 @@
+        OCaml version 4.02.3
+
+# type person = {name : string ; mutable age : int } ;;
+type person = { name : string; mutable age : int; }
+# let p1 = { name = "Aman" ; age = 18 } ;;
+val p1 : person = {name = "Aman"; age = 18}
+# p1.age <- 12 ;;
+- : unit = ()
+# p1 ;;
+- : person = {name = "Aman"; age = 12}
+# !p1 ;;
+Characters 1-3:
+  !p1 ;;
+   ^^
+Error: This expression has type person but an expression was expected of type
+         'a ref
+# p1.age ;;
+- : int = 12
+# p1.name ;;
+- : string = "Aman"
+# print_string p1.name ;;
+Aman- : unit = ()
+# let hd :: tl = [|1;2;3|] ;;
+Characters 15-24:
+  let hd :: tl = [|1;2;3|] ;;
+                 ^^^^^^^^^
+Error: This expression has type 'a array
+       but an expression was expected of type 'b list
+# let a = [|1;2;3;4;5;6;7|] ;;
+val a : int array = [|1; 2; 3; 4; 5; 6; 7|]
+# a.(0) ;;
+- : int = 1
+# !a.(0) ;;
+Characters 1-2:
+  !a.(0) ;;
+   ^
+Error: This expression has type int array
+       but an expression was expected of type 'a ref
+# type courses = string * string * int ;;
+type courses = string * string * int
+# let x : courses = ("as","ed",2 ) ;;
+val x : courses = ("as", "ed", 2)
+# type days_of_the_week =
+  | Sun
+  | Mon
+  | Tue
+  | Wed
+  | Thu
+  | Fri
+  | Sat ;;
+type days_of_the_week = Sun | Mon | Tue | Wed | Thu | Fri | Sat
+# Sun ;;
+- : days_of_the_week = Sun
+# type we =
+  |Two of float * float
+  | Three of float * float * float ;;
+type we = Two of float * float | Three of float * float * float
+# let fish x  = match x with
+  | Two (x1,y1) -> sqrt (x1 * x1 + y1 * y1 )
+  | Three (x,y,z) -> sqrt (x*x + y*y + z*z) ;;
+Characters 51-53:
+  | Two (x1,y1) -> sqrt (x1 * x1 + y1 * y1 )
+                         ^^
+Error: This expression has type float but an expression was expected of type
+         int
+# | Three (x,ylet fish x  = match x with
+    | Two (x1,y1) -> sqrt (x1 * x1 + y1 * y1 );;
+Characters 0-1:
+  | Three (x,ylet fish x  = match x with
+  ^
+Error: Syntax error
+# let fish x  = match x with
+    | Two (x1,y1) -> sqrt (float_of_int (x1 * x1 + y1 * y1 ))
+  | Three (x,y,z) -> sqrt (float_of_int ( x*x + y*y + z*z ) ) ;;
+Characters 66-68:
+    | Two (x1,y1) -> sqrt (float_of_int (x1 * x1 + y1 * y1 ))
+                                         ^^
+Error: This expression has type float but an expression was expected of type
+         int
+# type herc =
+  | Two of (int * int )
+   |Three of  ( int * int * int ) ;;
+type herc = Two of (int * int) | Three of (int * int * int)
+# let fish x  = match x with
+      | Two (x1,y1) -> sqrt (float_of_int (x1 * x1 + y1 * y1 ))
+    | Three (x,y,z) -> sqrt (float_of_int ( x*x + y*y + z*z ) ) ;;
+val fish : herc -> float = <fun>
+# fish (Two (3,4) );;
+- : float = 5.
+# int_of_float (12.7) ;;
+- : int = 12
+# int_of_float (12.9) ;;
+- : int = 12
+# int_of_float (12.99999999999999999) ;;
+- : int = 13
+# int_of_float (12.999999999999) ;
+  ;;
+- : int = 12
+# type cards =
+  | J
+  | K
+  | Q
+  | A
+  ;;
+type cards = J | K | Q | A
+# ZZZZzZZZZzzzZZZzZzZz;;
+Characters 0-20:
+  ZZZZzZZZZzzzZZZzZzZz;;
+  ^^^^^^^^^^^^^^^^^^^^
+Error: Unbound constructor ZZZZzZZZZzzzZZZzZzZz
+# type  nonnumeric_cardvalues =
+  |Jack -> "J"
+  |Queen -> "Q"
+  | Ace -> "A"
+  |King -> "K";;
+Characters 37-39:
+  |Jack -> "J"
+        ^^
+Error: Syntax error
+# type nonnumeric_cardvalues =
+  | Jack
+  | Ace
+  | Queen
+  | King
+  ;;
+type nonnumeric_cardvalues = Jack | Ace | Queen | King
+# type card_value =
+  |Num of int
+  |NNum of nonnumeric_cardvalues;;
+type card_value = Num of int | NNum of nonnumeric_cardvalues
+# type card =
+  |Spade of card_value
+  |Hearts of card_value
+  |Diamonds of card_value
+  |Clubs of card_value
+  ;;
+type card =
+    Spade of card_value
+  | Hearts of card_value
+  | Diamonds of card_value
+  | Clubs of card_value
+# let get_value_nn n = match n with
+  |Jack -> "J"
+  |Queen -> "Q"
+  | Ace -> "A"
+  |King -> "K" ;;
+val get_value_nn : nonnumeric_cardvalues -> string = <fun>
+# get_value_nn JAck ;;
+Characters 13-17:
+  get_value_nn JAck ;;
+               ^^^^
+Error: This variant expression is expected to have type nonnumeric_cardvalues
+       The constructor JAck does not belong to type nonnumeric_cardvalues
+Hint: Did you mean Jack?
+# get_value_nn Jack ;;
+- : string = "J"
+# let get_card_value v = match v with
+   |Num (x) -> string_of_int x
+  | NNum(x) -> get_value_nn x ;;
+val get_card_value : card_value -> string = <fun>
+# letto_string x = match x with
+  ;;
+Characters 31-33:
+  ;;
+  ^^
+Error: Syntax error
+# let to_string x = match x with
+  |Spade x -> get_card_value x ^ " of spade"
+  | Hearts x -> get_card_value x ^ " of Hearts"
+  | Diamonds -> get_card_value x ^ " of diamonds"
+  | Clubs x -> get_card_value x ^ " of clubs" ;;
+Characters 125-133:
+  | Diamonds -> get_card_value x ^ " of diamonds"
+    ^^^^^^^^
+Error: The constructor Diamonds expects 1 argument(s),
+       but is applied here to 0 argument(s)
+# let to_string x = match x with
+    |Spade x -> get_card_value x ^ " of spade"
+    | Hearts x -> get_card_value x ^ " of Hearts"
+    | Diamonds x-> get_card_value x ^ " of diamonds"
+  | Clubs x ->  get_card_value x ^ " of clubs" ;;
+val to_string : card -> string = <fun>
+# to_string Spade(2) ;;
+Characters 0-9:
+  to_string Spade(2) ;;
+  ^^^^^^^^^
+Error: This function has type card -> string
+       It is applied to too many arguments; maybe you forgot a `;'.
+# to_string (Spade(2)) ;;
+Characters 16-19:
+  to_string (Spade(2)) ;;
+                  ^^^
+Error: This expression has type int but an expression was expected of type
+         card_value
+# to_string (Spade(Num2)) ;;
+Characters 17-21:
+  to_string (Spade(Num2)) ;;
+                   ^^^^
+Error: This variant expression is expected to have type card_value
+       The constructor Num2 does not belong to type card_value
+Hint: Did you mean Num?
+# to_string (Spade(Num(2))) ;;
+- : string = "2 of spade"
+#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        OCaml version 4.02.3
+
+# let rec fact n = if n =0 || n= 1 then 1 else fact (n-1) + fact ( n-2 )  ;;
+val fact : int -> int = <fun>
+# let fact2 n = let result = ref 1 in
+        for i =2 to n do
+        result := (i *  !result ) ) ;
+        done ;
+  !result ;;
+Characters 84-85:
+        result := (i *  !result ) ) ;
+                             ^
+Error: Syntax error
+# let fact2 n = let result = ref 1 in
+          for i =2 to n do
+          result := (i *  !resul;;t ) ) ;
+Characters 79-80:
+          result := (i *  !resul;;t ) ) ;
+                    ^
+Syntax error: ')' expected, the highlighted '(' might be unmatched
+# let fact2 n = let rst = ref 1 in
+        for i = 2 to n do
+         result := (i * !rst ) ;
+        done ;
+  !rst ;;
+Characters 56-62:
+         result := (i * !rst ) ;
+    ^^^^^^
+Error: Unbound value result
+# let fact2 n = let rst = ref 1 in
+          for i = 2 to n do
+           rst := (i * !rst ) ;
+        done ;
+  !result ;;
+Characters 98-104:
+  !result ;;
+   ^^^^^^
+Error: Unbound value result
+#  let fact2 n = let rst = ref 1 in
+            for i = 2 to n do
+             rst := (i * !rst ) ;
+          done ;
+  !rst ;;
+val fact2 : int -> int = <fun>
+# fact2 5 ;;
+- : int = 120
+# fact 2 34 ;;
+Characters 0-4:
+  fact 2 34 ;;
+  ^^^^
+Error: This function has type int -> int
+       It is applied to too many arguments; maybe you forgot a `;'.
+# fact2 34 ;;
+- : int = -4297094460157722624
+#  let fact2 n = let rst = ref 1 in
+            for i = 2 to n do
+             rst := (i * !rst ) ;
+          done ;
+  ;;
+val fact2 : int -> unit = <fun>
+#  let fact2 n = let rst = 1 in
+            for i = 2 to n do
+             let rst =  ( i * rst ) in
+          done ;
+  rst ;;
+Characters 103-107:
+          done ;
+          ^^^^
+Error: Syntax error
+#  let fact2 n = let rst = 1 in
+            for i = 2 to n do
+             let rst =  ( i * rst ) in ;
+          done ;
+  rst ;;
+Characters 95-96:
+             let rst =  ( i * rst ) in ;
+                                       ^
+Error: Syntax error
+# let a = [|1;2;3;4;5;6;7|] ;;
+val a : int array = [|1; 2; 3; 4; 5; 6; 7|]
+# Array.length a ;;
+- : int = 7
+# a.(0)
+  ;;
+- : int = 1
+# Array.length a.(0)  ;;
+Characters 13-18:
+  Array.length a.(0)  ;;
+               ^^^^^
+Error: This expression has type int but an expression was expected of type
+         'a array
+# for i =2 to 12 do
+  ;;
+Characters 19-21:
+  ;;
+  ^^
+Error: Syntax error
+# let t = ref 0 ;;
+val t : int ref = {contents = 0}
+# for i =2 to 13 do
+  t := (1 + !t ) ;
+  done ;;
+- : unit = ()
+# t ;;
+- : int ref = {contents = 12}
+# Sys.time ;;
+- : unit -> float = <fun>
+# Sys.time () ;;
+- : float = 2798.779
+# Sys.time () ;;
+- : float = 2807.854
+# Sys.time () ;;
+- : float = 2810.19
+# Sys.time () ;;
+- : float = 2811.652
+# Sys.time () ;;
+- : float = 2813.089
+# Sys.time () ;;
+- : float = 2814.589
+# let rec fib n = let tree = ref 0 in
+  if n= 0 || n = 1 then tree := Sys.time ; 1 else fib (n-1) + fib (n-2) ;;
+Characters 80-84:
+  if n= 0 || n = 1 then tree := Sys.time ; 1 else fib (n-1) + fib (n-2) ;;
+                                             ^^^^
+Error: Syntax error
+# let rec fib n = let tree = ref 0 in
+  if n= 0 || n = 1 then (tree := Sys.time ; 1 )else fib (n-1) + fib (n-2) ;;
+Characters 68-76:
+  if n= 0 || n = 1 then (tree := Sys.time ; 1 )else fib (n-1) + fib (n-2) ;;
+                                 ^^^^^^^^
+Error: This expression has type unit -> float
+       but an expression was expected of type int
+# let rec fib n = let tree = ref 0.0 in
+  if n= 0 || n = 1 then (tree := Sys.time ; 1 )else fib (n-1) + fib (n-2) ;;
+Characters 70-78:
+  if n= 0 || n = 1 then (tree := Sys.time ; 1 )else fib (n-1) + fib (n-2) ;;
+                                 ^^^^^^^^
+Error: This expression has type unit -> float
+       but an expression was expected of type float
+# let rec fib n = let tree = ref 0 in
+  if n= 0 || n = 1 then (tree := Sys.time () ; 1 )else fib (n-1) + fib (n-2) ;;
+Characters 68-79:
+  if n= 0 || n = 1 then (tree := Sys.time () ; 1 )else fib (n-1) + fib (n-2) ;;
+                                 ^^^^^^^^^^^
+Error: This expression has type float but an expression was expected of type
+         int
+# let rec fib n = let tree = ref 0.0 in
+  if n= 0 || n = 1 then (tree := Sys.time () ; 1 )else fib (n-1) + fib (n-2) ;;
+val fib : int -> int = <fun>
+# fib 12 ;;
+- : int = 233
+# tree ;;
+Characters 0-4:
+  tree ;;
+  ^^^^
+Error: Unbound value tree
+# let rec fib n = let tree = ref 0.0 in
+    if n= 0 || n = 1 then (tree := Sys.time () ; 1 )else (tree ; fib (n-1) + fib (n-2)) ;;
+Characters 94-98:
+    if n= 0 || n = 1 then (tree := Sys.time () ; 1 )else (tree ; fib (n-1) + fib (n-2)) ;;
+                                                          ^^^^
+Warning 10: this expression should have type unit.
+val fib : int -> int = <fun>
+# fib 12 ;;
+- : int = 233
+# tree ;;
+Characters 0-4:
+  tree ;;
+  ^^^^
+Error: Unbound value tree
+# let rec fib n = let tree = ref 0.0 in
+    if n= 0 || n = 1 then (tree := Sys.time () ; 1 )else fib (n-1) + fib (n-2) ;;
+val fib : int -> int = <fun>
+# let rec fib n = let tree = ref 0.0 ;
+    if n= 0 || n = 1 then (tree := Sys.time () ; 1 )else fib (n-1) + fib (n-2) ;;
+Characters 114-116:
+    if n= 0 || n = 1 then (tree := Sys.time () ; 1 )else fib (n-1) + fib (n-2) ;;
+                                                                               ^^
+Error: Syntax error
+# let rec fib n = let tree = ref (Sys.time ()) in
+    if n= 0 || n = 1 then (tree := (!tree -. Sys.time ()) ; 1 )else fib (n-1) + fib (n-2) ;;
+val fib : int -> int = <fun>
+# fib 12 ;;
+- : int = 233
+# tree ;;
+Characters 0-4:
+  tree ;;
+  ^^^^
+Error: Unbound value tree
+#  let rec fib n = let tree = ref 0.0 ;
+      if n= 0 || n = 1 then ((tree := Sys.time ()) ; 1 )else fib (n-1) + fib (n-2) ;;
+Characters 119-121:
+      if n= 0 || n = 1 then ((tree := Sys.time ()) ; 1 )else fib (n-1) + fib (n-2) ;;
+                                                                                   ^^
+Error: Syntax error
+#  let rec fib n = if n =0 || n =1 then 1 else fib ( n-1 ) fib (n-2 ) ;;
+Characters 45-48:
+   let rec fib n = if n =0 || n =1 then 1 else fib ( n-1 ) fib (n-2 ) ;;
+                                               ^^^
+Error: This function has type int -> int
+       It is applied to too many arguments; maybe you forgot a `;'.
+#  let rec fib n = if n =0 || n =1 then 1 else fib ( n-1 ) + fib (n-2 ) ;;
+val fib : int -> int = <fun>
+# let haha1 = let tree = ref (Sys.time () )  ;
+  ;;if fib >= 0 then
+Characters 45-47:
+  ;;if fib >= 0 then
+  ^^
+Error: Syntax error
+# let haha1 n = let tree = ref (Sys.time () )  ;
+  if fib n >= 0 then (tree := Sys.time -. !tree ; !tree) else 0.0 ;;
+Characters 111-113:
+  if fib n >= 0 then (tree := Sys.time -. !tree ; !tree) else 0.0 ;;
+                                                                  ^^
+Error: Syntax error
+# let ree= ref 3 ;;
+val ree : int ref = {contents = 3}
+# print_string "ama" ;;
+ama- : unit = ()
+# print_string ;;
+- : string -> unit = <fun>
+# reee ;;
+Characters 0-4:
+  reee ;;
+  ^^^^
+Error: Unbound value reee
+Hint: Did you mean ree?
+# ree ;;
+- : int ref = {contents = 3}
+# ree := 2 ;;
+- : unit = ()
+# let time_fib fib_fun n =let t = Sys.time () in
+        let result = fib_fun n in
+        print_string (string_of_float (Sys.time () -. t ) ) ;
+  !result ;;
+val time_fib : ('a -> 'b ref) -> 'a -> 'b = <fun>
+# let rec  fib n = if n =0 || n= 1 then 1 else fib ( n- 1) + fib ( n-2 ) ;;
+val fib : int -> int = <fun>
+# time_fib fib 12 ;;
+Characters 9-12:
+  time_fib fib 12 ;;
+           ^^^
+Error: This expression has type int -> int
+       but an expression was expected of type int -> 'a ref
+       Type int is not compatible with type 'a ref
+# time_fib 9fib 12) ;;
+Characters 16-17:
+  time_fib 9fib 12) ;;
+                  ^
+Error: Syntax error
+# time_fib (fib 12) ;
+  ;;
+Characters 9-17:
+  time_fib (fib 12) ;
+           ^^^^^^^^
+Error: This expression has type int but an expression was expected of type
+         'a -> 'b ref
+# time_fib (fib 12) ;;
+Characters 9-17:
+  time_fib (fib 12) ;;
+           ^^^^^^^^
+Error: This expression has type int but an expression was expected of type
+         'a -> 'b ref
+# time_fib fib 12 ;;
+Characters 9-12:
+  time_fib fib 12 ;;
+           ^^^
+Error: This expression has type int -> int
+       but an expression was expected of type int -> 'a ref
+       Type int is not compatible with type 'a ref
+#  let time_fib fib_fun n =let t = Sys.time () in
+          let result = fib_fun n in
+          print_string (string_of_float (Sys.time () -. t ) ) ;
+  result ;;
+val time_fib : ('a -> 'b) -> 'a -> 'b = <fun>
+# time_fib fib 12 ;;
+0.- : int = 233
+# time_fib fib 25 ;;
+0.0149999999994- : int = 121393
+# time_fib fib 40 ;;
+5.004- : int = 165580141
+# let fact3 n =
+  let i = ref 2 in
+        let result = ref 1 in
+  while !i <= n do
+  result := (!result * !i );
+  i := (!i + 1 ) ;
+  done ;
+  done ;;
+Characters 128-132:
+  done ;;
+  ^^^^
+Error: Syntax error
+# let fact3 n =
+    let i = ref 2 in
+          let result = ref 1 in
+    while !i <= n do
+    result := (!result * !i );
+    i := (!i + 1 ) ;
+    done ;;
+val fact3 : int -> unit = <fun>
+# fact3 5 ;;
+- : unit = ()
+# let fact3 n =
+    let i = ref 2 in
+          let result = ref 1 in
+    while !i <= n do
+    result := (!result * !i );
+    i := (!i + 1 ) ;
+    done ;
+  !result ;;
+val fact3 : int -> int = <fun>
+# fact3 7 ;;
+- : int = 5040
+#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        OCaml version 4.02.3
+
+# type cell =
+  | Value of int
+  | PossibleValues of int list ;;
+type cell = Value of int | PossibleValues of int list
+#
+  let eliminateValueRow m v r =  let halwa = m in for j = 0 to 8 do
+  match m.(r).(j)  with
+  | Value (x) -> m.(r).(j) <- Value (x)
+  |PossibleValues(p) -> let q =  p in
+
+  let rec haha1 x v = match x with
+  | hd :: tl -> if hd = v then (haha1 tl v)  else hd :: (haha1 tl v)
+  | [] -> []  in let haha2 = haha1 q v in m.(r).(j) <- (  PossibleValues (haha2)) ;
+   done ;
+   if halwa = m then true else false ;;
+val eliminateValueRow : cell array array -> int -> int -> bool = <fun>
+#
+  let eliminateValueCol m v c =  let halwa = m in
+  for j = 0 to 8 do
+  match m.(j).(c)  with
+  | Value (x) -> m.(j).(c) <- Value (x)
+  |PossibleValues(p) -> let q =  p in
+  let rec haha1 x v = match x with
+  | hd :: tl -> if hd = v then (haha1 tl v)  else hd :: (haha1 tl v)
+  | [] -> []  in let haha2 = haha1 q v in m.(j).(c) <- (  PossibleValues (haha2)) ;
+   done ;
+  if halwa = m then true else false ;;
+val eliminateValueCol : cell array array -> int -> int -> bool = <fun>
+# let eliminateValueCol1 m v c w =  for j = w to w + 2  do
+  match m.(j).(c)  with
+  | Value (x) -> m.(j).(c) <- Value (x)
+  |PossibleValues(p) -> let q =  p in
+  let rec haha1 x v = match x with
+  | hd :: tl -> if hd = v then (haha1 tl v)  else hd :: (haha1 tl v)
+  | [] -> []  in let haha2 = haha1 q v in m.(j).(c) <- (  PossibleValues (haha2)) ;
+   done ;
+  m ;;
+val eliminateValueCol1 :
+  cell array array -> int -> int -> int -> cell array array = <fun>
+#
+  let eliminateValueRow1 m v r w =   for j = w to w +2  do
+  match m.(r).(j)  with
+  | Value (x) -> m.(r).(j) <- Value (x)
+  |PossibleValues(p) -> let q =  p in
+  let rec haha1 x v = match x with
+  | hd :: tl -> if hd = v then (haha1 tl v)  else hd :: (haha1 tl v)
+  | [] -> []  in let haha2 = haha1 q v in
+  m.(r).(j) <- (  PossibleValues (haha2)) ;
+  done ;
+  m ;;
+val eliminateValueRow1 :
+  cell array array -> int -> int -> int -> cell array array = <fun>
+# let post2 b = if b = 0 || b = 3 || b = 6 then 0 else if b = 1 || b = 4 || b = 7 then 3 else  6 ;;
+val post2 : int -> int = <fun>
+#
+  let post1 b = if b = 0 || b = 1 || b = 2 then 0 else if b = 4 || b = 3 || b = 5 then 3 else 6 ;;
+val post1 : int -> int = <fun>
+#
+  let eliminateValueBox m v b = let halwa = m in let store = ref m in
+  for i = post1 b to (post1 b) + 2 do store := eliminateValueRow1 m v i (post2 b) ;
+  done ;
+  for j = post2 b to (post2 b) +2 do store := eliminateValueCol1 (!store) v j (post1 b) ;
+  done ;
+  if halwa = !store then true else false ;;
+val eliminateValueBox : cell array array -> int -> int -> bool = <fun>
+# let eliminateValueBox1 m v b = let halwa = m in let store = ref m infor i = post1 b to (post1 b) + 2 do store := eliminateValueRow1 m v i (post2 b) ;
+  done ;
+  for j = post2 b to (post2 b) +2 do store := eliminateValueCol1 (!store) v j (post1 b) ;
+  done ;
+   !store ;
+  let block_detecter i j = if (i >= 0 && i <= 2 && j >= 0 && j <= 2) then 0
+  else if (i >= 3 && i <= 5 && j >= 3 && j <= 5 ) then 4
+  else if (i >= 0 && i <= 2 && j >= 3 && j <= 5) then 3
+  else if (i >= 0 && i <= 2 && j >= 6 && j <= 9)  then 6
+  else if (i >= 3 && i <= 5 && j >= 0 && j <= 2) then 1
+  else if (i >= 3 && i <= 5 && j >= 6 && j <= 9 ) then 7
+  else if (i >= 6 && i <= 9 && j >= 3 && j <= 5 ) then 5
+  else if (i >= 6 && i <= 9 && j >= 6 && j <= 9 ) then 8
+  else if (i >= 6 && i <= 9 && j >= 0 && j <= 2 ) then 2
+  else -1 ;;
+Characters 84-86:
+  let eliminateValueBox1 m v b = let halwa = m in let store = ref m infor i = post1 b to (post1 b) + 2 do store := eliminateValueRow1 m v i (post2 b) ;
+                                                                                      ^^
+Error: Syntax error
+#
+   let convert x = match x with
+  | Value(x) -> x
+  | PossibleValues (p)-> 0 ;;
+val convert : cell -> int = <fun>
+#
+  let say x = match x with
+  | Value (x) -> "yes"
+  |PossibleValues(p) -> "no" ;;
+val say : cell -> string = <fun>
+#
+  let eliminate m i j = let store = ref m in  if  say m.(i).(j) = "yes"   then let g = (convert (m.(i).(j))) in
+  if  (eliminateValueBox m g (block_detecter i j )  = true ||   eliminateValueRCol (!store) g j = true ||eliminateValueRow (!store) g i  = true ) then true else false else false ;;
+Characters 140-154:
+  if  (eliminateValueBox m g (block_detecter i j )  = true ||   eliminateValueRCol (!store) g j = true ||eliminateValueRow (!store) g i  = true ) then true else false else false ;;
+                              ^^^^^^^^^^^^^^
+Error: Unbound value block_detecter
+#
+
+
+
+
+
+
+
+
+
+
+  ;;
+# let eliminateValueBox1 m v b = let halwa = m in let store = ref m in
+  for i = post1 b to (post1 b) + 2 do
+  store := eliminateValueRow1 m v i (post2 b) ;
+  done ;
+  for j = post2 b to (post2 b) +2 do
+   store := eliminateValueCol1 (!store) v j (post1 b) ;
+  done ;
+   !store ;
+  let block_detecter i j = if (i >= 0 && i <= 2 && j >= 0 && j <= 2) then 0
+  else if (i >= 3 && i <= 5 && j >= 3 && j <= 5 ) then 4
+  else if (i >= 0 && i <= 2 && j >= 3 && j <= 5) then 3
+  else if (i >= 0 && i <= 2 && j >= 6 && j <= 9)  then 6
+  else if (i >= 3 && i <= 5 && j >= 0 && j <= 2) then 1
+  else if (i >= 3 && i <= 5 && j >= 6 && j <= 9 ) then 7
+  else if (i >= 6 && i <= 9 && j >= 3 && j <= 5 ) then 5
+  else if (i >= 6 && i <= 9 && j >= 6 && j <= 9 ) then 8
+  else if (i >= 6 && i <= 9 && j >= 0 && j <= 2 ) then 2
+  else -1 ;;
+Characters 797-799:
+  else -1 ;;
+          ^^
+Error: Syntax error
+#
+   let convert x = match x with
+  | Value(x) -> x
+  | PossibleValues (p)-> 0 ;;
+val convert : cell -> int = <fun>
+#
+  let say x = match x with
+  | Value (x) -> "yes"
+  |PossibleValues(p) -> "no" ;;
+val say : cell -> string = <fun>
+#
+  let eliminate m i j = let store = ref m in  if  say m.(i).(j) = "yes"   then let g = (convert (m.(i).(j))) in
+  if  (eliminateValueBox m g (block_detecter i j )  = true ||   eliminateValueRCol (!store) g j = true ||eliminateValueRow (!store) g i  = true ) then true else false else false ;;
+Characters 140-154:
+  if  (eliminateValueBox m g (block_detecter i j )  = true ||   eliminateValueRCol (!store) g j = true ||eliminateValueRow (!store) g i  = true ) then true else false else false ;;
+                              ^^^^^^^^^^^^^^
+Error: Unbound value block_detecter
+#
+
+
+
+
+
+
+
+  ;;
+#
+  let eliminateValueBox1 m v b = let halwa = m in let store = ref m in
+  for i = post1 b to (post1 b) + 2 do
+  store := eliminateValueRow1 m v i (post2 b) ;
+  done ;
+  for j = post2 b to (post2 b) +2 do
+   store := eliminateValueCol1 (!store) v j (post1 b) ;
+  done ;
+   !store ;;
+Characters 36-41:
+  let eliminateValueBox1 m v b = let halwa = m in let store = ref m in
+                                     ^^^^^
+Warning 26: unused variable halwa.
+val eliminateValueBox1 : cell array array -> int -> int -> cell array array =
+  <fun>
+#
+  let block_detecter i j = if (i >= 0 && i <= 2 && j >= 0 && j <= 2) then 0
+  else if (i >= 3 && i <= 5 && j >= 3 && j <= 5 ) then 4
+  else if (i >= 0 && i <= 2 && j >= 3 && j <= 5) then 3
+  else if (i >= 0 && i <= 2 && j >= 6 && j <= 9)  then 6
+  else if (i >= 3 && i <= 5 && j >= 0 && j <= 2) then 1
+  else if (i >= 3 && i <= 5 && j >= 6 && j <= 9 ) then 7
+  else if (i >= 6 && i <= 9 && j >= 3 && j <= 5 ) then 5
+  else if (i >= 6 && i <= 9 && j >= 6 && j <= 9 ) then 8
+  else if (i >= 6 && i <= 9 && j >= 0 && j <= 2 ) then 2
+  else -1 ;;
+val block_detecter : int -> int -> int = <fun>
+#
+   let convert x = match x with
+  | Value(x) -> x
+  | PossibleValues (p)-> 0 ;;
+val convert : cell -> int = <fun>
+#
+  let say x = match x with
+  | Value (x) -> "yes"
+  |PossibleValues(p) -> "no" ;;
+val say : cell -> string = <fun>
+#
+  let eliminate m i j = let store = ref m in  if  say m.(i).(j) = "yes"   then let g = (convert (m.(i).(j))) in
+  if  (eliminateValueBox m g (block_detecter i j )  = true ||   eliminateValueRCol (!store) g j = true ||eliminateValueRow (!store) g i  = true ) then true else false else false ;;
+Characters 174-192:
+  if  (eliminateValueBox m g (block_detecter i j )  = true ||   eliminateValueRCol (!store) g j = true ||eliminateValueRow (!store) g i  = true ) then true else false else false ;;
+                                                                ^^^^^^^^^^^^^^^^^^
+Error: Unbound value eliminateValueRCol
+Hint: Did you mean eliminateValueCol?
+# let eliminate m i j = let store = ref m in
+  if  say m.(i).(j) = "yes"   then let g = (convert (m.(i).(j))) in
+  if
+  (eliminateValueBox m g (block_detecter i j )  = true ||
+     eliminateValueCol (!store) g j = true ||
+  eliminateValueRow (!store) g i  = true ) then true else false else false ;;
+val eliminate : cell array array -> int -> int -> bool = <fun>
+#
+
+
+
+
+
+  ;;
+#
+  let loneCells m = for i = 0 to 8 do
+  for j= 0 to 8 do
+  match m.(i).(j) with
+  | Values (x) -> m.(i).(j) <- Value (x)
+  |PossibleValues (p) ->
+  match p with
+  | hd :: [] -> m.(i).(j) <- Value (hd)
+  | tl -> m.(i).(j) <-  PossibleValues (p) ;
+
+  done ;
+  done ;;
+Characters 79-85:
+  | Values (x) -> m.(i).(j) <- Value (x)
+    ^^^^^^
+Error: Unbound constructor Values
+Hint: Did you mean Value?
+#
+
+
+
+  ;;
+# let loneCells m = for i = 0 to 8 do
+  for j= 0 to 8 do
+  match m.(i).(j) with
+  | Value (x) -> m.(i).(j) <- Value (x)
+  |PossibleValues (p) ->
+  match p with
+  | hd :: [] -> m.(i).(j) <- Value (hd)
+  | tl -> m.(i).(j) <-  PossibleValues (p) ;
+
+  done ;
+  done ;;
+val loneCells : cell array array -> unit = <fun>
+#
+  let loneCells m =  let halwa = m in
+  for i = 0 to 8 do
+  for j= 0 to 8 do
+  match m.(i).(j) with
+  | Value (x) -> m.(i).(j) <- Value (x)
+  |PossibleValues (p) ->
+  match p with
+  | hd :: [] -> m.(i).(j) <- Value (hd)
+  | tl -> m.(i).(j) <-  PossibleValues (p) ;
+
+  done ;
+  done ;
+  if halwa = m then true else false ;;
+val loneCells : cell array array -> bool = <fun>
+#
+
+
+
+
+
+  ;
+  ;;
+Characters 6-7:
+  ;
+  ^
+Error: Syntax error
+# let loneCells m =  let halwa = m in let lappy = ref 0 in
+  for i = 0 to 8 do
+  for j= 0 to 8 do
+  match m.(i).(j) with
+  | Value (x) -> m.(i).(j) <- Value (x)
+  |PossibleValues (p) ->
+  match p with
+  | hd :: [] -> m.(i).(j) <- Value (hd)
+  | tl -> m.(i).(j) <-  PossibleValues (p) ;
+
+  if eliminate m i j = true then lappy := 0 else p := 0   ;
+
+  done ;
+  done ;
+
+  if halwa = m then true else false ;;
+Characters 323-324:
+  if eliminate m i j = true then lappy := 0 else p := 0   ;
+                                                 ^
+Error: This expression has type int list
+       but an expression was expected of type 'a ref
+#
+
+
+
+  ;;
+# let loneCells m =  let halwa = m in let lappy = ref 0 in
+  for i = 0 to 8 do
+  for j= 0 to 8 do
+  match m.(i).(j) with
+  | Value (x) -> m.(i).(j) <- Value (x)
+  |PossibleValues (p) ->
+  match p with
+  | hd :: [] -> m.(i).(j) <- Value (hd)
+  | tl -> m.(i).(j) <-  PossibleValues (p) ;
+
+  if eliminate m i j = true then lappy := 0 else lappy := 0   ;
+
+  done ;
+  done ;
+
+  if halwa = m then true else false ;;
+val loneCells : cell array array -> bool = <fun>
+#
+
+
+
+
+  ;
+  ;;
+Characters 11-12:
+  ;
+  ^
+Error: Syntax error
+#
+  let rec bahar_nikal p v  = match p with
+  |hd :: tl -> if hd = v then true else bahar_nikal tl
+  | [] -> false ;;
+Characters 80-94:
+  |hd :: tl -> if hd = v then true else bahar_nikal tl
+                                        ^^^^^^^^^^^^^^
+Error: This expression has type 'a -> bool
+       but an expression was expected of type bool
+#
+
+
+
+
+
+
+  ;;
+#
+  let rec bahar_nikal p v  = match p with
+  |hd :: tl -> if hd = v then true else bahar_nikal tl v
+  | [] -> false ;;
+val bahar_nikal : 'a list -> 'a -> bool = <fun>
+#
+  let rec bahar_nikal p v  = match p with
+  |hd :: tl -> if hd = v then true else bahar_nikal tl v
+  | [] -> false ;;
+val bahar_nikal : 'a list -> 'a -> bool = <fun>
+# let getCellsRow m r v = let p =ref [] in
+  for j = 0 to 8 do
+  match m.(r).(j) with
+  | Value (x) -> m.(r).(j) <- Value (x)
+  | Possible_values (p) -> if (bahar_nikal p v = true) then p := (r,j) :: !p else p := !p ;
+
+  !p ;;
+Characters 214-216:
+  !p ;;
+     ^^
+Error: Syntax error
+# let getCellsRow m r v = let p =ref [] in
+  for j = 0 to 8 do
+  match m.(r).(j) with
+  | Value (x) -> m.(r).(j) <- Value (x)
+  | Possible_values (p) -> if (bahar_nikal p v = true) then p := (r,j) :: !p else p := !p ;
+  done;
+  !p ;;
+Characters 122-137:
+  | Possible_values (p) -> if (bahar_nikal p v = true) then p := (r,j) :: !p else p := !p ;
+    ^^^^^^^^^^^^^^^
+Error: This variant pattern is expected to have type cell
+       The constructor Possible_values does not belong to type cell
+Hint: Did you mean PossibleValues?
+#
+  let getCellsRow m r v = let p =ref [] in
+  for j = 0 to 8 do
+  match m.(r).(j) with
+  | Value (x) -> m.(r).(j) <- Value (x)
+  | Possible_Values (p) -> if (bahar_nikal p v = true) then p := (r,j) :: !p else p := !p ;
+  done;
+  !p ;;
+Characters 123-138:
+  | Possible_Values (p) -> if (bahar_nikal p v = true) then p := (r,j) :: !p else p := !p ;
+    ^^^^^^^^^^^^^^^
+Error: This variant pattern is expected to have type cell
+       The constructor Possible_Values does not belong to type cell
+Hint: Did you mean PossibleValues?
+#
+
+  let getCellsRow m r v = let p =ref [] in
+  for j = 0 to 8 do
+  match m.(r).(j) with
+  | Value (x) -> m.(r).(j) <- Value (x)
+  | PossibleValues (p) -> if (bahar_nikal p v = true) then p := (r,j) :: !p else p := !p ;
+  done;
+  !p ;;
+Characters 179-180:
+  | PossibleValues (p) -> if (bahar_nikal p v = true) then p := (r,j) :: !p else p := !p ;
+                                                           ^
+Error: This expression has type int list
+       but an expression was expected of type 'a ref
+#
+  let getCellsRow m r v = let que =ref [] in
+  for j = 0 to 8 do
+  match m.(r).(j) with
+  | Value (x) -> m.(r).(j) <- Value (x)
+  | PossibleValues (p) -> if (bahar_nikal p v = true) then que := (r,j) :: !que else que := !que ;
+  done;
+  !p ;;
+Characters 227-228:
+  !p ;;
+   ^
+Error: Unbound value p
+#
+  let getCellsRow m r v = let que =ref [] in
+  for j = 0 to 8 do
+  match m.(r).(j) with
+  | Value (x) -> m.(r).(j) <- Value (x)
+  | PossibleValues (p) -> if (bahar_nikal p v = true) then que := (r,j) :: !que else que := !que ;
+  done;
+  !que ;;
+val getCellsRow : cell array array -> int -> int -> (int * int) list = <fun>
+# let getCellsRCol m c v = let que =ref [] in
+  for i = 0 to 8 do
+  match m.(i).(c) with
+  | Value (x) -> m.(i).(c) <- Value (x)
+  | PossibleValues (p) -> if (bahar_nikal p v = true) then que := (i,c) :: !que else que := !que ;
+  done;
+  !que ;;
+val getCellsRCol : cell array array -> int -> int -> (int * int) list = <fun>
+# getCellsC
+
+
+
+  ;;
+Characters 0-9:
+  getCellsC
+  ^^^^^^^^^
+Error: Unbound value getCellsC
+Hint: Did you mean getCellsRow or getCellsRCol?
+# let getCellsCol m c v = let que =ref [] in
+  for i = 0 to 8 do
+  match m.(i).(c) with
+  | Value (x) -> m.(i).(c) <- Value (x)
+  | PossibleValues (p) -> if (bahar_nikal p v = true) then que := (i,c) :: !que else que := !que ;
+  done;
+  !que ;;
+val getCellsCol : cell array array -> int -> int -> (int * int) list = <fun>
+#
+
+
+
+
+
+
+
+  ;;
+# let getCellsBox m b v =
+  let que =ref [] in
+  for (i = post1 b) to (post1 b )+2 do
+
+  for j = (post2 b) to (post2 b) +2 do
+  match m.(i).(j) with
+  | Value (x) -> m.(r).(j) <- Value (x)
+  | PossibleValues (p) -> if (bahar_nikal p v = true) then que := (i,j) :: !que else que := !que ;
+  done;
+  !que ;;
+Characters 49-50:
+  for (i = post1 b) to (post1 b )+2 do
+      ^
+Syntax error: ')' expected, the highlighted '(' might be unmatched
+#
+  let getCellsBox m b v =
+  let que =ref [] in
+  for i = (post1 b) to (post1 b )+2 do
+
+  for j = (post2 b) to (post2 b) +2 do
+  match m.(i).(j) with
+  | Value (x) -> m.(r).(j) <- Value (x)
+  | PossibleValues (p) -> if (bahar_nikal p v = true) then que := (i,j) :: !que else que := !que ;
+  done;
+  !que ;;
+Characters 294-296:
+  !que ;;
+       ^^
+Error: Syntax error
+#
+
+  let getCellsBox m b v =
+  let que =ref [] in
+  for i = (post1 b) to (post1 b )+2 do
+
+  for j = (post2 b) to (post2 b) +2 do
+  match m.(i).(j) with
+  | Value (x) -> m.(r).(j) <- Value (x)
+  | PossibleValues (p) -> if (bahar_nikal p v = true) then que := (i,j) :: !que else que := !que ;
+  done;
+  done;
+  !que ;;
+Characters 170-171:
+  | Value (x) -> m.(r).(j) <- Value (x)
+                    ^
+Error: Unbound value r
+# let getCellsBox m b v =
+  let que =ref [] in
+  for i = (post1 b) to (post1 b )+2 do
+
+  for j = (post2 b) to (post2 b) +2 do
+  match m.(i).(j) with
+  | Value (x) -> m.(i).(j) <- Value (x)
+  | PossibleValues (p) -> if (bahar_nikal p v = true) then que := (i,j) :: !que else que := !que ;
+  done;
+  done;
+  !que ;;
+val getCellsBox : cell array array -> int -> int -> (int * int) list = <fun>
+#
+
+
+
+
+
+
+  ;;
+# let loneRanger m int f = let mar1 = Array.to_list m in  let mar = ref 0 in
+  for i = 1 to 9 do
+  if teller1 (f m int i ) = true then let (((a,b) :: [] ) = f m int i ) in
+  m.(a).(b) <- Value (i)
+  else mar := 0 ;
+  done ;
+  let mar4 = Array.to_list m in
+  mar4 = mar3 ;;
+Characters 136-137:
+  if teller1 (f m int i ) = true then let (((a,b) :: [] ) = f m int i ) in
+                                          ^
+Syntax error: ')' expected, the highlighted '(' might be unmatched
+# let loneRanger m int f = let mar1 = Array.to_list m in  let mar = ref 0 in
+  for i = 1 to 9 do
+  if teller1 (f m int i ) = true then let ((a,b) :: [] ) = f m int i  in
+  m.(a).(b) <- Value (i)
+  else mar := 0 ;
+  done ;
+  let mar4 = Array.to_list m in
+  mar4 = mar3 ;;
+Characters 99-106:
+  if teller1 (f m int i ) = true then let ((a,b) :: [] ) = f m int i  in
+     ^^^^^^^
+Error: Unbound value teller1
+#
+  let teller1 r = match r  with
+  | hd :: [] -> true
+  | tl -> false ;;
+val teller1 : 'a list -> bool = <fun>
+#
+
+  let loneRanger m int f = let mar1 = Array.to_list m in  let mar = ref 0 in
+  for i = 1 to 9 do
+  if teller1 (f m int i ) = true then let ((a,b) :: [] ) = f m int i  in
+  m.(a).(b) <- Value (i)
+  else mar := 0 ;
+  done ;
+  let mar4 = Array.to_list m in
+  mar4 = mar3 ;;
+Characters 138-152:
+  if teller1 (f m int i ) = true then let ((a,b) :: [] ) = f m int i  in
+                                          ^^^^^^^^^^^^^^
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a value that is not matched:
+[]
+Characters 256-260:
+  mar4 = mar3 ;;
+         ^^^^
+Error: Unbound value mar3
+Hint: Did you mean mar, mar4 or mar1?
+#
+  let loneRanger m int f = let mar1 = Array.to_list m in  let mar = ref 0 in
+  for i = 1 to 9 do
+  if teller1 (f m int i ) = true then let ((a,b) :: [] ) = f m int i  in
+  m.(a).(b) <- Value (i)
+  else mar := 0 ;
+  done ;
+  let mar4 = Array.to_list m in
+  mar4 = mar1 ;;
+Characters 137-151:
+  if teller1 (f m int i ) = true then let ((a,b) :: [] ) = f m int i  in
+                                          ^^^^^^^^^^^^^^
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a value that is not matched:
+[]
+val loneRanger :
+  cell array array ->
+  'a -> (cell array array -> 'a -> int -> (int * int) list) -> bool = <fun>
+#
+
+  ;;
+# let loneRanger m int f = let mar1 = Array.to_list m in  let mar = ref 0 in
+  for i = 1 to 9 do
+  if teller1 (f m int i ) = true then let ([(a,b)]  ) = f m int i  in
+  m.(a).(b) <- Value (i)
+  else mar := 0 ;
+  done ;
+  let mar4 = Array.to_list m in
+  mar4 = mar1 ;;
+Characters 136-147:
+  if teller1 (f m int i ) = true then let ([(a,b)]  ) = f m int i  in
+                                          ^^^^^^^^^^^
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a value that is not matched:
+[]
+val loneRanger :
+  cell array array ->
+  'a -> (cell array array -> 'a -> int -> (int * int) list) -> bool = <fun>
+# [1;2;3;4;5] = [1;2;3;4] ;;
+- : bool = false
+# [1;2;3;4;5] == [1;2;3;4] ;;
+- : bool = false
+# [1;2;3;4;5] == [1;2;3;4;5] ;;
+- : bool = false
+# [1;2;3;4;5] = [1;2;3;4;5] ;;
+- : bool = true
+# [1;2;3;4;5] == [1;2;3;4;6] ;;
+- : bool = false
+# (==) ;;
+- : 'a -> 'a -> bool = <fun>
+# [1;2;3;4;5] = [2;1;3;4;5] ;;
+- : bool = false
+# teller1 [(1,2)] ;;
+- : bool = true
+# teller1 [(1,2);(3,4)] ;;
+- : bool = false
+#
+  let loneRanger m int f =   let mar = ref 0 in
+  for i = 1 to 9 do
+  if teller1 (f m int i ) = true then let [(a,b)]   = f m int i  in
+  m.(a).(b) <- Value (i)
+
+  else mar := 0 ;
+  done ;
+  eliminate m a b  ;;
+Characters 108-115:
+  if teller1 (f m int i ) = true then let [(a,b)]   = f m int i  in
+                                          ^^^^^^^
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a value that is not matched:
+[]
+Characters 198-199:
+  eliminate m a b  ;;
+              ^
+Error: Unbound value a
+# let p = ref true ;;
+val p : bool ref = {contents = true}
+# p := false ;;
+- : unit = ()
+# !p ;;
+- : bool = false
+# let loneRanger m int f =   let p = ref true in let mar = ref 0 in
+  for i = 1 to 9 do
+  if teller1 (f m int i ) = true then let [(a,b)]   = f m int i  in
+  ( m.(a).(b) <- Value (i)  ;
+  p := eliminate m a b ;)
+
+  else mar := 0 ;
+  done ;;
+Characters 127-134:
+  if teller1 (f m int i ) = true then let [(a,b)]   = f m int i  in
+                                          ^^^^^^^
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a value that is not matched:
+[]
+val loneRanger :
+  cell array array ->
+  'a -> (cell array array -> 'a -> int -> (int * int) list) -> unit = <fun>
+#
+
+
+
+
+
+
+
+  ;;
+# let hm1 (w) = match w with
+  | (a,b) :: [] -> a
+  | _ -> -1 ;;
+val hm1 : (int * 'a) list -> int = <fun>
+#
+  let hm2 (w) = match w with
+  | (a,b) :: [] -> b
+  | _ -> -1 ;;
+val hm2 : ('a * int) list -> int = <fun>
+#
+  let loneRanger m int f =   let p = ref true in let mar = ref 0 in
+  for i = 1 to 9 do
+  if teller1 (f m int i ) = true then let a = hm1 (f m int i ) in let b = hm2 (f m int i )  in
+  ( m.(a).(b) <- Value (i)  ; p := eliminate m a b ;)
+  else mar := 0 ;
+  done ;;
+val loneRanger :
+  cell array array ->
+  'a -> (cell array array -> 'a -> int -> (int * int) list) -> unit = <fun>
+#
+
+
+
+  ;;
+# let detect c d = match c ,d with
+  |[a,b],[c,d] -> if (a = c && b = d) then [a,b] else if (a = b && b = c ) then [a,b]
+  else [-1;-1]
+  | _ , _ -> [-1;-1] ;;
+Characters 124-126:
+  else [-1;-1]
+        ^^
+Error: This expression has type int but an expression was expected of type
+         'a * 'a
+#
+
+
+  let getTwin m int f = let var1 = Array.to_list m in
+  let p = ref 0 in
+  for k = 1 to 9 do
+  for l = 1 to 9 do
+  if (detect (f m int k) (f m int l) != [-1;-1] )
+  then let [(f1,f2);(g1,g2)] = ( detect (f m int k) (f m int l) ) in
+  m.(f1).(f2) <- PossibleValues ([k;l]) ;
+  m.(g1).(g2) <- Possiblevalues ([k;l]) ;
+  else  p := 0 ;
+  done ;
+  done ;
+  let var2 = Array.to_list m in
+  var2 = var1 ;;
+Characters 120-126:
+  if (detect (f m int k) (f m int l) != [-1;-1] )
+      ^^^^^^
+Error: Unbound value detect
+#
+
+
+
+  ;;
+# let detect c d = match c ,d with
+  |[a,b],[c,d] -> if (a = c && b = d) then [a,b] else if (a = b && b = c ) then [a,b]
+  else [(-1,-1);(-1,-1)]
+  | _ , _ -> [-1;-1] ;;
+Characters 154-156:
+  | _ , _ -> [-1;-1] ;;
+              ^^
+Error: This expression has type int but an expression was expected of type
+         int * int
+#
+  let detect c d = match c ,d with
+  |[a,b],[c,d] -> if (a = c && b = d) then [a,b] else if (a = b && b = c ) then [a,b]
+  else [(-1,-1);(-1,-1)]
+  | _ , _ -> [(-1,-1);(-1,-1)] ;;
+val detect : (int * int) list -> (int * int) list -> (int * int) list = <fun>
+#
+  let getTwin m int f = let var1 = Array.to_list m in
+  let p = ref 0 in
+  for k = 1 to 9 do
+  for l = 1 to 9 do
+  if (detect (f m int k) (f m int l) != [(-1,-1);(-1,-1)] )
+  then let [(f1,f2);(g1,g2)] = ( detect (f m int k) (f m int l) ) in
+  m.(f1).(f2) <- PossibleValues ([k;l]) ;
+  m.(g1).(g2) <- Possiblevalues ([k;l]) ;
+  else  p := 0 ;
+  done ;
+  done ;
+  let var2 = Array.to_list m in
+  var2 = var1 ;;
+Characters 182-199:
+  then let [(f1,f2);(g1,g2)] = ( detect (f m int k) (f m int l) ) in
+           ^^^^^^^^^^^^^^^^^
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a value that is not matched:
+[]
+Characters 295-309:
+  m.(g1).(g2) <- Possiblevalues ([k;l]) ;
+                 ^^^^^^^^^^^^^^
+Error: This variant expression is expected to have type cell
+       The constructor Possiblevalues does not belong to type cell
+Hint: Did you mean PossibleValues?
+# let getTwin m int f = let var1 = Array.to_list m in
+  let p = ref 0 in
+  for k = 1 to 9 do
+  for l = 1 to 9 do
+  if (detect (f m int k) (f m int l) != [(-1,-1);(-1,-1)] )
+  then let [(f1,f2);(g1,g2)] = ( detect (f m int k) (f m int l) ) in
+  m.(f1).(f2) <- PossibleValues ([k;l]) ;
+  m.(g1).(g2) <- PossibleValues ([k;l]) ;
+  else  p := 0 ;
+  done ;
+  done ;
+  let var2 = Array.to_list m in
+  var2 = var1 ;;
+Characters 181-198:
+  then let [(f1,f2);(g1,g2)] = ( detect (f m int k) (f m int l) ) in
+           ^^^^^^^^^^^^^^^^^
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a value that is not matched:
+[]
+val getTwin :
+  cell array array ->
+  'a -> (cell array array -> 'a -> int -> (int * int) list) -> bool = <fun>
+#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        OCaml version 4.02.3
+
+# let make k1 k2 = Array.make k1 (Array.make k2 0 ) ;;
+val make : int -> int -> int array array = <fun>
+#
+
+  let add_term x a = let k1 = Array.length x + 1   in
+  let k2 = Array.length x.(0)   in
+
+  let m = make k1 k2 in
+  for i = 0 to k1 - 3  do
+
+  for j = 0 to k2 -1 do
+  m.(i).(j) <- x.(i).(j) ;
+  done ;
+  done ;
+  m.(k1 - 1) <- a ;
+  m ;;
+val add_term : int array array -> int array -> int array array = <fun>
+#
+  add_term [|[|1;2|];[|0;9|];[|4;3|]|] [|0;0|] ;;
+- : int array array = [|[|0; 9|]; [|0; 9|]; [|0; 9|]; [|0; 0|]|]
+#
+  let add_term x a = let k1 = Array.length x + 1   in
+  let k2 = Array.length x.(0)   in
+
+  let m = make k1 k2 in
+  for i = 0 to k1 - 2  do
+
+  for j = 0 to k2 -1 do
+  m.(i).(j) <- x.(i).(j) ;
+  done ;
+  done ;
+  m.(k1 - 1) <- a ;
+  m ;;
+val add_term : int array array -> int array -> int array array = <fun>
+#
+
+
+  add_term  [|[|1;2|];[|0;9|];[|4;3|]|] [|0;0|] ;;
+- : int array array = [|[|4; 3|]; [|4; 3|]; [|4; 3|]; [|0; 0|]|]
+# let add_term x a = let k1 = Array.length x + 1   in
+  let k2 = Array.length x.(0)   in
+
+  let m = make k1 k2 in
+  for i = 0 to k1 - 2  do
+
+  for j  = 0 to k2 -1 do
+  m.(i).(j) <- x.(i).(j) ;
+  done ;
+  done ;
+  m.(k1 - 1) <- a ;
+  m ;;
+val add_term : int array array -> int array -> int array array = <fun>
+# add_term [|[|1;2|];[|0;9|];[|4;3|]|] [|0;0|] ;;
+- : int array array = [|[|4; 3|]; [|4; 3|]; [|4; 3|]; [|0; 0|]|]
+# let make k1 k2 = Array.make k1 (Array.make k2 0 ) ;;
+val make : int -> int -> int array array = <fun>
+#
+
+  let add_term x a = let k1 = Array.length x + 1   in
+  let k2 = Array.length x.(0)   in
+
+  let m = make k1 k2 in
+  for i = 0 to k1 - 2  do
+
+  m.(i) <- x.(i) ;
+
+  done ;
+  m.(k1 - 1) <- a ;
+  m ;;
+val add_term : int array array -> int array -> int array array = <fun>
+# add_term  [|[|1;2|];[|0;9|];[|4;3|]|] [|0;0|] ;;
+- : int array array = [|[|1; 2|]; [|0; 9|]; [|4; 3|]; [|0; 0|]|]
+#
+  let make k1 k2 = Array.make k1 (Array.make k2 0 ) ;;
+val make : int -> int -> int array array = <fun>
+#
+
+  let add_term x a = let k1 = Array.length x + 1   in
+  let k2 = Array.length x.(0)   in
+
+  let m = make k1 k2 in
+  for i = 0 to k1 - 2  do
+  for j = 0 to k2 -1 do
+  m.(i).(j) <- x.(i).(j) ;
+  done ;
+  done ;
+  m.(k1 - 1) <- a ;
+  m ;;
+val add_term : int array array -> int array -> int array array = <fun>
+# add_term  [|[|1;2|];[|0;9|];[|4;3|]|] [|0;0|] ;;
+- : int array array = [|[|4; 3|]; [|4; 3|]; [|4; 3|]; [|0; 0|]|]
+# let add_term x a = let k1 = Array.length x + 1   in
+  let k2 = (Array.length x.(0))   in
+
+  let m = make k1 k2 in
+  for i = 0 to (k1 - 2)  do
+  for j = 0 to (k2 -1) do
+  m.(i).(j) <- x.(i).(j) ;
+  done ;
+  done ;
+  m.(k1 - 1) <- a ;
+  m ;;
+val add_term : int array array -> int array -> int array array = <fun>
+#
+  add_term [|[|1;2|];[|0;9|];[|4;3|]|] [|0;0|] ;;
+- : int array array = [|[|4; 3|]; [|4; 3|]; [|4; 3|]; [|0; 0|]|]
+# let make k1 k2 = Array.make k1 (Array.make k2 0 ) ;;
+val make : int -> int -> int array array = <fun>
+#
+
+  let add_term x a = let k1 = Array.length x + 1   in
+  let k2 = (Array.length x.(0))   in
+
+  let m = make k1 k2 in
+  for i = 0 to (k1 - 2)  do
+  for j = 0 to (k2 -1) do
+  m.(i) <- x.(i) ;
+
+  done ;
+  m.(k1 - 1) <- a ;
+  m ;;
+Characters 210-212:
+  m ;;
+    ^^
+Error: Syntax error
+# let make k1 k2 = Array.make k1 (Array.make k2 0 ) ;;
+val make : int -> int -> int array array = <fun>
+#
+
+  let add_term x a = let k1 = Array.length x + 1   in
+  let k2 = (Array.length x.(0))   in
+
+  let m = make k1 k2 in
+  for i = 0 to (k1 - 2)  do
+
+  m.(i) <- x.(i) ;
+
+  done ;
+  m.(k1 - 1) <- a ;
+  m ;;
+val add_term : int array array -> int array -> int array array = <fun>
+# add_term  [|[|1;2|];[|0;9|];[|4;3|]|] [|0;0|] ;;
+- : int array array = [|[|1; 2|]; [|0; 9|]; [|4; 3|]; [|0; 0|]|]
+#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        OCaml version 4.02.3
+
+# type cell =
+  | Value of int
+  | PossibleValues of int list ;;
+type cell = Value of int | PossibleValues of int list
+#
+  let check l1 i = let l2 = ref [] in
+  for j = 0 to 8 do
+  match   l1.(i).(j) with
+  | Value(x) ->  l2 := x :: !l2
+  | PossibleValues (p) -> l2 := 0 :: !l2 ;
+  done ;
+  !l2 ;;
+val check : cell array array -> int -> int list = <fun>
+#
+  let eliminateValueRow m v r =  let halwa = m in for j = 0 to 8 do
+  match m.(r).(j)  with
+  | Value (x) -> m.(r).(j) <- Value (x)
+  |PossibleValues(p) -> let q =  p in
+
+  let rec haha1 x v = match x with
+  | hd :: tl -> if hd = v then (haha1 tl v)  else hd :: (haha1 tl v)
+  | [] -> []  in let haha2 = haha1 q v in m.(r).(j) <- (  PossibleValues (haha2)) ;
+   done ;
+   if halwa = m then true else false ;;
+val eliminateValueRow : cell array array -> int -> int -> bool = <fun>
+#
+  let eliminateValueCol m v c =  let halwa = m in
+  for j = 0 to 8 do
+  match m.(j).(c)  with
+  | Value (x) -> m.(j).(c) <- Value (x)
+  |PossibleValues(p) -> let q =  p in
+  let rec haha1 x v = match x with
+  | hd :: tl -> if hd = v then (haha1 tl v)  else hd :: (haha1 tl v)
+  | [] -> []  in let haha2 = haha1 q v in m.(j).(c) <- (  PossibleValues (haha2)) ;
+   done ;
+  if halwa = m then true else false ;;
+val eliminateValueCol : cell array array -> int -> int -> bool = <fun>
+# let eliminateValueCol1 m v c w =  for j = w to w + 2  do
+  match m.(j).(c)  with
+  | Value (x) -> m.(j).(c) <- Value (x)
+  |PossibleValues(p) -> let q =  p in
+  let rec haha1 x v = match x with
+  | hd :: tl -> if hd = v then (haha1 tl v)  else hd :: (haha1 tl v)
+  | [] -> []  in let haha2 = haha1 q v in m.(j).(c) <- (  PossibleValues (haha2)) ;
+   done ;
+  m ;;
+val eliminateValueCol1 :
+  cell array array -> int -> int -> int -> cell array array = <fun>
+#
+  let eliminateValueRow1 m v r w =   for j = w to w +2  do
+  match m.(r).(j)  with
+  | Value (x) -> m.(r).(j) <- Value (x)
+  |PossibleValues(p) -> let q =  p in
+  let rec haha1 x v = match x with
+  | hd :: tl -> if hd = v then (haha1 tl v)  else hd :: (haha1 tl v)
+  | [] -> []  in let haha2 = haha1 q v in
+  m.(r).(j) <- (  PossibleValues (haha2)) ;
+  done ;
+  m ;;
+val eliminateValueRow1 :
+  cell array array -> int -> int -> int -> cell array array = <fun>
+#
+  let post2 b = if b = 0 || b = 3 || b = 6 then 0 else if b = 1 || b = 4 || b = 7 then 3 else  6 ;;
+val post2 : int -> int = <fun>
+#
+  let post1 b = if b = 0 || b = 1 || b = 2 then 0 else if b = 4 || b = 3 || b = 5 then 3 else 6 ;;
+val post1 : int -> int = <fun>
+#
+  let eliminateValueBox m v b = let halwa = m in let store = ref m in
+  for i = post1 b to (post1 b) + 2 do store := eliminateValueRow1 m v i (post2 b) ;
+  done ;
+  for j = post2 b to (post2 b) +2 do store := eliminateValueCol1 (!store) v j (post1 b) ;
+  done ;
+  if halwa = !store then true else false ;;
+val eliminateValueBox : cell array array -> int -> int -> bool = <fun>
+# let block_detecter i j = if (i >= 0 && i <= 2 && j >= 0 && j <= 2) then 0
+  else if (i >= 3 && i <= 5 && j >= 3 && j <= 5 ) then 4
+  else if (i >= 0 && i <= 2 && j >= 3 && j <= 5) then 3
+  else if (i >= 0 && i <= 2 && j >= 6 && j <= 9)  then 6
+  else if (i >= 3 && i <= 5 && j >= 0 && j <= 2) then 1
+  else if (i >= 3 && i <= 5 && j >= 6 && j <= 9 ) then 7
+  else if (i >= 6 && i <= 9 && j >= 3 && j <= 5 ) then 5
+  else if (i >= 6 && i <= 9 && j >= 6 && j <= 9 ) then 8
+  else if (i >= 6 && i <= 9 && j >= 0 && j <= 2 ) then 2
+  else -1 ;;
+val block_detecter : int -> int -> int = <fun>
+#
+  let convert x = match x with
+  | Value(x) -> x Cells
+  | PossibleValues (p)-> 0 ;;
+Characters 45-46:
+  | Value(x) -> x Cells
+                ^
+Error: This expression has type int
+       This is not a function; it cannot be applied.
+#
+  let say x = match x with
+  | Value (x) -> "yes"
+  |PossibleValues(p) -> "no" ;;
+val say : cell -> string = <fun>
+#
+  let eliminate m i j = let store = ref m in
+  if  say m.(i).(j) = "yes"   then let g = (convert (m.(i).(j))) in
+  if
+  (eliminateValueBox m g (block_detecter i j )  = true ||
+     eliminateValueCol (!store) g j = true ||
+  eliminateValueRow (!store) g i  = true ) then true else false else false ;;
+Characters 88-95:
+  if  say m.(i).(j) = "yes"   then let g = (convert (m.(i).(j))) in
+                                            ^^^^^^^
+Error: Unbound value convert
+# let convert x = match x with
+  | Value(x) -> x
+  | PossibleValues (p)-> 0 ;;
+val convert : cell -> int = <fun>
+#
+  let say x = match x with
+  | Value (x) -> "yes"
+  |PossibleValues(p) -> "no" ;;
+val say : cell -> string = <fun>
+#
+  let eliminate m i j = let store = ref m in
+  if  say m.(i).(j) = "yes"   then let g = (convert (m.(i).(j))) in
+  if
+  (eliminateValueBox m g (block_detecter i j )  = true ||
+     eliminateValueCol (!store) g j = true ||
+  eliminateValueRow (!store) g i  = true ) then true else false else false ;;
+val eliminate : cell array array -> int -> int -> bool = <fun>
+#
+  let eliminate1 m i j =
+  if  say m.(i).(j) = "yes"   then let g = (convert (m.(i).(j))) in
+
+  (eliminateValueBox m g (block_detecter i j ) ;
+     eliminateValueCol1 (m) g j ;
+  eliminateValueRow (m) g i  ; )
+  else ;;
+Characters 214-216:
+  else ;;
+       ^^
+Error: Syntax error
+#
+  let loneCells m =  let halwa = m in let lappy = ref 0 in
+  for i = 0 to 8 do
+  for j= 0 to 8 do
+  match m.(i).(j) with
+  | Value (x) -> m.(i).(j) <- Value (x)
+  |PossibleValues (p) ->
+  match p with
+  | hd :: [] -> m.(i).(j) <- Value (hd)
+  | tl -> m.(i).(j) <-  PossibleValues (p) ;
+
+  if eliminate m i j = true then lappy := 0 else lappy := 0   ;
+
+  done ;
+  done ;
+
+  if halwa = m then true else false ;;
+val loneCells : cell array array -> bool = <fun>
+#
+  let rec bahar_nikal p v  = match p with
+  |hd :: tl -> if hd = v then true else bahar_nikal tl v
+  | [] -> false ;;
+val bahar_nikal : 'a list -> 'a -> bool = <fun>
+# let getCellsRow m r v = let que =ref [] in
+  for j = 0 to 8 do
+  match m.(r).(j) with
+  | Value (x) -> m.(r).(j) <- Value (x)
+  | PossibleValues (p) -> if (bahar_nikal p v = true) then que := (r,j) :: !que else que := !que ;
+  done;
+  !que ;;
+val getCellsRow : cell array array -> int -> int -> (int * int) list = <fun>
+#
+
+  let getCellsCol m c v = let que =ref [] in
+  for i = 0 to 8 do
+  match m.(i).(c) with
+  | Value (x) -> m.(i).(c) <- Value (x)
+  | PossibleValues (p) -> if (bahar_nikal p v = true) then que := (i,c) :: !que else que := !que ;
+  done;
+  !que ;;
+val getCellsCol : cell array array -> int -> int -> (int * int) list = <fun>
+#
+  let getCellsBox m b v =
+  let que =ref [] in
+  for i = (post1 b) to (post1 b )+2 do
+
+  for j = (post2 b) to (post2 b) +2 do
+  match m.(i).(j) with
+  | Value (x) -> m.(i).(j) <- Value (x)
+  | PossibleValues (p) -> if (bahar_nikal p v = true) then que := (i,j) :: !que else que := !que ;
+  done;
+  done;
+  !que ;;
+val getCellsBox : cell array array -> int -> int -> (int * int) list = <fun>
+#
+

@@ -1,0 +1,10 @@
+let modu m n = if ( m mod n ) = 0 then 1 else ( m mod n) ;;
+
+ let motu m n = if ( m mod n = 0 ) then n else ( m mod n ) ;;
+
+
+
+
+
+let rec josephus n m count = if (n =1 ) then count else  (if ( josephus (n-1) m (modu ( count+m-1) n ) ) < ( motu (count +m-1) n ) then
+ (josephus (n-1) m (modu (count+m-1) n )) else (( josephus (n-1) m (modu (count+m-1 ) n )) +1) ) ;;

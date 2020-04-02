@@ -1,0 +1,440 @@
+        OCaml version 4.02.3
+
+# 1 ;;
+- : int = 1
+#  2 ;;
+- : int = 2
+#  1= 1 ;;
+- : bool = true
+# 1+ 1 ;;
+- : int = 2
+# 1.0 +. 2.0 ;
+  ;
+  ;;
+Characters 13-14:
+  ;
+  ^
+Error: Syntax error
+# 1.0 +. 2.0 ;;
+- : float = 3.
+# 1.0 *. 2.0 ;;
+- : float = 2.
+# 2.0 /. 3.0 ;;
+- : float = 0.66666666666666663
+# 2 / 3 ;;
+- : int = 0
+# int_of_float ( 2.0 /. 3.0 ) ;;
+- : int = 0
+# 2 / 3 ;;
+- : int = 0
+# (1,2,3,4,5.0) ;;
+- : int * int * int * int * float = (1, 2, 3, 4, 5.)
+# {1 , 2 ,3.0 } ;;
+Characters 3-4:
+  {1 , 2 ,3.0 } ;;
+     ^
+Error: Syntax error
+# (1 , 20.0 ,"aman" ) ;;
+- : int * float * string = (1, 20., "aman")
+# "maya" ;;
+- : string = "maya"
+# " Maya ramnath " ;;
+- : string = " Maya ramnath "
+# 'M' ;;
+- : char = 'M'
+# 20.0 ** 3.0 ;;
+- : float = 8000.
+# succ ;;
+- : int -> int = <fun>
+# succ 2.0 ;;
+Characters 5-8:
+  succ 2.0 ;;
+       ^^^
+Error: This expression has type float but an expression was expected of type
+         int
+# succ 1 ;;
+- : int = 2
+# max_int ;;
+- : int = 4611686018427387903
+# min_int ;;
+- : int = -4611686018427387904
+# max_* ;;
+Characters 6-8:
+  max_* ;;
+        ^^
+Error: Syntax error
+# atan ;;
+- : float -> float = <fun>
+# atan (2.0) ;;
+- : float = 1.1071487177940904
+# atan ( 9.0) ;;
+- : float = 1.4601391056210009
+# atan ( 1.57) ;;
+- : float = 1.0036550779803273
+# atan( 2.596) ;;
+- : float = 1.203106337349964
+# max_atan ''
+  ;;
+Characters 9-10:
+  max_atan ''
+           ^
+Error: Syntax error
+# max_atan ;;
+Characters 0-8:
+  max_atan ;;
+  ^^^^^^^^
+Error: Unbound value max_atan
+# char_of_int 2 ;;
+- : char = '\002'
+# int_of_char ( '2') ;;
+- : int = 50
+# int_of_char  '2' ;;
+- : int = 50
+# int_of_char '/002' ;;
+Characters 12-13:
+  int_of_char '/002' ;;
+              ^
+Error: Syntax error
+# int_of_char '\002' ;;
+- : int = 2
+# 20 = 3 ;;
+- : bool = false
+# 2.0 = 30.0
+  ;;
+- : bool = false
+# (=) ;;
+- : 'a -> 'a -> bool = <fun>
+# (==) ;;
+- : 'a -> 'a -> bool = <fun>
+# "hello" <= "world" ;;
+- : bool = true
+# "hello" = "hello" ;;
+- : bool = true
+# "hello" == "hello" ;;
+- : bool = false
+# "hello" && "false" <= "world" ;;
+Characters 0-7:
+  "hello" && "false" <= "world" ;;
+  ^^^^^^^
+Error: This expression has type string but an expression was expected of type
+         bool
+# "hello" || "false" <= "world" ;;
+Characters 0-7:
+  "hello" || "false" <= "world" ;;
+  ^^^^^^^
+Error: This expression has type string but an expression was expected of type
+         bool
+# 2.0 == 3 ;;
+Characters 7-8:
+  2.0 == 3 ;;
+         ^
+Error: This expression has type int but an expression was expected of type
+         float
+# 2.0 > 1 ;;
+Characters 6-7:
+  2.0 > 1 ;;
+        ^
+Error: This expression has type int but an expression was expected of type
+         float
+# 2.0 <+ 3.0 ;;
+Characters 4-6:
+  2.0 <+ 3.0 ;;
+      ^^
+Error: Unbound value <+
+# 2.0 =+ 3.0 ;;
+Characters 4-6:
+  2.0 =+ 3.0 ;;
+      ^^
+Error: Unbound value =+
+# 2.0 <= 3.0 ;;
+- : bool = true
+# exp ;;
+- : float -> float = <fun>
+# 2.0 exp 3.0 ;;
+Characters 0-3:
+  2.0 exp 3.0 ;;
+  ^^^
+Error: This expression has type float
+       This is not a function; it cannot be applied.
+# exp = (**) ;;
+Characters 11-13:
+  exp = (**) ;;
+             ^^
+Error: Syntax error
+# let var r = r **2.0 ;;
+val var : float -> float = <fun>
+# let tin t = t **2.0 ;;
+val tin : float -> float = <fun>
+# tin = var ;;
+Exception: Invalid_argument "equal: functional value".
+# tin == var ;;
+- : bool = false
+# let tin r = r **2.0 ;;
+val tin : float -> float = <fun>
+# tin == var ;;
+- : bool = false
+# let x = 1 ;;
+val x : int = 1
+#  x + x ;;
+- : int = 2
+# let x = "hello" ;;
+val x : string = "hello"
+# let y = "world" ;;
+val y : string = "world"
+# x ^ y ;;
+- : string = "helloworld"
+# let y = " world" ;;
+val y : string = " world"
+# x ^ y ;;
+- : string = "hello world"
+# let z =x ^ y ;;
+val z : string = "hello world"
+# z ;;
+- : string = "hello world"
+# print_string ("hello" ^ "world" ) ;;
+helloworld- : unit = ()
+# print_string ("hello" ^ " world" ) ;;
+hello world- : unit = ()
+# print_string ( "hello" ^ " world" ) ;;
+hello world- : unit = ()
+# (^) ;;
+- : string -> string -> string = <fun>
+# let z = 2+2+3 +4 ;;
+val z : int = 11
+# z ;;
+- : int = 11
+# 2+3+4+5 ;
+  ;;
+- : int = 14
+# var ;;
+- : float -> float = <fun>
+# var 2 .0 ;;
+Characters 7-8:
+  var 2 .0 ;;
+         ^
+Error: Syntax error
+# var 2.0 ;;
+- : float = 4.
+# let char = var 3.0 ;;
+val char : float = 9.
+# let 1char = 2 ;;
+Characters 5-9:
+  let 1char = 2 ;;
+       ^^^^
+Error: Syntax error
+# let 1 =  2 ;;
+Characters 4-5:
+  let 1 =  2 ;;
+      ^
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a value that is not matched:
+0
+Exception: Match_failure ("//toplevel//", 6, -6).
+# print_string ;;
+- : string -> unit = <fun>
+# print_char 'a' ;;
+a- : unit = ()
+#
+  ;;
+# let y =true ;;
+val y : bool = true
+# y == true ;;
+- : bool = true
+# y= true ;;
+- : bool = true
+# ( 2 && 3 ) <= 5 ;;
+Characters 2-3:
+  ( 2 && 3 ) <= 5 ;;
+    ^
+Error: This expression has type int but an expression was expected of type
+         bool
+# print_string ( string_of_bool(6==5) );;
+false- : unit = ()
+# let x = "hello" ;;
+val x : string = "hello"
+# print_string x^ "world" ;;
+Characters 0-14:
+  print_string x^ "world" ;;
+  ^^^^^^^^^^^^^^
+Error: This expression has type unit but an expression was expected of type
+         string
+# print_string (x^ "world" );;
+helloworld- : unit = ()
+# print_string (x^ " world" );;
+hello world- : unit = ()
+# 3 ==3 ;;
+- : bool = true
+# 3.0 == 3.0 ;;
+- : bool = false
+# let y= true ;;
+val y : bool = true
+# let n = false ;;
+val n : bool = false
+# y ==n ;;
+- : bool = false
+# y ==true ;;
+- : bool = true
+# y =fgr ;;
+Characters 3-6:
+  y =fgr ;;
+     ^^^
+Error: Unbound value fgr
+# let var = "ash" ;;
+val var : string = "ash"
+# let car = "cash" ;;
+val car : string = "cash"
+# car =+ var ;;
+Characters 4-6:
+  car =+ var ;;
+      ^^
+Error: Unbound value =+
+# car == var ;;
+- : bool = false
+# "ash" == "cash" ;;
+- : bool = false
+# "ash" = "cash" ;;
+- : bool = false
+# "ash" == "ash" ;;
+- : bool = false
+# car ;;
+- : string = "cash"
+# var ;;
+- : string = "ash"
+# car = var ;;
+- : bool = false
+#
+  ;;
+# module ;;
+Characters 7-9:
+  module ;;
+         ^^
+Error: Syntax error
+# script ;;
+Characters 0-6:
+  script ;;
+  ^^^^^^
+Error: Unbound value script
+# 1.0 = 1.0 ;;
+- : bool = true
+# let func1 x = x **2.0 ;;
+val func1 : float -> float = <fun>
+# let bottle = func1 3.0 ;;
+val bottle : float = 9.
+# let bottle = func1 x ;;
+Characters 19-20:
+  let bottle = func1 x ;;
+                     ^
+Error: This expression has type string but an expression was expected of type
+         float
+# "hello" != "hello" ;;
+- : bool = true
+# "hello" <> "hello" ;;
+- : bool = false
+# let kill print_string("hello") = 2*. print_string("hello") ;;
+Characters 33-34:
+  let kill print_string("hello") = 2*. print_string("hello") ;;
+                                   ^
+Error: This expression has type int but an expression was expected of type
+         float
+# let kill print_string("hello") = 2.0 *. print_string("hello") ;;
+Characters 21-61:
+  let kill print_string("hello") = 2.0 *. print_string("hello") ;;
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a value that is not matched:
+""
+val kill : (string -> float) -> string -> float = <fun>
+# kill 2.0 ;;
+Characters 5-8:
+  kill 2.0 ;;
+       ^^^
+Error: This expression has type float but an expression was expected of type
+         string -> float
+# kill "2.0"
+  ;;
+Characters 5-10:
+  kill "2.0"
+       ^^^^^
+Error: This expression has type string but an expression was expected of type
+         string -> float
+# let kill string-of_int 1 = string_of_int 1 ;;
+Characters 16-22:
+  let kill string-of_int 1 = string_of_int 1 ;;
+                  ^^^^^^
+Error: Syntax error
+# let kill string_of_int 1 = string_of_int 1 ;;
+Characters 23-42:
+  let kill string_of_int 1 = string_of_int 1 ;;
+                         ^^^^^^^^^^^^^^^^^^^
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a value that is not matched:
+0
+val kill : (int -> 'a) -> int -> 'a = <fun>
+# kill 2 ;;
+Characters 5-6:
+  kill 2 ;;
+       ^
+Error: This expression has type int but an expression was expected of type
+         int -> 'a
+# let subs m n = (m=n ) ;;
+val subs : 'a -> 'a -> bool = <fun>
+# subs 2 3 ;;
+- : bool = false
+# subs 3.0 3.0 ;;
+- : bool = true
+# let adds x = x ;;
+val adds : 'a -> 'a = <fun>
+# adds 2.0 ;;
+- : float = 2.
+# adds "aman" ;;
+- : string = "aman"
+# subs( print_string"aman" );;
+aman- : unit -> bool = <fun>
+# aman ;;
+Characters 0-4:
+  aman ;;
+  ^^^^
+Error: Unbound value aman
+Hint: Did you mean atan?
+# subs ;;
+- : 'a -> 'a -> bool = <fun>
+# subs  adds(0) adds(1) ;;
+Characters 0-4:
+  subs  adds(0) adds(1) ;;
+  ^^^^
+Error: This function has type 'a -> 'a -> bool
+       It is applied to too many arguments; maybe you forgot a `;'.
+# subs 0 1 ;;
+- : bool = false
+# subs adds(0) adds(1) ;;
+Characters 0-4:
+  subs adds(0) adds(1) ;;
+  ^^^^
+Error: This function has type 'a -> 'a -> bool
+       It is applied to too many arguments; maybe you forgot a `;'.
+# let add x y = x+y ;;
+val add : int -> int -> int = <fun>
+# subs (add 2 3 ) (add 3 2 ) ;;
+- : bool = true
+# subs (adds 0) (adds 1) ;;
+- : bool = false
+# let subs x = x ;;
+val subs : 'a -> 'a = <fun>
+# subs print_string"aman" ;;
+aman- : unit = ()
+# subs print_string"hello how are you!fine!" ;;
+hello how are you!fine!- : unit = ()
+# let print_smn x = print_string(string_of_bool(x==5) );;
+val print_smn : int -> unit = <fun>
+# print_smn 5 ;;
+true- : unit = ()
+# print_smn  6 ;;
+false- : unit = ()
+#
+
+    WHATSS APP IMAGES OF THE COL 100 LECTURE  AND COMLETE THIS NOTEPAD READING ONCE AND MOBILE PHOTOS ALSO REDA THEM .
+    JUST THINK OF MANY EXAMPLES OF FUNCTIONS WHICH YOU CAN PUT IN IF THEN ELSE CONDITIONS.  
+
+
+    
+

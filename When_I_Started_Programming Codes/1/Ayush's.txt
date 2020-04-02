@@ -1,0 +1,26 @@
+ let middleChild1 x y z = x +y+z - max x (max y z) -min x (min y z);;
+
+
+let middleChild x y z = if (x!=y && y!=z && z!=x)then middleChild1 x y z else if (x=y && y=z && z=x) then -2 else if (x=y || y=z || z=x)then -1 else -3;;
+
+
+
+let print_middle_child x y z = if (middleChild x y z = middleChild1 x y z ) then  ("The age of the middle child is : "^ string_of_int (middleChild1 x y z))
+else if (middleChild x y z = -1 )then  "There are twins!" 
+else if (middleChild x y z = -2 )then  "There are triplets!"
+else  "Invalid inputs!";;
+
+
+
+let is_prime n =
+  let rec is_not_divisor d =
+    d * d > n || (n mod d != 0 && is_not_divisor (d+1))
+  in
+  match n with
+  | 1 -> false
+  | n when n <= 0 -> failwith "negative argument for primality test"
+  | n -> is_not_divisor 2;;
+
+let rec isPrime n =
+if (n=1 && (n mod (int_of_float((float_of_int(n))**(0.5))) != 0) &&  isPrime (n-1))
+then true else false ;;

@@ -1,0 +1,29 @@
+exception Invalid_age of int ;;
+exception Failure of string ;;
+exception Invalid_argument of string
+exception Invalid_argument ;;
+
+let rec length l1 = match l1 with 
+| hd :: tl -> 1 + length tl 
+| [] -> -1  ;;
+
+
+let rec nth l a = if a <0 then raise (Invalid_argument ) else match l with 
+| hd :: tl -> if a = 0 then hd else nth tl (a-1)
+| [] -> raise (Failure "nth") ;;
+
+let rec strike l1 n  = if n <0 then raise ( Invalid_argument ) else match l1 with 
+| hd :: tl ->  if n = 0 then tl else hd :: ( strike tl (n-1) ) 
+| [] -> raise (Failure "n" )  ;;
+
+let rec add_hori l1 l2 = match l1 with 
+| hd :: tl -> hd :: add_hori tl l2
+| [] -> l2 ;;
+
+let rec add_vert a l = match l with 
+| hd :: tl -> ( a :: hd ) :: ( add_vert a tl )
+| [] -> [] ;;  
+
+
+
+let rec ftrg l1 n m = let var1 = ( strike l1 m ) in if n = 0 then [[(nth l1 0)]] else if m = 0 then add_vert ( nth l1 0 ) ( ftrg ( var1 ) (n-1) (length var1) ) else add_hori ( add_vert ( nth l1 m ) ( ftrg ( var1 ) (n-1) (length var1 )))   ( ftrg l1 (n) (m-1) )

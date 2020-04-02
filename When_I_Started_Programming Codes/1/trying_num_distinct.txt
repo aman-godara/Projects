@@ -1,0 +1,6 @@
+let rec num_distinct1 l1 a = match l1 with
+| hd :: tl :: rest ->  if (hd = tl ) then num_distinct1 (tl :: rest ) (a+1) else a
+| hd :: [] -> a 
+|[] -> ;;
+
+waste of time 

@@ -1,0 +1,421 @@
+type cell =
+
+| Value of int
+
+| PossibleValues of int list ;;
+
+let check l1 i = let l2 = ref [] in 
+ 
+
+for j = 0 to 8 do   
+
+ 
+match   l1.(i).(j) with 
+
+| Value(x) ->  l2 := x :: !l2  
+
+| PossibleValues (p) -> l2 := 0 :: !l2 ;
+
+done ; 
+
+!l2 ;; 
+
+
+
+
+let eliminateValueRow m v r =  let halwa = Array.to_list m in 
+for j = 0 to 8 do 
+
+match m.(r).(j)  with 
+
+| Value (x) -> m.(r).(j) <- Value (x)  
+
+|PossibleValues(p) -> let q =  p in 
+
+
+   
+
+	
+
+let rec haha1 x v = match x with 
+	
+| hd :: tl -> if hd = v then (haha1 tl v)  else hd :: (haha1 tl v) 
+	
+| [] -> []  in 
+
+	let haha2 = haha1 q v in 
+	
+m.(r).(j) <- (  PossibleValues (haha2)) ; 
+ 
+done ;
+ 
+if halwa = m then true else false ;;
+
+
+
+
+
+let eliminateValueCol m v c =  let halwa = m in 
+
+for j = 0 to 8 do 
+
+match m.(j).(c)  with 
+
+| Value (x) -> m.(j).(c) <- Value (x)  
+
+|PossibleValues(p) -> let q =  p in 
+
+
+   
+
+	
+let rec haha1 x v = match x with 
+	
+| hd :: tl -> if hd = v then (haha1 tl v)  else hd :: (haha1 tl v) 
+	
+| [] -> []  in 
+
+	let haha2 = haha1 q v in 
+	m.(j).(c) <- (  PossibleValues (haha2)) ; 
+ 
+done ; 
+
+	if halwa = m then true else false ;;
+
+
+
+
+let eliminateValueCol1 m v c w =  
+for j = w to w + 2  do 
+
+	match m.(j).(c)  with 
+
+	| Value (x) -> m.(j).(c) <- Value (x)  
+
+	|PossibleValues(p) -> let q =  p in 
+
+
+   
+
+	
+	let rec haha1 x v = match x with 
+	
+	| hd :: tl -> if hd = v then (haha1 tl v)  else hd :: (haha1 tl v) 
+	
+	| [] -> []  in 
+
+	let haha2 = haha1 q v in 
+	m.(j).(c) <- (  PossibleValues (haha2)) ; 
+ 
+	done ;
+
+	m ;;
+
+
+
+
+let eliminateValueRow1 m v r w =   
+for j = w to w +2  do 
+
+match m.(r).(j)  with 
+
+| Value (x) -> m.(r).(j) <- Value (x)  
+
+|PossibleValues(p) -> let q =  p in 
+
+
+   
+
+
+	let rec haha1 x v = match x with 
+	
+| hd :: tl -> if hd = v then (haha1 tl v)  else hd :: (haha1 tl v) 
+	
+| [] -> []  in 
+
+	let haha2 = haha1 q v in 
+	
+m.(r).(j) <- (  PossibleValues (haha2)) ;  
+
+done ;
+
+m ;;
+
+
+
+
+
+
+let post2 b = if b = 0 || b = 3 || b = 6 then 0 else if b = 1 || b = 4 || b = 7 then 3 
+else  6 ;;
+
+
+let post1 b = if b = 0 || b = 1 || b = 2 then 0 else if b = 4 || b = 3 || b = 5 then 3 
+else 6 ;;
+
+
+
+
+
+
+
+
+
+let eliminateValueBox m v b = let halwa = m in 
+
+let store = ref m in
+
+for i = post1 b to (post1 b) + 2 do
+ store := eliminateValueRow1 m v i (post2 b) ; 
+
+done ; 
+
+for j = post2 b to (post2 b) +2 do 
+store := eliminateValueCol1 (!store) v j (post1 b) ;
+
+done ; 
+
+if halwa = !store then true else false ;;
+
+
+
+
+
+
+
+let block_detecter i j = if (i >= 0 && i <= 2 && j >= 0 && j <= 2) then 0 
+
+else if (i >= 3 && i <= 5 && j >= 3 && j <= 5 ) then 4 
+
+else if (i >= 0 && i <= 2 && j >= 3 && j <= 5) then 3 
+
+else if (i >= 0 && i <= 2 && j >= 6 && j <= 9)  then 6 
+
+else if (i >= 3 && i <= 5 && j >= 0 && j <= 2) then 1 
+ 
+else if (i >= 3 && i <= 5 && j >= 6 && j <= 9 ) then 7 
+else if (i >= 6 && i <= 9 && j >= 3 && j <= 5 ) then 5 
+else if (i >= 6 && i <= 9 && j >= 6 && j <= 9 ) then 8 
+else if (i >= 6 && i <= 9 && j >= 0 && j <= 2 ) then 2 
+else -1 ;;
+
+ 
+
+
+
+
+
+
+
+let convert x = match x with 
+
+| Value(x) -> x 
+ 
+| PossibleValues (p)-> 0 ;; 
+
+
+
+let say x = match x with
+
+| Value (x) -> "yes" 
+
+|PossibleValues(p) -> "no" ;;  
+
+
+
+let eliminate m i j = 
+let store = ref m in 
+ 
+if  say m.(i).(j) = "yes"   then let g = (convert (m.(i).(j))) in 
+
+if  
+(eliminateValueBox m g (block_detecter i j )  = true ||
+  
+ eliminateValueCol (!store) g j = true ||
+
+eliminateValueRow (!store) g i  = true ) then true else false 
+else false ;;
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+let loneCells m =  let halwa = m in let lappy = ref 0 in  
+for i = 0 to 8 do 
+for j= 0 to 8 do
+match m.(i).(j) with 
+| Value (x) -> m.(i).(j) <- Value (x) 
+|PossibleValues (p) -> 
+		match p with 
+		| hd :: [] -> m.(i).(j) <- Value (hd)
+		| tl -> m.(i).(j) <-  PossibleValues (p) ;
+
+if eliminate m i j = true then lappy := 0 else lappy := 0   ; 
+
+done ; 
+done ;
+ 
+if halwa = m then true else false ;;
+      
+let rec bahar_nikal p v  = match p with 
+|hd :: tl -> if hd = v then true else bahar_nikal tl v 
+| [] -> false ;; 
+
+
+
+let getCellsRow m r v = let que =ref [] in
+	for j = 0 to 8 do 
+match m.(r).(j) with 
+| Value (x) -> m.(r).(j) <- Value (x)
+| PossibleValues (p) -> if (bahar_nikal p v = true) then que := (r,j) :: !que else que := !que ;
+done;
+!que ;;   
+
+
+let getCellsCol m c v = let que =ref [] in
+	for i = 0 to 8 do 
+match m.(i).(c) with 
+| Value (x) -> m.(i).(c) <- Value (x)
+| PossibleValues (p) -> if (bahar_nikal p v = true) then que := (i,c) :: !que else que := !que ;
+done;
+!que ;;      
+
+let getCellsBox m b v =  
+	let que =ref [] in
+	for i = (post1 b) to (	post1 b )+2 do 
+	 
+	for j = (post2 b) to (post2 b) +2 do   
+match m.(i).(j) with 
+| Value (x) -> m.(i).(j) <- Value (x)
+| PossibleValues (p) -> if (bahar_nikal p v = true) then que := (i,j) :: !que else que := !que ;
+done;
+done;
+!que ;; 
+
+
+let teller1 r = match r  with 
+| hd :: [] -> true 
+| tl -> false ;;
+
+let hm1 (w) = match w with 
+
+| (a,b) :: [] -> a 
+
+| _ -> -1 ;;
+
+
+
+let hm2 (w) = match w with 
+
+| (a,b) :: [] -> b 
+
+| _ -> -1 ;;
+
+
+
+
+let loneRanger m int f =   let p = ref true in let mar = ref 0 in  
+
+for i = 1 to 9 do 
+
+if teller1 (f m int i ) = true then let a = hm1 (f m int i ) in let b = hm2 (f m int i )  in 
+
+( m.(a).(b) <- Value (i)  ; 
+p := eliminate m a b ;) 
+ 
+
+else mar := 0 ; 
+
+done ;;          
+
+
+
+let detect c d = match c ,d with 
+|[a,b],[c,d] -> if (a = c && b = d) then [a,b] else if (a = b && b = c ) then [a,b]
+		else [(-1,-1);(-1,-1)] 
+| _ , _ -> [(-1,-1);(-1,-1)] ;; 
+
+
+
+let getTwin m int f = let var1 = Array.to_list m in   
+		let p = ref 0 in 
+		for k = 1 to 9 do
+		for l = 1 to 9 do    
+if (detect (f m int k) (f m int l) != [(-1,-1);(-1,-1)] ) 
+then let [(f1,f2);(g1,g2)] = ( detect (f m int k) (f m int l) ) in
+m.(f1).(f2) <- PossibleValues ([k;l]) ;
+m.(g1).(g2) <- PossibleValues ([k;l]) ; 
+else  p := 0 ;
+done ; 
+done ; 
+let var2 = Array.to_list m in 
+var2 = var1 ;;  
+ 
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

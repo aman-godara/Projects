@@ -1,0 +1,23 @@
+let mlt a1 a2 a3 = let var1 = Array.length a1 in let var2 = Array.length (a1.(0)) in
+  let var3 = Array.length a2 in let var4 = Array.length (a2.(0)) in
+        
+	for i = 0 to (var1 -1) do
+                for m = 0 to (var4 -1 ) do
+                        let sum = ref 0 in
+                                for j =0 to ( var2 -1 ) do
+                                        for k =0 to ( var3 - 1 ) do
+                                                if j = k then  sum:= (!sum + ((a1.(i).(j)) *  (a2.(k).(m))))
+                                                else sum := !sum + 0
+                                        done ;
+                                done ;
+                        a3.(i).(m) <- !sum ;
+			sum := 0 ;
+                done ;
+        done ;
+  a3 ;;
+
+let mtl1 a1 a2 = mlt a1 a2 [|[|0;0;0|];[|0;0;0|];[|0;0;0|]|] ;;
+
+[|[|3;2;1|];[|6;9;0|];[|5;5;4|];[|2;1;9|]|]
+
+[|[|2;5;7;8|];[|9;0;2;5|];[|11;7;5;6|]|]

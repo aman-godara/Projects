@@ -1,0 +1,107 @@
+        OCaml version 4.02.3
+
+# (1,2,"hello" ) ;;
+- : int * int * string = (1, 2, "hello")
+# (1,2) ;;
+- : int * int = (1, 2)
+# (3,"hello",true) ;;
+- : int * string * bool = (3, "hello", true)
+# (1) ;;
+- : int = 1
+# let c = (3,"hello",true) ;;
+val c : int * string * bool = (3, "hello", true)
+# c ;;
+- : int * string * bool = (3, "hello", true)
+# let coursenum x = match x with
+  | (a,b,c) -> a ;;
+val coursenum : 'a * 'b * 'c -> 'a = <fun>
+# coursenum c ;;
+- : int = 3
+# (1,2,3,4,5,6,7,8,9,10) ;;
+- : int * int * int * int * int * int * int * int * int * int =
+(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+# "tuples" ;;
+- : string = "tuples"
+# ("tuples") ;;
+- : string = "tuples"
+#
+  let cs1 x = let (a,b,c) = x in a ;;
+val cs1 : 'a * 'b * 'c -> 'a = <fun>
+# cs1 c ;;
+- : int = 3
+# ocaml ;;
+Characters 0-5:
+  ocaml ;;
+  ^^^^^
+Error: Unbound value ocaml
+# let l = [1;2;3;4;5;6] ;;
+val l : int list = [1; 2; 3; 4; 5; 6]
+# let hd :: tl = l ;;
+Characters 4-12:
+  let hd :: tl = l ;;
+      ^^^^^^^^
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a value that is not matched:
+[]
+val hd : int = 1
+val tl : int list = [2; 3; 4; 5; 6]
+# let (hd :: tl) = l ;;
+Characters 4-14:
+  let (hd :: tl) = l ;;
+      ^^^^^^^^^^
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a value that is not matched:
+[]
+val hd : int = 1
+val tl : int list = [2; 3; 4; 5; 6]
+# thats good ;;
+Characters 0-5:
+  thats good ;;
+  ^^^^^
+Error: Unbound value thats
+# let frtuple x = match x with
+  | (f,s,t) -> f
+  | _ -> x ;;
+Characters 53-54:
+  | _ -> x ;;
+         ^
+Error: This expression has type 'a * 'b * 'c
+       but an expression was expected of type 'a
+       The type variable 'a occurs inside 'a * 'b * 'c
+#  let frtuple x = match x with
+    | (f,s,t) -> f
+    | _ -> 0 ;;
+Characters 51-52:
+    | _ -> 0 ;;
+      ^
+Warning 11: this match case is unused.
+val frtuple : int * 'a * 'b -> int = <fun>
+#  let frtuple x = match x with
+    | (f,s,t) -> f
+    ;;
+val frtuple : 'a * 'b * 'c -> 'a = <fun>
+# frtuple (1,"task",true) ;;
+- : int = 1
+# let (f,s,t) = t ;;
+Characters 14-15:
+  let (f,s,t) = t ;;
+                ^
+Error: Unbound value t
+# let (f,s,t) = (1,true,"faith")  ;;
+val f : int = 1
+val s : bool = true
+val t : string = "faith"
+# let (_,s,_) = (1,true,"faith")  ;;
+val s : bool = true
+# s ;;
+- : bool = true
+# (["shradha";"mahima";"neha";"jyoti"],["harish";"Anmol";"Praneet"]);;
+- : string list * string list =
+(["shradha"; "mahima"; "neha"; "jyoti"], ["harish"; "Anmol"; "Praneet"])
+# [],[] ;;
+- : 'a list * 'b list = ([], [])
+# 1,2,3 ;;
+- : int * int * int = (1, 2, 3)
+# (1,2,3) ;;
+- : int * int * int = (1, 2, 3)
+#

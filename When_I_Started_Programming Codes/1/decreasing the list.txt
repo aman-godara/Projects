@@ -1,0 +1,13 @@
+let rec incr1 l = match l with 
+| hd :: tl :: rest -> if (hd >= tl && incr1 (tl :: rest) = true ) then true else false 
+| hd :: [] -> true 
+| [] -> true ;;  
+
+
+let rec incr l1 l2  = match l1 with 
+| hd :: tl :: rest -> if ( hd >= tl ) then hd :: (incr (tl :: rest) l2 )  else 
+		incr (tl :: hd :: rest) l2 
+| hd :: [] -> hd :: l2 
+|[] -> l2 ;;
+
+let rec incr2 l = if incr1 l = true then l else incr2 (incr l []) ;; 
