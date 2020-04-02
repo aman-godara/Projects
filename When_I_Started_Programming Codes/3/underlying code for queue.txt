@@ -1,0 +1,32 @@
+type queues = { mutable content : int list ; mutable length : int } ;;
+
+let create () =  {content = [] ; length = 0 } ;;
+
+exception Empty_Queue ;;
+
+let insert e q = let rec func1 w p = match p with 
+			       | hd :: tl -> hd :: func1 w tl 
+			       | [] -> w :: []  in 
+			q.content <- func1 e q.content ; q.length <- q.length + 1;;
+
+let delete q = match q.content with 
+| hd :: tl -> q.content <- tl ; q.length <- q.length -1; hd  
+| [] ->  raise Empty_Queue ;;
+
+let head q = match q.content with 
+| hd :: tl -> hd 
+| [] -> raise Empty_Queue ;;  
+
+
+[CODE TO IMPLEMENT STACK IN THE FORM OF QUEUE]
+let p  = create () ;;
+
+let push x p = insert x p ;;
+
+let pop p = let var1 = (p.length - 1) in let rec func1 n = if n != 0 then ((insert (delete p) p) ; func1 (n-1)) else
+			delete p in func1 var1 ;;
+
+let head1 p = let f = ref 0 in let var1 = (p.length - 1) in let rec func1 n = if n != 0 then ((insert (delete p) p) ; func1 (n-1)) else
+			(f := head p ;(insert (delete p) p)) in func1 var1 ; !f ;;
+
+   

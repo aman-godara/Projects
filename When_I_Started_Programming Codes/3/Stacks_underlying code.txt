@@ -1,0 +1,19 @@
+type stacks = { mutable content : int list ; mutable length : int } ;;
+
+exception Empty_Stack ;;
+
+let create () = { content = [] ; length = 0 } ;;
+
+let push e s = s.content <- (e :: s.content) ; s.length <- s.length + 1 ;;
+
+let pop s = match s.content with 
+| hd :: tl -> s.content <- tl ; s.length <- s.length - 1 
+| [] -> raise Empty_Stack ;;
+
+let top s = match s.content with 
+| hd :: tl -> hd 
+| [] -> raise Empty_Stack ;;  
+
+let is_empty s = if s.length = 0 then true else false ;; 
+
+ 

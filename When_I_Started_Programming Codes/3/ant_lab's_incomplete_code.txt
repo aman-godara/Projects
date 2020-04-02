@@ -1,0 +1,94 @@
+
+//let teller x =  let p = ref 0 in 
+		let l1 = Array.length x - 1  in
+			for i = 0 to l1 do 
+			if (x.(l1 - i).(0) = 0 && !p = 0 ) then p := (!p) else if 
+			(x.(l1 - i).(0) = 0 && !p != 0) then p := -1  
+			else if (!p = 0 || !p =1 ) then  p := 1 
+			else p := -1 ;
+			done ;
+		if !p = 0 || !p = 1 then true else false ;;    
+
+
+
+//let settle x store =  let l1 = Array.length x - 1  in 
+		let l2 = Array.length x.(0) - 1  in  
+
+		for i = 0 to l1 do  
+		if x.(i).(0) != 0 then store.(i) <- x.(i)
+		else store.(i) 
+
+
+let finder_pos x s_int = let  p = ref 0 in 
+		for i = s_int to Array.length x -1 do 
+		if (x.(i).(0) != 0 && !p = 0) then  p := i  
+		else p := !p ;
+		done ;
+	!p ;; 
+
+
+let finder_elem x s_int = x.(finder_pos x s_int) ;;
+	 
+
+let settle x  =  let l1 = Array.length x - 1  in 
+		
+		for i = 0 to l1 do 
+		let var1 = x.(i) in  
+		if x.(i).(0) != 0 then x.(i) <- x.(i) 
+		else if ((finder_pos x (i+1)) !=0) then  (x.(i) <- finder_elem x (i+1) ; x.(finder_pos x (i+1)) <- var1;)
+		else x.(i) <- x.(i) ;
+		done ;
+x ;;
+
+
+let make k1 k2 = Array.make k1 (Array.make k2 0 ) ;;  
+
+
+let add_term x a = let k1 = Array.length x + 1   in
+let k2 = (Array.length x.(0))   in 
+
+let m = make k1 k2 in 
+for i = 0 to (k1 - 2)  do
+
+m.(i) <- x.(i) ;
+
+done ;
+m.(k1 - 1) <- a ;
+m ;;
+
+
+  
+
+
+		
+
+
+
+
+
+// {just for learning things} let free x = let q = ref 3 in 
+for i = 0 to  x do
+    let p = ref 0 in
+    p := !p + i ;
+   q := !p ;
+ done ;
+!q ;;
+
+
+
+
+
+
+
+
+
+[|[|1|];[|-1|];[|0|];[|1|]|]
+
+[|[|1|];[|-1|];[|0|];[|0|]|]
+
+[|[|1|];[|0|];[|2|];[|1|]|]
+
+[|[|0|];[|0|];[|2|];[|1|]|]
+
+
+

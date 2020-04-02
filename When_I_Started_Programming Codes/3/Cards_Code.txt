@@ -1,0 +1,41 @@
+type nonnumeric_cardvalues =
+| Jack
+| Ace
+| Queen
+| King ;;
+
+type card_value =
+| Num of int
+| NNum of nonnumeric_cardvalues ;;
+
+type card =
+| Spade of card_value
+| Hearts of card_value
+| Diamonds of card_value
+| Clubs of card_value ;;
+
+let call c = match c with 
+| Jack -> "Jack"
+| Ace -> "Ace"
+| Queen -> "Queen"
+| King -> "King" ;;
+
+let call2 x = match x with 
+| Num (h) -> string_of_int h 
+|NNum (h) -> call h ;;
+
+
+
+let print_card x = match x with 
+| Spade (h) -> "Spade of " ^ ( call2 h )     
+| Diamonds (h) -> "Diamonds of " ^ call2 h 
+| Clubs (h) -> "Clubs of " ^ call2 h 
+| Hearts (h) -> "Hearts of " ^ call2 h ;;
+
+
+
+
+
+
+
+

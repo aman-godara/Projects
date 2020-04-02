@@ -1,0 +1,58 @@
+type tree = 
+| Leaf of int  
+| Node of free and free = { content : int ; next : tree list } ;;   
+
+ type tree =
+  | Leaf of int
+  | Node of free and free = {l : tree ; value : int ; r : tree } ;;
+
+let e1 = Node {l = Node{l = Leaf 4  ; value = 2 ; r = Leaf 5  }   ; value = 1 ; r = Node {l =Leaf 6  ; value = 3; r =Leaf 7 }} ;;
+
+type tree = 
+| Leaf of int 
+| Node of (tree * int * tree ) ;;
+
+
+let e1 = Node (Node(Leaf 4  ,  2  , Leaf 5  ) ,1 ,Node (Leaf 6  ,  3  ,Leaf 7  ) )
+  ;;
+
+let rec p_elem l1 = match l1 with (in_order)
+| Node(a , b, c) -> p_elem a ^ " " ^( string_of_int b ) ^ " " ^ p_elem c 
+| Leaf a -> string_of_int a ;;  
+
+let rec p_elem l1 = match l1 with (pre_order)
+| Node(a , b, c) -> ( string_of_int b ) ^ " " ^ p_elem a ^ " " ^ p_elem c 
+| Leaf a -> string_of_int a ;;  
+
+let rec p_elem l1 = match l1 with (post_order)
+| Node(a , b, c) ->  p_elem a ^ " " ^ p_elem c ^ " " ^ ( string_of_int b ) 
+| Leaf a -> string_of_int a ;;  
+
+let l = Node ( Leaf 0 , l , Leaf 0 ) ;;
+
+let detecter p = match p with 
+| Leaf x -> true 
+| _ -> false ;;
+
+let w = ref [0;0;0;0] ;;
+
+let adder l = w := List.rev l ;;
+
+let first w = match !w with 
+| hd :: tl -> w := tl ; Leaf hd 
+| [] -> Leaf (-1) ;;
+
+let outer l = match l with 
+| Leaf p -> p ;;
+
+let rec add l1 = match l1 with
+| Node (a , value , b) -> if detecter a = true then Node (Node(first w , outer a, first w ) , value ,Node (first w , outer b ,first w ))
+			  else  Node ( add a , value , add b ) 
+| Leaf (p) -> Leaf (p) ;; 
+
+
+
+
+
+
+

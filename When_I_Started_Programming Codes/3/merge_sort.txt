@@ -1,0 +1,19 @@
+let rec join_ll l1 l2 = match l1,l2 with
+| hd1 :: tl1 , hd2 :: tl2 -> if ( hd1 <= hd2 ) then hd1 :: join_ll tl1 l2 else hd2 :: join_ll l1 tl2
+| hd1 :: tl1 , [] -> hd1 :: tl1 
+| [] , hd2 :: tl2 -> hd2 :: tl2 
+| [] , [] -> [] ;;
+
+let rec split1 x p n = 
+if n = 0 then (List.rev (p) , x) else match x with 
+| [] -> ([] , [])
+| hd :: tl -> split1 (tl) (hd :: p) (n-1) ;;
+
+
+let split x = split1 x [] ((List.length x ) / 2) ;;  
+
+let rec merge_sort l1 = match l1 with 
+| ( a :: [] ,b :: [] ) -> join_ll [a] [b]   
+| ( a :: [] , [] ) -> [a]
+| ( [] , b :: [] ) -> [b] 
+| (a , b) -> (join_ll (merge_sort (split a)) (merge_sort (split b))) ;;

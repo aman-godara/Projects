@@ -1,0 +1,25 @@
+open stack ;;
+
+let p = create () ;;
+let s = create () ;;
+
+let enqueue x s = push x s ;;
+
+let dequeue x = let w = ref 2 in 
+let func1 x = while (is_empty x = false) do 
+			      push (pop s) p ;
+			      done ; in 
+		let func2 p = while (is_empty p = false ) do 
+			      push (pop p) x ;
+			      done ; in 
+		func1 x ; w := pop p ; func2 p;clear p ; !w ;; 
+
+let head x = let w = ref 2 in 
+let func1 x = while (is_empty x = false) do 
+			      push (pop s) p ;
+			      done ; in 
+		let func2 p = while (is_empty p = false ) do 
+			      push (pop p) x ;
+			      done ; in 
+		func1 x ; w := top p ; func2 p;clear p ; !w ;;
+

@@ -1,0 +1,47 @@
+type elem = 
+|Nil 
+|Elem of node and node = {content : int ; mutable next : elem} ;;
+
+type ll = {mutable first : elem ; mutable last : elem} ;;
+
+let e1 = Elem {content = 1 ; next = Nil} ;;
+let e2 = Elem {content = 2 ; next = Elem {content = 3 ; next = Nil}} ;;
+let e3 = Elem {content = 4 ; next = Elem { content = 5 ; next = Nil}} ;;
+
+let l1 : ll = { first = e3 ; last = e1} ;;   
+
+let add_lst e l = match l.last with 
+| Elem (h)  -> h.next <- e ; l.last <- e ;
+| Nil -> () ;;   
+
+//match l1.first with 
+| Elem (h) -> h.next <- l1.last 
+| Nil  -> () ;;
+
+let rec match_it p l = match p with 
+| Elem (h) -> if h.next = Nil then h.next <- l.last else (match_it (h.next) l) 
+| Nil -> () ;; 
+
+let match_it2 l = match_it l.first l ;; 
+
+let print_elem l =  let w = ref 1 in  let p = ref "" in let q = ref l.first in   
+		while (!w = 1) do 
+		match !q with 
+		| Elem (h) -> (p := !p ^ " " ^ (string_of_int (h.content))) ; q := h.next 
+		| Nil -> w := 2 ;
+		 done ;
+		 !p ^ " ";;
+
+let rec print_it l = match l with 
+| Elem (h) -> (string_of_int (h.content)) ^" " ^ print_it (h.next)
+| Nil -> "" ;; 
+
+
+let rec find_elem e l = match l with 
+| Elem (h) -> if e = h.content then true else find_elem e (h.next)
+| Nil -> false ;;  
+
+
+
+
+

@@ -1,0 +1,15 @@
+type expr = 
+| Const of int 
+| Mult of expr * expr  
+| Subs of expr * expr 
+| Add of expr * expr 
+| Div of expr * expr  ;;
+
+let e1 = Mult ( Add (Const 5 , Const 6 ) , Div ( Const 3 , Const 4 ) ) ;;
+
+let rec solve x = match x with 
+| Mult (a,b) -> ( solve a ) * ( solve b )
+| Add (a,b) -> (solve a ) + (solve b )
+| Subs (a,b) -> (solve a ) - (solve b )
+| Div (a,b) -> (solve a )/ (solve b ) 
+|Const a -> a  ;;

@@ -1,0 +1,76 @@
+type elem = 
+| Nil 
+| Elem of node and node = {content : int ; mutable next : elem } ;;
+
+type ll = {mutable first : elem } ;; 
+
+let e1 = Elem {content = 1 ; next = Nil } ;;
+
+let e2 = Elem { content = 2 ; next = Elem {content = 3 ; next = Nil} } ;;
+
+let e3 =  Elem { content = 4 ; next = Elem {content = 5 ; next = Nil} } ;; 
+
+let l1 = {first = e3} ;; 
+
+let add1 e l = match e with 
+| Elem (h) -> h.next <- l.first   
+| Nil -> () ;;
+
+let add e l = add1 e l ; l.first <- e ;;
+
+let add2 e1 = match e1 with 
+| Elem (h) -> h.next <- Nil 
+| Nil -> () ;;
+
+let rec add_lst1 e1 e2 e3 = match e2 with 
+| Elem (h) -> if h.next = Nil then ((h.next <- e1) ; add2 e1 ; e3) else add_lst1 e1 h.next e3 
+| Nil -> Nil ;; 
+
+let add_lst e1 e2 = add_lst1 e1 e2 e2 ;;  
+
+let teller f = match f with 
+| Elem (h) -> (match h.next with | Elem (p) -> if p.next = Nil then true else false |Nil -> false) 
+| Nil -> false ;;
+
+
+
+//let rev_ll f p = if p = 1 then 
+	match f with 
+	| Elem (h) -> 
+
+
+
+//let rev_ll f = if ((match f.next with | Elem (h) -> if h.next = Nil then true else false
+				     | Nil -> false ) = true ) then       
+
+
+let nexter f = match f with 
+| Elem (h) -> h.next 
+| Nil -> Nil ;;
+
+let rec rev_ll f = if teller f = true then ( match f with
+					   | Elem (h) -> (match h.next with | Elem (k) -> k.next <- f ; h.next <- Nil ; Elem k  | Nil -> Nil)
+					   | Nil -> Nil ) 
+		   else add_lst f ( rev_ll ( nexter f ) ) ;;  
+
+let c_elem p = Elem {content = p ; next = Nil } ;; 
+
+////////////// let test f =  ( match f with
+					   | Elem (h) -> (match h.next with | Elem (k) -> k.next <- f ; h.next <- Nil ; Elem k | Nil -> Nil)
+					   | Nil -> Nil ) ;;
+
+
+ 
+let e1 = c_elem 1 ;;
+let e2 = c_elem 2 ;;
+let e3 = c_elem 3 ;;
+let e4 = c_elem 4 ;;
+let e5 = c_elem 5 ;;
+let e6 = c_elem 6 ;;
+
+add_lst e2 e1 ;;
+add_lst e3 e2 ;;
+add_lst e4 e3 ;;
+add_lst e5 e4 ;;
+add_lst e6 e5 ;;
+  

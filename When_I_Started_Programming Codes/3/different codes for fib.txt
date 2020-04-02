@@ -1,0 +1,10 @@
+let fib n = if n = 0 then 0 else let p = ref 0 in let q = ref 1 in let r = ref 0 in  
+
+let fibx n = for i = 1 to n do
+r := !q ;
+q := !p + !q ;
+p := !r  ;
+done  in 
+fibx n ; !p ;; 
+
+let rec fibx n a b = if n = 1 then b else fibx (n-1) (b) (a+b) ;;

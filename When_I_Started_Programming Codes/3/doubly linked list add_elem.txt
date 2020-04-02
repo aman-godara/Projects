@@ -1,0 +1,24 @@
+type elem = 
+| Nil 
+| Elem of node and node = {content : int ; mutable next : elem ; mutable previous : elem} ;;
+
+type ll = { mutable first : elem } ;;
+
+let rec add_lst e l = match l with
+| Elem (h) -> if h.next = Nil then ( h.next <- e ; match e with | Elem (p) -> p.previous <- Elem (h)
+						| Nil -> () ; ) else add_lst e ( h.next )  
+						  
+| Nil -> () ;;
+
+let add_lst1 e l = add_lst e (l.first) ;;
+
+let add e l = match l.first with 
+| Elem (h) -> (match e with | Elem (l) -> l.next <- Elem (h)  | Nil -> () ); h.previous <- e ; l.first <- e ;
+| Nil -> () ;; 
+
+let c_elem p =  Elem { content = p ; next = Nil ; previous = Nil }  ;;
+
+let sync_elem e1 e2 = match e1 with 
+| Elem (h) -> h.next <- e2 ; (match e2 with | Elem (p) -> p.previous <- e1 |  Nil -> () );
+| Nil -> () ;;   
+

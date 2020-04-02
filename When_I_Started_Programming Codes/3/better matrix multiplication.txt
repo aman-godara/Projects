@@ -1,0 +1,19 @@
+let mult a b c = let var1  = Array.length a  -1 in let var2 = Array.length a.(0) -1 in 
+let var3 = Array.length b -1 in let var4 = Array.length b.(0) -1 in 
+
+let store = ref 0 in  
+for n = 0 to var1 do 
+for p = 0 to var4 do
+store := 0 ; 
+for m = 0 to var2 do 
+ store := ( a.(n).(m) * b.(m).(p) ) + !store ; 
+done ; 
+c.(n).(p) <- !store ;   
+done ; 
+done ; 
+   
+
+let m1 = [|[|1;2;3|];[|4;5;6|];[|7;8;9|]|] ;;
+let m1 = [|[|1;2;3|];[|4;5;6|];[|7;8;9|]|] ;;
+let m1 = [|[|0;0;0|];[|0;0;0|];[|0;0;0|]|] ;;
+let m2 = [|[|1;2;3|];[|4;5;6|];[|7;8;9|]|] ;;

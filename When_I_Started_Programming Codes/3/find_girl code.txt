@@ -1,0 +1,29 @@
+exception Found ;;
+let findgirl g grray = try let time = ref 0 in  
+			let p = ref ((Array.length grray) - 1)  in 
+		       let q = ref 0 in 
+	   while ( !p >= !q) do 
+	   if g < grray.((( !p + !q )/2)) then p := ((!p + !q)/2) -1 
+	   else if g > grray.((( !p + !q )/2)) then q := ((!p + !q)/2) +1 
+	   else if g = grray.((( !p + !q )/2)) then raise Found else ();
+	   done ; "Not found"
+
+	   with e ->  "found" ;;
+
+[do with variables this same thing also calculate number of times girl repeated  ]
+
+let rec incr1 l = match l with 
+| hd :: tl :: rest -> if (hd >= tl && incr1 (tl :: rest) = true ) then true else false 
+| hd :: [] -> true 
+| [] -> true ;;  
+
+
+let rec incr l1 l2  = match l1 with 
+| hd :: tl :: rest -> if ( hd >= tl ) then hd :: (incr (tl :: rest) l2 )  else 
+		incr (tl :: hd :: rest) l2 
+| hd :: [] -> hd :: l2 
+|[] -> l2 ;;
+
+let rec incr2 l = if incr1 l = true then l else incr2 (incr l []) ;;
+let incre l = List.rev (incr2 l ) ;;
+

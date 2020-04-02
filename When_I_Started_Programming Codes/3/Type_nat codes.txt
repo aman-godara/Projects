@@ -1,0 +1,20 @@
+ type nat =
+  | Succ of nat
+  | Zero ;;
+
+let rec find_value a = match a with 
+|Succ (h) -> 1 + find_value h 
+| Zero -> 0 ;; 
+
+
+let rec make i = if i = 0 then Zero else Succ ( make (i-1)) ;; 
+
+let addnat a b = let rec hex p = match p with 
+			| Succ (h) ->  (Succ(hex(h)))
+			| Zero -> b in hex a ;; 
+
+let rec subsnat a b = if (find_value b ) >= (find_value a) then match b,a  with
+						   | Succ (h) , Succ (p) ->  subsnat h p 
+						   | Succ (i) , Zero -> Succ (i)
+						   | Zero , Zero -> Zero 
+else subsnat b a ;;

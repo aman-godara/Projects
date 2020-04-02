@@ -1,0 +1,22 @@
+open Stack ;;
+let st = create () ;;
+
+
+//exception Unbalanced ;;
+
+let bal_prth l = clear st ; let q =  ref 0 in    
+	try       
+	for n = 0 to (String.length l) -1  do 
+		let var1 = int_of_char (String.get l n)in 
+			if var1 = 40 then push 1 st 
+			else if var1 = 41 then q := pop st 
+			else () ;
+	done ; if ( is_empty st = true ) then  "Yes, it is" else "no, it is not"   
+		with e -> "No, it is not" ;;
+	
+let bal_prth1 l = let l = create () in if st = l then "yes it is" else 
+try bal_prth l with e -> 
+
+
+
+"((((((   ))))) ()()()()()()() )"
