@@ -1,5 +1,7 @@
 package required;
 
+import java.io.PrintStream;
+
 //import main.SpellChecker;
 
 public class LinkedHashMap<V,K> {
@@ -66,12 +68,23 @@ public class LinkedHashMap<V,K> {
 		} 
 	}
 	
-	public void printdata(int org_place) {
+	public void printdata(PrintStream output, int org_place) {
 		if ( this.map[org_place] != null) {
-			this.map[org_place].printdata();
+			this.map[org_place].printdata(output);
 		} 
 	}
-
+	
+	public void printlength (PrintStream output) {
+		for (int i = 0 ; i < this.length ; i++) {
+			if (this.map[i] == null ) {
+				output.println(0) ;
+			}
+			else {
+				output.println(this.map[i].length) ;
+			}
+		}
+	}
+	
 }
 	
 
