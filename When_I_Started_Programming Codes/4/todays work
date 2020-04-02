@@ -1,0 +1,189 @@
+Aman Tue Jan 23rlwrap ocaml 
+        OCaml version 4.01.0
+
+# let fizzbuzz x = if ( x mod 3 = 0 ) then "Fizz" else if ( x mod 5 = 0 ) then "buzz" else if # let fizzbuzz x = if ( x mod 3 = 0 ) then "Fizz" else if ( x mod 5 = 0 ) then "buzz" else if ( xmod 3 =0 && x mod 5 =0  
+  ;;
+  ;;
+Syntax error: ')' expected, the highlighted '(' might be unmatched
+# let fizzbuzz x = if ( x mod 3 =0 && x mod 5 =0) then "FizzBuzz" if ( x mod 3 = 0 ) then "Fiz# let fizzbuzz x = if ( x mod 3 =0 && x mod 5 =0) then "FizzBuzz" if ( x mod 3 = 0 ) then "Fizz" else if ( x mod 5 = 0 ) then "buzz" else string_of_int (x) ;;   
+Error: Syntax error
+#  let fizzbuzz x = if ( x mod 3 =0 && x mod 5 =0) then "FizzBuzz" else if ( x mod 3 = 0 ) then "Fizz" else if ( x mod 5 = 0 ) then "buzz" else string_of_int (x) ;;   
+val fizzbuzz : int -> string = <fun>
+# fizzbuzz 17 ;;
+- : string = "17"
+# fizzbuzz 30 ;;
+- : string = "FizzBuzz"
+# fizzbuzz 15 ;;
+- : string = "FizzBuzz"
+# fizzbuzz 20 ;;
+- : string = "buzz"
+# fizzbuzz 18 ;;
+- : string = "Fizz"
+# 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ let fizzbuzz x = if ( x mod 3 =0 && x mod 5 =0) then "FizzBuzz" else if ( x mod 3 = 0 ) then "Fizz" else if ( x mod 5 = 0 ) then "buzz" else string_of_int (x) ;;   
+val fizzbuzz : int -> string = <fun>
+# 
+# let rec fizzbuzz_string x = if x>1 then fizzbuzz (x-1) ^" "^ fizzbuzz (x) else if x=1 then f  let rec fizzbuzz_string x = if x>1 then fizzbuzz (x-1) ^" "^ fizzbuzz (x) else if x=1 then fizzbuzz (x)  ;; 
+Error: This expression has type string but an expression was expected of type
+         unit
+# 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ let fizzbuzz x = if ( x mod 3 =0 && x mod 5 =0) then "FizzBuzz" else if ( x mod 3 = 0 ) then "Fizz" else if ( x mod 5 = 0 ) then "buzz" else string_of_int (x) ;;   
+
+val fizzbuzz : int -> string = <fun>
+#   let rec fizzbuzz_string x = if x>1 then fizzbuzz (x-1) ^" "^ fizzbuzz (x) else  x=1 then f  let rec fizzbuzz_string x = if x>1 then fizzbuzz (x-1) ^" "^ fizzbuzz (x) else  x=1 then fizzbuzz (x)  ;; 
+Error: Syntax error
+# 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ let fizzbuzz x = if ( x mod 3 =0 && x mod 5 =0) then "FizzBuzz" else if ( x mod 3 = 0 ) then "Fizz" else if ( x mod 5 = 0 ) then "buzz" else string_of_int (x) ;;   
+val fizzbuzz : int -> string = <fun>
+# 
+# let rec fizzbuzz_string x = if x>1 then fizzbuzz (x-1) ^" "^ fizzbuzz (x) else  x=1  fizzbuz  let rec fizzbuzz_string x = if x>1 then fizzbuzz (x-1) ^" "^ fizzbuzz (x) else  x=1  fizzbuzz (x)  ;; 
+Error: This expression has type int
+       This is not a function; it cannot be applied.
+# 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ let fizzbuzz x = if ( x mod 3 =0 && x mod 5 =0) then "FizzBuzz" else if ( x mod 3 = 0 ) then "Fizz" else if ( x mod 5 = 0 ) then "buzz" else string_of_int (x) ;;   
+
+val fizzbuzz : int -> string = <fun>
+#   let rec fizzbuzz_string x = if x>1 then fizzbuzz (x-1) ^" "^ fizzbuzz (x) else if x=1 then fizzbuzz (x)  else "-1";; 
+val fizzbuzz_string : int -> string = <fun>
+# fizzbuzz_print 17 ;;
+Error: Unbound value fizzbuzz_print
+Did you mean fizzbuzz_string?
+# fizzbuzz_string  17 ;;
+- : string = "16 17"
+# 
+  
+  
+ let fizzbuzz x = if ( x mod 3 =0 && x mod 5 =0) then "FizzBuzz" else if ( x mod 3 = 0 ) then "Fizz" else if ( x mod 5 = 0 ) then "buzz" else string_of_int (x) ;;   
+
+val fizzbuzz : int -> string = <fun>
+#   let rec fizzbuzz_string x = if x>1 then fizzbuzz_string (x-1) ^" "^ fizzbuzz_string (x) else if x=1 then fizzbuzz (x)  else "-1";; 
+val fizzbuzz_string : int -> string = <fun>
+# fizzbuzz_string  17 ;;
+Stack overflow during evaluation (looping recursion?).
+# 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ let fizzbuzz x = if ( x mod 3 =0 && x mod 5 =0) then "FizzBuzz" else if ( x mod 3 = 0 ) then "Fizz" else if ( x mod 5 = 0 ) then "buzz" else string_of_int (x) ;;   
+val fizzbuzz : int -> string = <fun>
+# 
+  let rec fizzbuzz_string x = if x>1 then fizzbuzz_string (x-1) ^" "^ fizzbuzz (x) else if x=1 then fizzbuzz (x)  else "-1";; 
+val fizzbuzz_string : int -> string = <fun>
+# fizzbuzz_string 17 ;; 
+- : string =
+"1 2 Fizz 4 buzz Fizz 7 8 Fizz buzz 11 Fizz 13 14 FizzBuzz 16 17"
+# fizzbuzz_string 15 ;; 
+- : string = "1 2 Fizz 4 buzz Fizz 7 8 Fizz buzz 11 Fizz 13 14 FizzBuzz"
+# fizzbuzz_string 10 ;; 
+- : string = "1 2 Fizz 4 buzz Fizz 
