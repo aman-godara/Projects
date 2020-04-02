@@ -1,0 +1,33 @@
+let rec red1 n l = match l with 
+| hd :: tl -> if (hd > n) then 1 + red1 hd tl else red1 n tl 
+| [] -> 1 ;;
+
+let rec final1 l = match l with 
+| hd :: tl -> max ( red1 hd tl ) ( final1 tl )
+| [] -> 0 ;;
+
+let final l = List.length l - final1 l ;;
+
+let compare1 a l = match l with 
+| hd :: tl -> if a = hd then 1 + compare2  
+| [] -> false ;;
+
+let rec compare2 l1 l2 = match l2 with 
+| hd1 :: tl1 , hd2 :: tl2 -> if hd1 = hd2 then 1 + ( compare2 tl1 tl2 ) else 
+
+let rec dwell l f a b c = match l with 
+| hd :: tl -> hd :: dwell tl f a b c 
+| [] -> f a b c ;; 
+
+
+
+let rec two n l m = match l with 
+| ( p :: hd :: tl1) :: tl2 -> if ( (n + p) < hd ) then (0 :: n :: hd :: tl1) :: ((p+1) :: hd :: tl1) :: (two n tl2 1)  else ((p+1) :: hd :: tl1) :: (two n tl2 m)
+| [] -> if m = 1 then [] else [[0 ; n]]
+| ([]) :: [] -> [[0 ; n]] ;;   
+
+
+let rec one l = match l with 
+| hd :: tl -> two hd ( one tl ) 0
+| [] -> [[]] ;;  
+

@@ -1,0 +1,76 @@
+let rec merge_list l1 l2 l3 = match l1 , l2 with 
+| hd1 :: tl1 , hd2 :: tl2 -> if hd1 > hd2 then merge_list tl1 l2 (hd1 :: l3) else merge_list l1 tl2 (hd2 :: l3)  
+| hd :: tl , [] -> merge_list tl [] ( hd :: l3) 
+| [] ,hd :: tl -> merge_list  [] tl ( hd :: l3) 
+| [] , [] -> l3 ;;
+
+
+
+let rec counter p l = match l with  
+| hd :: tl -> if hd = p then 1 + counter p tl else 0 + counter p tl 
+| [] -> 0 ;;  
+
+
+let rec num_distinct l m = match l with 
+| hd :: tl -> let var1 = ( counter hd tl ) in if (var1 > 0 && hd != m ) then (hd , var1 + 1) :: ( num_distinct tl hd) else if ( m = hd )
+ then num_distinct tl m else (hd , 1 ) :: ( num_distinct tl m ) 
+| [] -> [] ;;   
+
+
+
+exception Invalid_argument ;;
+
+let rec mtc_add m1 m2 n = if n = 1 then match m1,m2 with 
+| hd1 :: tl1 , hd2 :: tl2 -> ( mtc_add hd1 hd2 0 )  :: mtc_add tl1 tl2 1 
+| [] , [] -> []
+| _, _ -> raise (Invalid_argument)      
+else match l1 l2 with  
+
+| hd1 :: tl1 , hd2 :: tl2 -> (hd1 + hd2) :: mtc_add tl1 tl2 0 
+| [] , [] -> [] 
+| _ , _ -> raise (Invalid_argument) ;;
+
+
+let rec add l1 l2 = match l1 , l2 with 
+| hd1 ::tl1 , hd2 :: tl2 -> (hd1 + hd2) :: ( add tl1 tl2) 
+| [] , [] -> [] ;
+| _ , _ -> raise ( Invalid_argument) ;;
+
+let rec mtc_add m1 m2 =  match m1,m2 with 
+| hd1 :: tl1 , hd2 :: tl2 -> ( add hd1 hd2 ) :: mtc_add tl1 tl2 
+| [], [] -> [] 
+| _ , _ -> raise (Invalid_argument) ;;
+
+
+
+
+
+let rec hakku2 p n = match p with 
+| hd :: tl -> if n = 1 then hd else hakku2 tl (n-1) 
+;;
+
+let rec length x = match x with 
+| hd ::tl -> 1 + length tl 
+|[] -> 0 ;;
+
+let length2 x = match x with 
+| hd ::tl -> length hd ;; 
+
+let hakku1 m2 b c = hakku2 (hakku2 m2 b ) c ;;
+
+let rec combine2 l1 m2 b c = if b = 0 then 0 else ((hakku2 l1 b) * (hakku1 m2 b c )) + combine2 l1 m2 (b-1) c ;;     
+
+let rec combine1 l1 m2 b c l3 = if c = 0 then l3 else (combine1 l1 m2 b (c-1) ((combine2 l1 m2 b c) :: l3))  ;;   
+
+
+let rec matx_mult m1 m2 = let var1 = length m2 in let var2 = length2 m2 in match m1 with 
+| hd :: tl -> (combine1 hd m2 var1 var2 [])   :: matx_mult tl m2 
+| [] -> [] ;;  
+
+
+
+
+
+
+
+

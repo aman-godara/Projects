@@ -1,0 +1,17 @@
+exception Error ;;
+
+let rec one n x = if x = n then true else if n mod x = 0 then false else one n (x+1) ;;
+let prime_checker n = one n 2 ;; 
+
+let rec all_prime x = if x = 2 then [2] else if prime_checker x  then ( x :: all_prime (x-1) )  else all_prime (x-1) ;;
+
+let rec length l = match l with 
+| hd :: tl -> 1 + length tl 
+| [] -> 0 ;; 
+
+let rec nth n l = match l with 
+| hd :: tl -> if n = 1 then hd else nth (n-1) tl 
+| [] -> raise (Error) ;;
+
+
+let one n l = if n = 0 then () else if n < 0  then [] else  

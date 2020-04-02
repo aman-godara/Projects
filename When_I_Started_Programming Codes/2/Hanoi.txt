@@ -1,0 +1,4 @@
+let rec bs_hanoi n a b c = if n = 1 then ( "(" ^ (string_of_int a) ^", " ^ ( string_of_int c) ^ ")") 
+else ( bs_hanoi (n-1) a c b ) ^ ("\n") ^ ( "(" ^ (string_of_int a) ^", " ^ ( string_of_int c) ^ ")" ) ^ ("\n") ^ ( bs_hanoi (n-1) b a c ) ;;
+
+let hanoi n = print_string ( bs_hanoi n 1 2 3 ) ;;
