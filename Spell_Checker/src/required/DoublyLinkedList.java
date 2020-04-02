@@ -1,5 +1,8 @@
 package required;
 
+
+import java.io.PrintStream;
+
 public class DoublyLinkedList<V, K> {
 		Node<V,K> head ; 
 		int length ;  
@@ -135,11 +138,12 @@ public class DoublyLinkedList<V, K> {
 		}
 	}
 	
-	void printdata() {
-		Node<V,K> cur = this.head ; 
-		while ( cur != null ) {
-			System.out.println(cur.data) ; 
-			cur = cur.next ; 
-		}
+	void printdata(PrintStream output) {
+		Node<V,K> cur = this.head ;
+			while ( cur != null ) {
+				output.print(cur.data);
+				output.print("\n");
+				cur = cur.next ; 
+			}		
 	}
 }
