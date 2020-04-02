@@ -1,0 +1,12 @@
+let rec flatten l = 
+if l = [] then [] else 
+let hd :: tl = l in 
+
+let rec find bottle = match bottle with
+
+| a :: b -> a :: ( find b ) 
+
+| [] -> flatten(tl)   in 
+find (hd) ;;
+
+

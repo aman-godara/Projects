@@ -1,0 +1,17 @@
+let rec fold_left f t l = match l with 
+
+|hd :: [] -> let b = f a (hd) in b 
+
+| hd :: tl -> let b = f a (hd) in fold_left f (b) (tl) ;;
+
+
+
+
+
+let rec fold_left f e l = match l with 
+
+|hd :: [] -> let b = f e (hd) in b 
+
+| hd :: tl -> let t = (f e hd) in   fold_left f (t) (tl) ;; 
+ 
+

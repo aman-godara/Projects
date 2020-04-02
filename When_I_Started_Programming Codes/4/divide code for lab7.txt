@@ -1,0 +1,9 @@
+let rec grt a b = if (List.length a > List.length b )  then "1" else if (List.length a < List.length b ) 
+		then "2" else match a ,b with
+| hd1 :: tl1 , hd2 :: tl2 -> if (hd1 > hd2) then "1" else if hd2 > hd1 then "2" else  grt tl1 tl2   
+| [],[] -> "equal" ;;
+
+let rec divd a b n = if grt a b = "equal" then [1] else if (grt a (mult3 b n ) = "1") && (grt a (mult3 b (settle1 (add_lst n [1]))) = "2" )
+		then n else divd a b (settle1 (add_lst n [1])) ;;
+
+

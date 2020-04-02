@@ -1,0 +1,57 @@
+let rec div_rule1 x n = 
+	try 
+	(int_of_char(String.get x n) - 48) :: div_rule1 x (n+1)
+	with e -> [] ;; 
+
+let div_rule x = div_rule1 x 0 ;;
+
+let rec check_digits1 x n = if ( 10.0 ** (n) ) > x then n else check_digits1 x (n+.1.0) ;;          
+
+
+
+let check_digits x = check_digits1 (float_of_int x) 1.0 ;;
+
+let two_div x =  (x - (x mod 10)) / 10 ;; 
+
+
+
+// let rec read_input () = 
+try
+print_string (read_line()^"\n");
+read_input ()
+with e -> 
+ print_string ("FIle reading complete") ;;
+
+// let rec settle x n = match x with 
+| hd :: tl :: rest ->  if (check_digits (hd) > 1.0) then settle ((two_div hd) :: hd - 10 * (two_div hd) :: tl :: rest) (n)
+			else if check_digits (tl) > 1.0 then settle ((hd + two_div tl) :: (tl - 10 * (two_div hd) ) :: rest ) (n)
+			else settle (tl :: rest) 
+| hd :: [] -> [] ;;  
+
+let rec settle x n = match x with 
+| hd :: tl :: rest -> if check_digits hd > 1.0 then settle (((two_div hd) + tl) :: rest) ( (hd - 10* (two_div hd)) :: n )
+			else settle ( tl :: rest ) (hd :: n ) 
+| one :: [] -> if check_digits one > 1.0 then two_div one :: (one - 10 * two_div one ) :: n else one :: n 
+| [] -> [];;
+
+let settle1 x = settle (List.rev x) [] ;; 
+
+let rec add_lst1 a b = match a ,b with 
+| hd1 :: tl1 , hd2 :: tl2 -> (hd1 + hd2 ) :: add_lst1 tl1 tl2
+| [] , hd2 :: tl2 -> hd2 :: tl2
+| hd1 :: tl1 , [] -> hd1 :: tl1 
+| [] , [] -> [] ;;      
+
+let add_lst a b = List.rev (add_lst1 (List.rev a )(List.rev b ) ) ;;   
+
+//settle1 ( add_lst a b ) ;;
+
+let rec add1 a = match a with 
+| hd :: tl :: rest -> (string_of_int hd ) ^ ( add1 (tl :: rest))
+| hd :: [] -> string_of_int hd 
+| [] -> "hello";;   
+
+
+let add2 a b = add1 ( settle1 (add_lst (div_rule a) (div_rule b) )) ;;
+
+

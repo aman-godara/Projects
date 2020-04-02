@@ -1,0 +1,23 @@
+let rec div_rule1 x n = 
+	try 
+	(int_of_char(String.get x n) - 48) :: div_rule1 x (n+1)
+	with e -> [] ;; 
+
+let div_rule x = div_rule1 x 0 ;;
+
+let rec sub_lst a b = match a ,b with 
+| hd1 :: tl1 :: rest1 , hd2 :: tl2 :: rest2 -> if hd2 > hd1 
+		then (10 + hd1 - hd2) :: (sub_lst ((tl1 - 1) ::rest1) (tl2 ::rest2)) 
+		else (hd1 - hd2 ) :: (sub_lst (tl1 :: rest1) (tl2 ::rest2 )) 
+| hd1 :: tl1 :: rest1, hd2 :: [] -> if hd2 > hd1 then (10 + hd1 - hd2 ) :: (tl1 - 1) :: rest1
+		else (hd1 - hd2 )  :: (tl1 :: rest1 ) 
+| rmn1 , rmn2 -> rmn1 ;;
+
+let rec add1 a = match a with 
+| hd :: tl :: rest -> (string_of_int hd ) ^ ( add1 (tl :: rest))
+| hd :: [] -> string_of_int hd 
+| [] -> "hello";;   
+
+
+let sub1 a b = add1 (List.rev (sub_lst (List.rev (div_rule a) )(List.rev (div_rule b) ))) ;;
+ 

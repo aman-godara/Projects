@@ -1,0 +1,16 @@
+let rec rev1 l pt  = match l with 
+| ab::cd ::[] -> cd::ab::pt
+|hd :: tl:: rest ->  rev1 (rest) (tl :: hd :: pt)
+| nr ::[] -> nr :: pt  
+|[] -> [] ;;
+
+let rev l = rev1 l [] ;;
+
+
+
+
+       [NEW CODE BY NITIN RATHORE SIR]
+
+let rec rev1 l pt = match l with 
+| [] -> pt 
+| h :: t -> rev1 t (h :: pt ) ;;   

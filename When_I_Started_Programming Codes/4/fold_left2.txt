@@ -1,0 +1,19 @@
+exception Invalid_argument  ;;
+
+let rec length l =
+match l with
+| [] -> 0
+| h::t -> 1 + length t ;;
+
+let book1 l = match l with 
+| hd :: tl  -> hd ;;
+
+
+let book2 l = match l with 
+| hd :: tl -> tl ;;
+
+let rec fold_left2 f a l1 l2 =  
+	if ((length l1) != (length l2)) then raise Invalid_argument else if l1 = [] then a 
+else let var1 = f a (book1 l1) (book1 l2) in 
+fold_left2 f var1 (book2 l1) (book2 l2)   ;;
+		 

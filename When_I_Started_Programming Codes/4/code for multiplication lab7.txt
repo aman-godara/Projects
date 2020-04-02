@@ -1,0 +1,91 @@
+
+let rec div_rule1 x n = 
+	try 
+	(int_of_char(String.get x n) - 48) :: div_rule1 x (n+1)
+	with e -> [] ;; 
+
+let div_rule x = div_rule1 x 0 ;;
+
+let rec check_digits1 x n = if ( 10.0 ** (n) ) > x then n else check_digits1 x (n+.1.0) ;;          
+
+
+
+let check_digits x = check_digits1 (float_of_int x) 1.0 ;;
+
+let two_div x =  (x - (x mod 10)) / 10 ;; 
+
+let rec settle x n = match x with 
+| hd :: tl :: rest -> if check_digits hd > 1.0 then settle (((two_div hd) + tl) :: rest) ( (hd - 10* (two_div hd)) :: n )
+			else settle ( tl :: rest ) (hd :: n ) 
+| one :: [] -> if check_digits one > 1.0 then two_div one :: (one - 10 * two_div one ) :: n else one :: n 
+| [] -> [];;
+
+let settle1 x = settle (List.rev x) [] ;; 
+
+
+
+
+let rec settle x n = match x with 
+| hd :: tl :: rest -> if check_digits hd > 1.0 then settle (((two_div hd) + tl) :: rest) ( (hd - 10* (two_div hd)) :: n )
+			else settle ( tl :: rest ) (hd :: n ) 
+| one :: [] -> if check_digits one > 1.0 then two_div one :: (one - 10 * two_div one ) :: n else one :: n 
+| [] -> [];;
+
+let settle1 x = settle (List.rev x) [] ;; 
+
+let rec add_lst1 a b = match a ,b with 
+| hd1 :: tl1 , hd2 :: tl2 -> (hd1 + hd2 ) :: add_lst1 tl1 tl2
+| [] , hd2 :: tl2 -> hd2 :: tl2
+| hd1 :: tl1 , [] -> hd1 :: tl1 
+| [] , [] -> [] ;;      
+
+let add_lst a b = List.rev (add_lst1 (List.rev a )(List.rev b ) ) ;;   
+
+
+
+let rec add1 a = match a with 
+| hd :: tl :: rest -> (string_of_int hd ) ^ ( add1 (tl :: rest))
+| hd :: [] -> string_of_int hd 
+| [] -> "hello";;   
+
+
+let add2 a b = add1 ( settle1 (add_lst (div_rule a) (div_rule b) )) ;;
+
+
+
+
+
+
+
+let rec check_digits1 x n = if ( 10.0 ** (n) ) > x then n else check_digits1 x (n+.1.0) ;;          
+
+
+let check_digits x = check_digits1 (float_of_int x) 1.0 ;;
+
+
+let rec addzero1 l n = if n =0 then l else 0 :: addzero1 l (n-1) ;;
+
+let addzero l n = List.rev(addzero1 (List.rev l ) n) ;;
+
+
+let rec mult1 a b = match a with 
+| hd :: tl -> b * hd :: mult1 tl b 
+| [] -> [] ;;
+
+let mult2 a b n = addzero (mult1 a b ) n ;; 
+
+let rec mult3 a  b  = let var1 = List.length b  in 
+		match b  with
+| hd :: tl ->   settle1 ((add_lst (settle1 (mult2 a hd (var1 - 1 )))) (mult3 a tl))   
+| [] -> [] ;; 
+
+let mult1 a b = add1 (mult3 a b ) ;;
+
+let mult a b = mult1 (div_rule a ) (div_rule b ) ;; 
+
+
+
+
+
+
+

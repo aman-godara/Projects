@@ -1,0 +1,14 @@
+let rec for_all f l = match l with 
+| hd :: tl :: rest -> if (f hd = true && f tl = true) then for_all f rest else false 
+| hd :: [] -> if f hd = true then true else false
+| [] -> false ;;  
+
+
+let rec exists f l = match l with
+| hd :: tl :: rest -> if (f hd = true || f tl = true ) then true else exists f rest 
+| hd :: [] -> if f hd = true then true else false ;;
+
+
+let rec filter f l = match l with 
+| hd :: tl -> if ( for_all f [hd] = true ) then hd :: (filter f tl) else filter f (tl) 
+|  [] -> [] ;;

@@ -1,0 +1,18 @@
+let rec fold_left f a l = match l with 
+| hd :: tl  -> let t = (f a hd ) in fold_left f t (tl)
+|  [] -> a;; 
+
+
+let rec fold_right f l b  = match l with 
+|hd :: [] -> f (hd) b  
+| hd :: tl -> f (hd) (fold_right f (tl) b ) ;;
+
+
+let rec book1 l = match l with 
+|hd :: tl -> hd ;;
+
+let rec book2 l = match l with
+| hd :: tl -> tl ;; 
+
+let rec map2 f l1 l2 = if (l1 != [] && l2 != [] ) then f (book1 l1) (book1 l2) :: map2 f (book2 l1) (book2 l2)  else  [] ;; 
+ 

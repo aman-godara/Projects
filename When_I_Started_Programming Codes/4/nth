@@ -1,0 +1,19 @@
+exception Failure of string ;; 
+
+exception Invalid_argument of string ;;
+
+
+
+
+let rec length l = match l with 
+| hd :: tl -> 1 + length (tl) 
+| [] -> 0 ;;
+
+
+
+let rec nth l a = match l with 
+| hd :: tl -> if (a<0 ) then raise (Failure (string_of_int a)) else if (a >= length l ) then
+ raise (Invalid_argument (string_of_int a)) 
+else if (a = 0) then hd else nth (tl) (a-1) 
+| [] -> -1;;
+
