@@ -41,13 +41,13 @@ can_I_win n : int -> bool
 
 Sorting is a technique in which you are given a sequence of numbers and your aim is to produce another sequence of those numbers such that the sequence is in non-decreasing order. Consider the following code for sorting an Array of numbers:
 
->> let swap a i j =
+#> let swap a i j =
 	let temp = a.(i) in
 	a.(i) <- a.(j);
 	a.(j) <- temp;;
 val swap : 'a array -> int -> int -> unit = <fun>
 
->> let sortArray a =
+#> let sortArray a =
 	for i=0 to Array.length a - 1 do
 		for j=1 to (Array.length a - 1) - i do
 			if a.(j-1) > a.(j)
