@@ -1,4 +1,4 @@
-### This Folder contains all Assignment Questions, Mini-project's and Lab Exams' Problem Statements. 
+### This Folder contains all Assignment's, Mini-project's and Lab Exams' Problem Statements. 
 
 #### 11 Lab Assignments
 
