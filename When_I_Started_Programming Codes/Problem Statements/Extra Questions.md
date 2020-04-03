@@ -12,9 +12,6 @@ let rec power a n =
 		else a * half_pow * half_pow;;
 Prove by induction that the power function correctly computes an ∀n≥0.
 Assuming every basic operations (∗,mod,==,etc.) takes unit time to execute prove that if T(n) is the running time of (power a n) then T(n)=Θ(log(n)).
- 
-
-P.S. : I'll add more questions / brain-teasers if I get enough time to think some. Best of luck to all!
 
 
 ### Practice questions
