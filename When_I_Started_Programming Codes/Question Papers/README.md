@@ -1,4 +1,4 @@
-### This Folder contains all the written Question Papers and My Solutions during the Exam.
+### This Folder contains all the written Question Papers with My Solutions as answered during the exam.
 
 #### Minor 1
 
