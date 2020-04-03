@@ -1,4 +1,4 @@
-# Please Download this File to your device and change extension to ".txt".
+## Please Download this File to your device and change extension to ".txt" You may not get the correct format/style in which it is originally written for some questions on Github.
 
 ### Practice Question(s)
 
