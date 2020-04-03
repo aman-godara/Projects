@@ -1,5 +1,5 @@
 ## Language: OCaml
-These are codes which I practiced in my first Programming course COL_100: "Introduction To Computer Science".
+These are codes which I practiced in my first Programming course COL_100: "Introduction To Computer Science". This is the [link](https://piazza.com/class/jbq9e6d3x4x7nv) to the piazza class of the course.
 
 ### This folder contains many files and it has been very long since I opended them last, hence is terribly organised.
 I am so sorry that they are disorganised. You might have to go through all the folders 1 2 3 ..etc to find the particular code you are looking for.
