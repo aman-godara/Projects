@@ -1,4 +1,4 @@
-# Please Download this File to your device.
+# Please Download this File to your device and change extension to ".txt".
 
 ### Practice Question(s)
 
