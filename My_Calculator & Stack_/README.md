@@ -4,8 +4,7 @@
 The main goal of the assignment is to get familiar with the stack and queue data structures and
 get practice while implementing. Along with it, you will get to explore these data structures in the
 context of their applications.
-Part A (25 marks)
-Problem Statement:
+**Part A (25 marks) Problem Statement**:
 ```markdown
 Implement the stack data structure. You must implement the class edu.iitd.col1062020.MyStack<T> with the following methods. It must be a generic class (i.e. you can specify the data type while creating the object). You are being provided the Interface with signatures of the functions and you need to complete the code to implement the desired functionality.
 
@@ -22,8 +21,7 @@ to a fixed size in the constructor or could resize and expand the array when it 
 recommended).
 ```
 
-Part B (35 marks)
-Problem Statement:
+**Part B (35 marks) Problem Statement**:
 ```markdown
 In this part you will use your above implementation to implement a simple calculator. You will be given a String representing a valid arithmetic expression, and you will have to evaluate the expression and find the result. The expression String may contain open ( and closing parentheses ), the plus +, minus - or multiplication * sign, non-negative integers and empty spaces. You may assume that the given expression is always valid.
 You must implement the class edu.iitd.col1062020.MyCalculator with the following methods.
@@ -48,8 +46,7 @@ Input Constraints:
 1 <= Length of Expression (excluding spaces) <= 2 * 10^5
 ```
 
-Part C (40 marks)
-Problem Statement:
+**Part C (40 marks) Problem Statement**:
 ```markdown
 In this part, you will use the stack implementation from Part A to sort a given array. You are given an array of integers and you have to sort it using a single stack A. You are allowed to only push elements from the given array of integers (treating it as a queue), and your sequence of pops should form a sorted sequence of the given array. You have to return the sequence of operations (described below) in order to sort the elements.
 Allowed operations:
@@ -74,8 +71,7 @@ Input Constraints:
 Input array could possibly contain duplicate values
 ```
 
-Part D (Bonus) (10 marks)
-Problem Statement:
+**Part D (Bonus) (10 marks) Problem Statement**:
 ```markdown
 In this part, you will extend the above implementation, to sort the array by repeatedly using the stack. Let us denote the operation applied in Part C by f, then on applying f to the input array of numbers, you get another array of numbers, on which you can reapply this f.
 You are allowed to do the above procedure as many times as you like, provided it results in a sorted array at the end.
