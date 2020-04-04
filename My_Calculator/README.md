@@ -1,6 +1,7 @@
 ### Assignment 2: Arrays, Stacks and Queues
 
-#### Objective:
+**Objective**:
+
 The main goal of the assignment is to get familiar with the stack and queue data structures and get practice while implementing. Along with it, you will get to explore these data structures in the context of their applications.
 
 **Part A (25 marks) Problem Statement**:
@@ -13,10 +14,11 @@ Implement the stack data structure. You must implement the class edu.iitd.col106
 4. T top() throws edu.iitd.col1062020.EmptyStackException: Return the top element of the stack. If the stack is empty, you must throw the specified exception.
 5. boolean isEmpty(): Returns true if the stack is empty, false otherwise.
 You are NOT allowed to use any inbuilt implementation of stack.
+```
 
 Input Constraints:
 MyStack should be capable of handling upto 10^6 values. You could initialize the internal array to a fixed size in the constructor or could resize and expand the array when it is full (latter is recommended).
-```
+
 
 **Part B (35 marks) Problem Statement**:
 ```markdown
@@ -26,6 +28,7 @@ You must implement the class edu.iitd.col1062020.MyCalculator with the following
 As before you are provided the Interface with signatures of the functions and you need to complete the code.
 1. MyCalculator(): Constructor for the MyCalculator class.
 2. int calculate(String expression): Find the value of the expression using the MyCalculator class implemented above.
+```
 
 _Example 1_:
 Input: "1 + 10"
@@ -46,7 +49,7 @@ Output: 30
 You are NOT allowed to use any inbuilt function for expression evaluation.
 Input Constraints:
 1 <= Length of Expression (excluding spaces) <= 2 * 10^5
-```
+
 
 **Part C (40 marks) Problem Statement**:
 ```markdown
@@ -60,6 +63,7 @@ Return the sequence of operations as an Array of String. Your sequence should co
 You must implement the class edu.iitd.col1062020.StackSort with the following methods. As before you are provided the Interface with signatures of the functions and you need to complete the code.
 1. StackSort(): Constructor for the StackSort class.
 2. String[] sort(int[] nums): Sort the nums array, using single stack, and return the sequence of operations.
+```
 
 _Example 1_:
 Input: [10, 702, 36, 125, 82]
@@ -74,7 +78,7 @@ Input Constraints:
 1 <= length of input array <= 1024
 -10^9 <= input values <= 10^9
 Input array could possibly contain duplicate values
-```
+
 
 **Part D (Bonus) (10 marks) Problem Statement**:
 ```markdown
