@@ -69,6 +69,7 @@ general-purpose or problem-specific code meant to solve this or related problem.
 a suitable penalty as announced in the class/course website. Please read
 academic integrity guidelines on the course home page and follow them
 carefully.
+
 What to Submit?
 1. The code should be contained in a zip file. The exact directory structure will be
 detailed on the moodle submission link. Your submission will be auto-graded.
