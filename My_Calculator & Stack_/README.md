@@ -1,9 +1,7 @@
 ### Assignment 2: Arrays, Stacks and Queues
 
 #### Objective:
-The main goal of the assignment is to get familiar with the stack and queue data structures and
-get practice while implementing. Along with it, you will get to explore these data structures in the
-context of their applications.
+The main goal of the assignment is to get familiar with the stack and queue data structures and get practice while implementing. Along with it, you will get to explore these data structures in the context of their applications.
 
 **Part A (25 marks) Problem Statement**:
 ```markdown
@@ -25,27 +23,29 @@ recommended).
 **Part B (35 marks) Problem Statement**:
 ```markdown
 In this part you will use your above implementation to implement a simple calculator. You will be given a String representing a valid arithmetic expression, and you will have to evaluate the expression and find the result. The expression String may contain open ( and closing parentheses ), the plus +, minus - or multiplication * sign, non-negative integers and empty spaces. You may assume that the given expression is always valid.
+
 You must implement the class edu.iitd.col1062020.MyCalculator with the following methods.
 As before you are provided the Interface with signatures of the functions and you need to complete the code.
 1. MyCalculator(): Constructor for the MyCalculator class.
-2. int calculate(String expression): Find the value of the expression using the
-MyCalculator class implemented above.
-Example 1:
+2. int calculate(String expression): Find the value of the expression using the MyCalculator class implemented above.
+```
+
+_Example 1_:
 Input: "1 + 10"
 Output: 11
-Example 2:
+_Example 2_:
 Input: " 2-1 + 2 "
 Output: 3
-Example 3:
+_Example 3_:
 Input: "(1+(4+5+2)-3)+(6+18)"
 Output: 33
-Example 4:
+_Example 4_:
 Input: "4 * 2 + 2 * (2 + 9)"
 Output: 30
 You are NOT allowed to use any inbuilt function for expression evaluation.
 Input Constraints:
 1 <= Length of Expression (excluding spaces) <= 2 * 10^5
-```
+
 
 **Part C (40 marks) Problem Statement**:
 ```markdown
@@ -59,18 +59,20 @@ Return the sequence of operations as an Array of String. Your sequence should co
 You must implement the class edu.iitd.col1062020.StackSort with the following methods. As before you are provided the Interface with signatures of the functions and you need to complete the code.
 1. StackSort(): Constructor for the StackSort class.
 2. String[] sort(int[] nums): Sort the nums array, using single stack, and return the sequence of operations.
-Example 1:
+```
+
+_Example 1_:
 Input: [10, 702, 36, 125, 82]
 Output: [“PUSH”, “POP”, “PUSH”, “PUSH”, “POP”, “PUSH”, “PUSH”, “POP”, “POP”, “POP”]
 Explanation: The POP sequence forms the list [10, 36, 82, 125, 702] which is sorted.
-Example 2:
+_Example 2_:
 Input: [1023, 5029, 158]
 Output: [“NOTPOSSIBLE”]
 Input Constraints:
 1 <= length of input array <= 1024
 -10^9 <= input values <= 10^9
 Input array could possibly contain duplicate values
-```
+
 
 **Part D (Bonus) (10 marks) Problem Statement**:
 ```markdown
@@ -80,7 +82,8 @@ You need to find the least k, such that applying the operation f, k times leads 
 Your sequence should correspond to a valid sequence of operations, and the sequence should form a sorted array of given numbers (in ascending order) at the end of the last operation.
 Add the following function to the class edu.iitd.col1062020.StackSort for this purpose:
 1. String[][] kSort(int[] nums): Sort the nums array, using k operations, and return the sequence of operations.
-Example 1:
+```
+_Example 1_:
 Input: [1023, 5029, 158]
 Output: [[“PUSH”, “POP”, “PUSH”, “PUSH”, “POP”, “POP”],[“PUSH”, “PUSH”,
 “PUSH”, “POP”, “POP”, “POP”], [“PUSH”, “PUSH”, “POP”, “PUSH”, “POP”, “POP”]]
@@ -89,7 +92,7 @@ Explanation: The sequence of numbers at the end of each sequence:
 2. [5029, 158, 1023]
 3. [158, 1023, 5029]
 Note: Above is a valid sequence of operations to sort the initial list of numbers. However, it could be done with k < 3. Hence the given output will NOT be treated as a PASS, and you will have to do it with k < 3.
-```
+
 
 What to submit?
 1. Submit your code in a .zip file named in the format <EntryNo>.zip. Make sure that when we run unzip <yourfile>.zip a folder <YourEntryNo> should be produced in the current working directory.
