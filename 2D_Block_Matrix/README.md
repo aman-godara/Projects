@@ -37,11 +37,14 @@ Following is a valid 2-dimensional block matrix specified according to the above
 1;
 #
 ```
-After parsing it you should have the ![matrix](https://github.com/Aman-Godara/Projects/blob/temp/2D_Block_Matrix/Matrix.JPG) The same format has to be followed for generating a string representation of any matrix
+After parsing it you should have the matrix ![matrix](https://github.com/Aman-Godara/Projects/blob/temp/2D_Block_Matrix/Matrix.JPG). The same format has to be followed for generating a string representation of any matrix
 (see below).
 
-**Note**: ```markdown Floating point numbers in the output must be rounded off to 2 decimal places. If the output is an integer, you should not add decimal point and zeros. (Remember that 0.075 is rounded off to 0.08, while 0.085 is also rounded off to 0.08). However, the input matrix in the files can be of arbitrary precision.
+**Note**: 
+```markdown 
+Floating point numbers in the output must be rounded off to 2 decimal places. If the output is an integer, you should not add decimal point and zeros. (Remember that 0.075 is rounded off to 0.08, while 0.085 is also rounded off to 0.08). However, the input matrix in the files can be of arbitrary precision.
 ```
+
 ```markdown
 _Implementation contract_:
 You must implement class edu.iitd.2020col106.TwoDBlockMatrix with the following public methods:
