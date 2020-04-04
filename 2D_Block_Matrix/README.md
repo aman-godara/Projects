@@ -35,8 +35,7 @@ Following is a valid 2-dimensional block matrix specified according to the above
 #
 ```
 
-After parsing it you should have the matrix ![matrix](https://github.com/Aman-Godara/Projects/blob/temp/2D_Block_Matrix/Matrix.JPG). The same format has to be followed for generating a string representation of any matrix
-(see below).
+After parsing it you should have the matrix ![matrix](https://github.com/Aman-Godara/Projects/blob/temp/2D_Block_Matrix/Matrix.JPG). The same format has to be followed for generating a string representation of any matrix (see below).
 
 **Note**: 
 ```markdown 
@@ -52,8 +51,7 @@ You must implement class edu.iitd.2020col106.TwoDBlockMatrix with the following 
 3. String toString(): Returns the String representation of a TwoDBlockMatrix object according to the format described above, which when printed (or written to a file) should match the desired result.
 4. TwoDBlockMatrix transpose(): If the calling object contains a 2-dimensional matrix of size m x n. The method should return the new transposed 2-dimensional matrix of size n x m. The original matrix must remain unchanged.
 5. TwoDBlockMatrix multiply(TwoDBlockMatrix other) throws edu.iitd.2020col106.IncompatibleDimensionException: This method takes another matrix object of type TwoDBlockMatrix. The task is to perform matrix multiplication this x other. The method should return the product matrix. If the two matrices are not compatible, you must throw the specified exception.
-6. TwoDBlockMatrix getSubBlock (int row_start, int col_start, int row_end, int col_end) throws edu.iitd.2020col106.SubBlockNotFoundException: This method returns the sub-block of the TwoDBlockMatrix object that belongs to the slice with rows between {row_start, row_end} and columns between {col_start, col_end}.
-Note that the exception has to be thrown when there is no underlying sub-block in the specified range.
+6. TwoDBlockMatrix getSubBlock (int row_start, int col_start, int row_end, int col_end) throws edu.iitd.2020col106.SubBlockNotFoundException: This method returns the sub-block of the TwoDBlockMatrix object that belongs to the slice with rows between {row_start, row_end} and columns between {col_start, col_end}. Note that the exception has to be thrown when there is no underlying sub-block in the specified range.
 7. TwoDBlockMatrix inverse() throws edu.iitd.2020col106.InverseDoesNotExistException: The method should return a new TwoDBlockMatrix object containing the inverse of the given matrix. In case the inverse matrix does not exist, you must raise an exception rather than returning anything.
 ```
 
