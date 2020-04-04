@@ -3,11 +3,11 @@
 
 
 **Objective**:
-```markdown
 The objective of this problem is to be able to parse input from a text file, develop a data-structure for representing the 2-dimensional block matrices and perform basic matrix operations.
 These have to be implemented against TwoDBlockMatrix class with specified public methods.
 Details are given below.
-```
+
+
 **Description**:
 ```markdown
 Input / Output format:
@@ -38,9 +38,8 @@ Following is a valid 2-dimensional block matrix specified according to the above
 After parsing it you should have the matrix ![matrix](https://github.com/Aman-Godara/Projects/blob/temp/2D_Block_Matrix/Matrix.JPG). The same format has to be followed for generating a string representation of any matrix (see below).
 
 **Note**: 
-```markdown 
 Floating point numbers in the output must be rounded off to 2 decimal places. If the output is an integer, you should not add decimal point and zeros. (Remember that 0.075 is rounded off to 0.08, while 0.085 is also rounded off to 0.08). However, the input matrix in the files can be of arbitrary precision.
-```
+
 
 **Implementation contract**:
 ```markdown
@@ -56,15 +55,12 @@ You must implement class edu.iitd.2020col106.TwoDBlockMatrix with the following 
 ```
 
 _For Bonus Points (for a maximum of additional 10% marks)_:
-```markdown
 You must implement class edu.iitd.2020col106.SparseTwoDBlockMatrix extends edu.iitd.2020col106.TwoDBlockMatrix that can handle sparse block matrices of large sizes -- i.e., in the order of 1000 x 1000 (at least) with the same public methods as the superclass.
 No additional methods are required.
-```
 
 **Note**:
-```markdown
 Since SparseTwoDBlockMatrix extends the TwoDBlockMatrix, all methods in SparseTwoDBlockMatrix which take a reference to TwoDBlockMatrix object should seamlessly work when replaced with a reference to SparseTwoDBlockMatrix.
-```
+
 
 What is Allowed / Not Allowed?
 1. You must work on this assignment individually.
