@@ -27,21 +27,29 @@ You must implement the class edu.iitd.col1062020.MyCalculator with the following
 As before you are provided the Interface with signatures of the functions and you need to complete the code.
 1. MyCalculator(): Constructor for the MyCalculator class.
 2. int calculate(String expression): Find the value of the expression using the MyCalculator class implemented above.
+```
 
 
 _Example 1_:
+```markdown
 Input: "1 + 10"
 Output: 11
+```
 
 _Example 2_:
+```markdown
 Input: " 2-1 + 2 "
 Output: 3
+```
 
 _Example 3_:
+```markdown
 Input: "(1+(4+5+2)-3)+(6+18)"
 Output: 33
+```
 
 _Example 4_:
+```markdown
 Input: "4 * 2 + 2 * (2 + 9)"
 Output: 30
 ```
@@ -63,14 +71,17 @@ Return the sequence of operations as an Array of String. Your sequence should co
 You must implement the class edu.iitd.col1062020.StackSort with the following methods. As before you are provided the Interface with signatures of the functions and you need to complete the code.
 1. StackSort(): Constructor for the StackSort class.
 2. String[] sort(int[] nums): Sort the nums array, using single stack, and return the sequence of operations.
-
+```
 
 _Example 1_:
+```markdown
 Input: [10, 702, 36, 125, 82]
 Output: [“PUSH”, “POP”, “PUSH”, “PUSH”, “POP”, “PUSH”, “PUSH”, “POP”, “POP”, “POP”]
 Explanation: The POP sequence forms the list [10, 36, 82, 125, 702] which is sorted.
+```
 
 _Example 2_:
+```markdown
 Input: [1023, 5029, 158]
 Output: [“NOTPOSSIBLE”]
 ```
@@ -89,8 +100,10 @@ You need to find the least k, such that applying the operation f, k times leads 
 Your sequence should correspond to a valid sequence of operations, and the sequence should form a sorted array of given numbers (in ascending order) at the end of the last operation.
 Add the following function to the class edu.iitd.col1062020.StackSort for this purpose:
 1. String[][] kSort(int[] nums): Sort the nums array, using k operations, and return the sequence of operations.
+```
 
 _Example 1_:
+```markdown
 Input: [1023, 5029, 158]
 Output: [[“PUSH”, “POP”, “PUSH”, “PUSH”, “POP”, “POP”],[“PUSH”, “PUSH”,
 “PUSH”, “POP”, “POP”, “POP”], [“PUSH”, “PUSH”, “POP”, “PUSH”, “POP”, “POP”]]
