@@ -8,4 +8,4 @@ I am so sorry that they are disorganised. You might have to go through all the f
 
 PS: Code for lab 10, 11 and 12 is missing in these folders, I have the model solutions uploaded by TAs though.
 
-Thanks to [**Prof. Maya Ramanath**](http://www.cse.iitd.ernet.in/~ramanath/) for such an amazing course, assignments and mini-project.
+Thanks to [**Prof. Maya Ramanath**](http://www.cse.iitd.ernet.in/~ramanath/) and TA's (especially [Nitin Rathore](https://www.facebook.com/nitin.rathor.520)) for such an amazing course, assignments and mini-project.
