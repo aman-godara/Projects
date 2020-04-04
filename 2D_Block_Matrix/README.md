@@ -1,14 +1,16 @@
 ### Question 1: Matrix Manipulations using TwoDBlockMatrix
 
 
-```markdown
+
 **Objective**:
+```markdown
 The objective of this problem is to be able to parse input from a text file, develop a
 data-structure for representing the 2-dimensional block matrices and perform basic matrix
 operations. These have to be implemented against TwoDBlockMatrix class with specified public
 methods. Details are given below.
-
+```
 **Description**:
+```markdown
 Input / Output format:
 Matrices are provided in a text file whose full-path is given as an argument to one of the
 static methods - see below.
@@ -22,8 +24,10 @@ block specified as two integer values separated by a space. Row and column index
 5. End of file is the end of the matrix.
 6. You need to parse the file to determine the dimensions of the matrix.
 You may assume that the matrices specified are always 2-dimensional. You must construct the smallest block matrix (in terms of the number of rows and columns) possible with the given input.
+```
 
 _Example_:
+```markdown
 Following is a valid 2-dimensional block matrix specified according to the above-specified format:
 1 1
 1 2;
@@ -32,12 +36,13 @@ Following is a valid 2-dimensional block matrix specified according to the above
 3 3
 1;
 #
-
+```
 After parsing it you should have the ![matrix](https://github.com/Aman-Godara/Projects/blob/temp/2D_Block_Matrix/Matrix.JPG) The same format has to be followed for generating a string representation of any matrix
 (see below).
 
-**Note**: Floating point numbers in the output must be rounded off to 2 decimal places. If the output is an integer, you should not add decimal point and zeros. (Remember that 0.075 is rounded off to 0.08, while 0.085 is also rounded off to 0.08). However, the input matrix in the files can be of arbitrary precision.
-
+**Note**: ```markdown Floating point numbers in the output must be rounded off to 2 decimal places. If the output is an integer, you should not add decimal point and zeros. (Remember that 0.075 is rounded off to 0.08, while 0.085 is also rounded off to 0.08). However, the input matrix in the files can be of arbitrary precision.
+```
+```markdown
 _Implementation contract_:
 You must implement class edu.iitd.2020col106.TwoDBlockMatrix with the following public methods:
 
