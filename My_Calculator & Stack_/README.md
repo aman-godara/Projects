@@ -27,7 +27,7 @@ As before you are provided the Interface with signatures of the functions and yo
 1. MyCalculator(): Constructor for the MyCalculator class.
 2. int calculate(String expression): Find the value of the expression using the MyCalculator class implemented above.
 
-Example 1:
+_Example 1_:
 Input: "1 + 10"
 Output: 11
 
@@ -52,21 +52,21 @@ Input Constraints:
 ```markdown
 In this part, you will use the stack implementation from Part A to sort a given array. You are given an array of integers and you have to sort it using a single stack A. You are allowed to only push elements from the given array of integers (treating it as a queue), and your sequence of pops should form a sorted sequence of the given array. You have to return the sequence of operations (described below) in order to sort the elements.
 Allowed operations:
-1. Extract one input element (with least index) and insert in the stack. Represented as
-PUSH.
+1. Extract one input element (with least index) and insert in the stack. Represented as PUSH.
 2. Pop the top-most element of the stack. Represented as POP.
 3. If it is not possible to sort the given numbers with a single stack, then NOTPOSSIBLE.
 Return the sequence of operations as an Array of String. Your sequence should correspond to a valid sequence of operations, and the pop sequence should form a sorted array of given numbers (in ascending order). Your number of PUSH and POP should be exactly equal to the length of the given array of numbers.
+
 You must implement the class edu.iitd.col1062020.StackSort with the following methods. As before you are provided the Interface with signatures of the functions and you need to complete the code.
 1. StackSort(): Constructor for the StackSort class.
 2. String[] sort(int[] nums): Sort the nums array, using single stack, and return the sequence of operations.
 
-Example 1:
+_Example 1_:
 Input: [10, 702, 36, 125, 82]
 Output: [“PUSH”, “POP”, “PUSH”, “PUSH”, “POP”, “PUSH”, “PUSH”, “POP”, “POP”, “POP”]
 Explanation: The POP sequence forms the list [10, 36, 82, 125, 702] which is sorted.
 
-Example 2:
+_Example 2_:
 Input: [1023, 5029, 158]
 Output: [“NOTPOSSIBLE”]
 
@@ -85,7 +85,7 @@ Your sequence should correspond to a valid sequence of operations, and the seque
 Add the following function to the class edu.iitd.col1062020.StackSort for this purpose:
 1. String[][] kSort(int[] nums): Sort the nums array, using k operations, and return the sequence of operations.
 
-Example 1:
+_Example 1_:
 Input: [1023, 5029, 158]
 Output: [[“PUSH”, “POP”, “PUSH”, “PUSH”, “POP”, “POP”],[“PUSH”, “PUSH”,
 “PUSH”, “POP”, “POP”, “POP”], [“PUSH”, “PUSH”, “POP”, “PUSH”, “POP”, “POP”]]
