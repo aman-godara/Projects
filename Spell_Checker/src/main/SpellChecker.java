@@ -13,7 +13,7 @@ public class SpellChecker {
 	private LinkedHashMap<String, String> ldmap; 
 	private int[][] markers ; 
 	public static char[] char_arr1 = new char[]{'q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m'} ;
-	public static char[] char_arr2 = new char[]{'p','o','i','u','y','t','r','e','w','q','a','s','d','f','g','h','j','k','l','m','n','b','v','c','x','z'} ;
+	public static char[] char_arr2 = new char[]{'l','k','j','h','g','f','d','s','a','m','n','b','v','c','x','z','p','o','i','u','y','t','r','e','w','q'} ;
 	
 	public SpellChecker (int size, String inputFile, String outputFile) throws Exception {
 		int[][] temp = SpellChecker.pointers(size) ; 
