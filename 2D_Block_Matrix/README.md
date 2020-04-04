@@ -27,7 +27,6 @@ You may assume that the matrices specified are always 2-dimensional. You must co
 ```
 
 _Example_:
-```markdown
 Following is a valid 2-dimensional block matrix specified according to the above-specified format:
 1 1
 1 2;
@@ -36,7 +35,7 @@ Following is a valid 2-dimensional block matrix specified according to the above
 3 3
 1;
 #
-```
+
 After parsing it you should have the matrix ![matrix](https://github.com/Aman-Godara/Projects/blob/temp/2D_Block_Matrix/Matrix.JPG). The same format has to be followed for generating a string representation of any matrix
 (see below).
 
@@ -64,14 +63,13 @@ Note that the exception has to be thrown when there is no underlying sub-block i
 
 _For Bonus Points (for a maximum of additional 10% marks)_:
 ```markdown
-You must implement class edu.iitd.2020col106.SparseTwoDBlockMatrix extends edu.iitd.2020col106.TwoDBlockMatrix that can handle sparse block matrices of large sizes -- i.e., in the order of 1000 x 1000 (at least) with the same public methods as the superclass. No additional methods are required.
+You must implement class edu.iitd.2020col106.SparseTwoDBlockMatrix extends edu.iitd.2020col106.TwoDBlockMatrix that can handle sparse block matrices of large sizes -- i.e., in the order of 1000 x 1000 (at least) with the same public methods as the superclass.
+No additional methods are required.
 ```
 
 **Note**:
 ```markdown
-Since SparseTwoDBlockMatrix extends the TwoDBlockMatrix, all methods in
-SparseTwoDBlockMatrix which take a reference to TwoDBlockMatrix object should
-seamlessly work when replaced with a reference to SparseTwoDBlockMatrix.
+Since SparseTwoDBlockMatrix extends the TwoDBlockMatrix, all methods in SparseTwoDBlockMatrix which take a reference to TwoDBlockMatrix object should seamlessly work when replaced with a reference to SparseTwoDBlockMatrix.
 ```
 
 What is Allowed / Not Allowed?
