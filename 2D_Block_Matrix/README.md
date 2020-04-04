@@ -1,6 +1,7 @@
 ### Question 1: Matrix Manipulations using TwoDBlockMatrix
 
 
+```markdown
 Objective:
 The objective of this problem is to be able to parse input from a text file, develop a
 data-structure for representing the 2-dimensional block matrices and perform basic matrix
@@ -83,6 +84,8 @@ methods as the superclass. No additional methods are required.
 Note: Since SparseTwoDBlockMatrix extends the TwoDBlockMatrix, all methods in
 SparseTwoDBlockMatrix which take a reference to TwoDBlockMatrix object should
 seamlessly work when replaced with a reference to SparseTwoDBlockMatrix.
+```
+
 What is Allowed / Not Allowed?
 1. You must work on this assignment individually.
 2. The programming language to be used is Java.
