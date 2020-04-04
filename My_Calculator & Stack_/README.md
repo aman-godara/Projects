@@ -4,6 +4,7 @@
 The main goal of the assignment is to get familiar with the stack and queue data structures and
 get practice while implementing. Along with it, you will get to explore these data structures in the
 context of their applications.
+
 **Part A (25 marks) Problem Statement**:
 ```markdown
 Implement the stack data structure. You must implement the class edu.iitd.col1062020.MyStack<T> with the following methods. It must be a generic class (i.e. you can specify the data type while creating the object). You are being provided the Interface with signatures of the functions and you need to complete the code to implement the desired functionality.
