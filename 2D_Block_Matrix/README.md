@@ -33,13 +33,12 @@ Following is a valid 2-dimensional block matrix specified according to the above
 #
 After parsing it you should have the matrix The same format has to be followed for generating a string representation of any matrix
 (see below).
-Note: Floating point numbers in the output must be rounded off to 2 decimal places. If
-the output is an integer, you should not add decimal point and zeros. (Remember that
-0.075 is rounded off to 0.08, while 0.085 is also rounded off to 0.08). However, the
-input matrix in the files can be of arbitrary precision.
+
+Note: Floating point numbers in the output must be rounded off to 2 decimal places. If the output is an integer, you should not add decimal point and zeros. (Remember that 0.075 is rounded off to 0.08, while 0.085 is also rounded off to 0.08). However, the input matrix in the files can be of arbitrary precision.
+
 Implementation contract:
-You must implement class edu.iitd.2020col106.TwoDBlockMatrix with the
-following public methods:
+You must implement class edu.iitd.2020col106.TwoDBlockMatrix with the following public methods:
+
 1. static TwoDBlockMatrix buildTwoDBlockMatrix (java.io.InputStream in): This is a static method on the TwoDBlockMatrix class which takes a reference to a stream from which the matrix --formatted as above-- is read and a reference to the newly created
 object is returned.
 2. TwoDBlockMatrix(float[][] array): Constructor for TwoDBlockMatrix class from a 2-dimensional array of floats.
