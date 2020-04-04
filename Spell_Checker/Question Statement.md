@@ -2,9 +2,13 @@ Write a spell-checker class that stores a lexicon of words, and implements a met
 
 Common ways Str can be misspelled:
 1). typing error
+
 2). swapping of characters
+
 3). inserting a single character in the word
+
 4). deleting s single character from a word
+
 5). replacing a single character with another character
 
 Your code should be able to look for all the above cases and return possible ways Str can be spelled by giving a file as an output containing your outputs of method check.
