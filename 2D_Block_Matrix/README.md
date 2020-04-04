@@ -4,20 +4,17 @@
 
 **Objective**:
 ```markdown
-The objective of this problem is to be able to parse input from a text file, develop a
-data-structure for representing the 2-dimensional block matrices and perform basic matrix
-operations. These have to be implemented against TwoDBlockMatrix class with specified public
-methods. Details are given below.
+The objective of this problem is to be able to parse input from a text file, develop a data-structure for representing the 2-dimensional block matrices and perform basic matrix operations.
+These have to be implemented against TwoDBlockMatrix class with specified public methods.
+Details are given below.
 ```
 **Description**:
 ```markdown
 Input / Output format:
-Matrices are provided in a text file whose full-path is given as an argument to one of the
-static methods - see below.
+Matrices are provided in a text file whose full-path is given as an argument to one of the static methods - see below.
 The format of the file is as follows:
 
-1. First line of the file contains the location of the first block, i.e., the (row, col) of the
-block specified as two integer values separated by a space. Row and column indexes start at 1.
+1. First line of the file contains the location of the first block, i.e., the (row, col) of the block specified as two integer values separated by a space. Row and column indexes start at 1.
 2. Following lines contain space-separated matrix elements in row-wise order that are all floats. The line ends at the first occurrence of a semicolon.
 3. The end of each block is marked by a new line containing only “#”.
 4. Line immediately after “#” contains the location of the next block.
@@ -27,6 +24,7 @@ You may assume that the matrices specified are always 2-dimensional. You must co
 ```
 
 _Example_:
+```markdown
 Following is a valid 2-dimensional block matrix specified according to the above-specified format:
 1 1
 1 2;
@@ -35,6 +33,7 @@ Following is a valid 2-dimensional block matrix specified according to the above
 3 3
 1;
 #
+```
 
 After parsing it you should have the matrix ![matrix](https://github.com/Aman-Godara/Projects/blob/temp/2D_Block_Matrix/Matrix.JPG). The same format has to be followed for generating a string representation of any matrix
 (see below).
@@ -48,14 +47,11 @@ Floating point numbers in the output must be rounded off to 2 decimal places. If
 ```markdown
 You must implement class edu.iitd.2020col106.TwoDBlockMatrix with the following public methods:
 
-1. static TwoDBlockMatrix buildTwoDBlockMatrix (java.io.InputStream in): This is a static method on the TwoDBlockMatrix class which takes a reference to a stream from which the matrix --formatted as above-- is read and a reference to the newly created
-object is returned.
+1. static TwoDBlockMatrix buildTwoDBlockMatrix (java.io.InputStream in): This is a static method on the TwoDBlockMatrix class which takes a reference to a stream from which the matrix --formatted as above-- is read and a reference to the newly created object is returned.
 2. TwoDBlockMatrix(float[][] array): Constructor for TwoDBlockMatrix class from a 2-dimensional array of floats.
 3. String toString(): Returns the String representation of a TwoDBlockMatrix object according to the format described above, which when printed (or written to a file) should match the desired result.
-4. TwoDBlockMatrix transpose(): If the calling object contains a 2-dimensional matrix of size m x n. The method should return the new
-transposed 2-dimensional matrix of size n x m. The original matrix must remain unchanged.
-5. TwoDBlockMatrix multiply(TwoDBlockMatrix other) throws edu.iitd.2020col106.IncompatibleDimensionException: This method takes another matrix object of type TwoDBlockMatrix. The task is to perform matrix multiplication this x other. The method should return the product
-matrix. If the two matrices are not compatible, you must throw the specified exception.
+4. TwoDBlockMatrix transpose(): If the calling object contains a 2-dimensional matrix of size m x n. The method should return the new transposed 2-dimensional matrix of size n x m. The original matrix must remain unchanged.
+5. TwoDBlockMatrix multiply(TwoDBlockMatrix other) throws edu.iitd.2020col106.IncompatibleDimensionException: This method takes another matrix object of type TwoDBlockMatrix. The task is to perform matrix multiplication this x other. The method should return the product matrix. If the two matrices are not compatible, you must throw the specified exception.
 6. TwoDBlockMatrix getSubBlock (int row_start, int col_start, int row_end, int col_end) throws edu.iitd.2020col106.SubBlockNotFoundException: This method returns the sub-block of the TwoDBlockMatrix object that belongs to the slice with rows between {row_start, row_end} and columns between {col_start, col_end}.
 Note that the exception has to be thrown when there is no underlying sub-block in the specified range.
 7. TwoDBlockMatrix inverse() throws edu.iitd.2020col106.InverseDoesNotExistException: The method should return a new TwoDBlockMatrix object containing the inverse of the given matrix. In case the inverse matrix does not exist, you must raise an exception rather than returning anything.
