@@ -1,4 +1,5 @@
 ```Problem
+
 Write a spell-checker class that stores a lexicon of words, and implements a method, check(Str), which performs a spell check on the string Str with respect to the set of words, W.
 
 Common ways Str can be misspelled:
