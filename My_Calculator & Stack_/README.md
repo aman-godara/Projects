@@ -15,9 +15,7 @@ Implement the stack data structure. You must implement the class edu.iitd.col106
 You are NOT allowed to use any inbuilt implementation of stack.
 
 Input Constraints:
-MyStack should be capable of handling upto 10^6 values. You could initialize the internal array
-to a fixed size in the constructor or could resize and expand the array when it is full (latter is
-recommended).
+MyStack should be capable of handling upto 10^6 values. You could initialize the internal array to a fixed size in the constructor or could resize and expand the array when it is full (latter is recommended).
 ```
 
 **Part B (35 marks) Problem Statement**:
