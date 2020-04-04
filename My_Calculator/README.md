@@ -13,9 +13,8 @@ Implement the stack data structure. You must implement the class edu.iitd.col106
 3. T pop() throws edu.iitd.col1062020.EmptyStackException: Delete the top element of the stack, and return it. If the stack is empty, you must throw the specified exception.
 4. T top() throws edu.iitd.col1062020.EmptyStackException: Return the top element of the stack. If the stack is empty, you must throw the specified exception.
 5. boolean isEmpty(): Returns true if the stack is empty, false otherwise.
-You are NOT allowed to use any inbuilt implementation of stack.
 ```
-
+You are NOT allowed to use any inbuilt implementation of stack.
 Input Constraints:
 MyStack should be capable of handling upto 10^6 values. You could initialize the internal array to a fixed size in the constructor or could resize and expand the array when it is full (latter is recommended).
 
@@ -28,7 +27,7 @@ You must implement the class edu.iitd.col1062020.MyCalculator with the following
 As before you are provided the Interface with signatures of the functions and you need to complete the code.
 1. MyCalculator(): Constructor for the MyCalculator class.
 2. int calculate(String expression): Find the value of the expression using the MyCalculator class implemented above.
-```
+
 
 _Example 1_:
 Input: "1 + 10"
@@ -45,6 +44,7 @@ Output: 33
 _Example 4_:
 Input: "4 * 2 + 2 * (2 + 9)"
 Output: 30
+```
 
 You are NOT allowed to use any inbuilt function for expression evaluation.
 Input Constraints:
@@ -63,7 +63,7 @@ Return the sequence of operations as an Array of String. Your sequence should co
 You must implement the class edu.iitd.col1062020.StackSort with the following methods. As before you are provided the Interface with signatures of the functions and you need to complete the code.
 1. StackSort(): Constructor for the StackSort class.
 2. String[] sort(int[] nums): Sort the nums array, using single stack, and return the sequence of operations.
-```
+
 
 _Example 1_:
 Input: [10, 702, 36, 125, 82]
@@ -73,6 +73,7 @@ Explanation: The POP sequence forms the list [10, 36, 82, 125, 702] which is sor
 _Example 2_:
 Input: [1023, 5029, 158]
 Output: [“NOTPOSSIBLE”]
+```
 
 Input Constraints:
 1 <= length of input array <= 1024
@@ -97,9 +98,10 @@ Explanation: The sequence of numbers at the end of each sequence:
 1. [1023, 158, 5029]
 2. [5029, 158, 1023]
 3. [158, 1023, 5029]
+```
 
 Note: Above is a valid sequence of operations to sort the initial list of numbers. However, it could be done with k < 3. Hence the given output will NOT be treated as a PASS, and you will have to do it with k < 3.
-```
+
 
 What to submit?
 1. Submit your code in a .zip file named in the format <EntryNo>.zip. Make sure that when we run unzip <yourfile>.zip a folder <YourEntryNo> should be produced in the current working directory.
