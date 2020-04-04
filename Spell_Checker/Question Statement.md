@@ -9,3 +9,5 @@ Common ways Str can be misspelled:
 
 Your code should be able to look for all the above cases and return possible ways Str can be spelled by giving a file as an output containing your outputs of method check.
 Your code should also return the time taken by the code to perform method check(Str).
+
+Taken from **Data Structures and Algorithms in Java by Goodrich, Tamassia and  Goldwasser Sixth Edition**.
