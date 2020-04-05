@@ -113,6 +113,7 @@ Input array could possibly contain duplicate values
 In this part, you will extend the above implementation, to sort the array by repeatedly using the stack. Let us denote the operation applied in Part C by f, then on applying f to the input array of numbers, you get another array of numbers, on which you can reapply this f.
 You are allowed to do the above procedure as many times as you like, provided it results in a sorted array at the end.
 You need to find the least k, such that applying the operation f, k times leads to the sorted array. Return the sequence of operations as an Array of Array of String, with the outer Array of length k, the least number of operations in which you can sort the input array of given numbers.
+
 Your sequence should correspond to a valid sequence of operations, and the sequence should form a sorted array of given numbers (in ascending order) at the end of the last operation.
 
 Add the following function to the class edu.iitd.col1062020.StackSort for this purpose:
