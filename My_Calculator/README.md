@@ -17,8 +17,10 @@ Implement the stack data structure. You must implement the class edu.iitd.col106
 4. T top() throws edu.iitd.col1062020.EmptyStackException: Return the top element of the stack. If the stack is empty, you must throw the specified exception.
  
 5. boolean isEmpty(): Returns true if the stack is empty, false otherwise.
+ 
 ```
 You are NOT allowed to use any inbuilt implementation of stack.
+
 Input Constraints:
 MyStack should be capable of handling upto 10^6 values. You could initialize the internal array to a fixed size in the constructor or could resize and expand the array when it is full (latter is recommended).
 
@@ -27,10 +29,12 @@ MyStack should be capable of handling upto 10^6 values. You could initialize the
 ```markdown
 In this part you will use your above implementation to implement a simple calculator. You will be given a String representing a valid arithmetic expression, and you will have to evaluate the expression and find the result. The expression String may contain open ( and closing parentheses ), the plus +, minus - or multiplication * sign, non-negative integers and empty spaces. You may assume that the given expression is always valid.
 
-You must implement the class edu.iitd.col1062020.MyCalculator with the following methods.
-As before you are provided the Interface with signatures of the functions and you need to complete the code.
+You must implement the class edu.iitd.col1062020.MyCalculator with the following methods. As before you are provided the Interface with signatures of the functions and you need to complete the code.
+
 1. MyCalculator(): Constructor for the MyCalculator class.
+
 2. int calculate(String expression): Find the value of the expression using the MyCalculator class implemented above.
+
 ```
 
 
@@ -59,6 +63,7 @@ Output: 30
 ```
 
 You are NOT allowed to use any inbuilt function for expression evaluation.
+
 Input Constraints:
 1 <= Length of Expression (excluding spaces) <= 2 * 10^5
 
@@ -66,15 +71,22 @@ Input Constraints:
 **Part C (40 marks) Problem Statement**:
 ```markdown
 In this part, you will use the stack implementation from Part A to sort a given array. You are given an array of integers and you have to sort it using a single stack A. You are allowed to only push elements from the given array of integers (treating it as a queue), and your sequence of pops should form a sorted sequence of the given array. You have to return the sequence of operations (described below) in order to sort the elements.
+
 Allowed operations:
 1. Extract one input element (with least index) and insert in the stack. Represented as PUSH.
+
 2. Pop the top-most element of the stack. Represented as POP.
+
 3. If it is not possible to sort the given numbers with a single stack, then NOTPOSSIBLE.
+
 Return the sequence of operations as an Array of String. Your sequence should correspond to a valid sequence of operations, and the pop sequence should form a sorted array of given numbers (in ascending order). Your number of PUSH and POP should be exactly equal to the length of the given array of numbers.
 
 You must implement the class edu.iitd.col1062020.StackSort with the following methods. As before you are provided the Interface with signatures of the functions and you need to complete the code.
+
 1. StackSort(): Constructor for the StackSort class.
+
 2. String[] sort(int[] nums): Sort the nums array, using single stack, and return the sequence of operations.
+
 ```
 
 _Example 1_:
@@ -102,7 +114,9 @@ In this part, you will extend the above implementation, to sort the array by rep
 You are allowed to do the above procedure as many times as you like, provided it results in a sorted array at the end.
 You need to find the least k, such that applying the operation f, k times leads to the sorted array. Return the sequence of operations as an Array of Array of String, with the outer Array of length k, the least number of operations in which you can sort the input array of given numbers.
 Your sequence should correspond to a valid sequence of operations, and the sequence should form a sorted array of given numbers (in ascending order) at the end of the last operation.
+
 Add the following function to the class edu.iitd.col1062020.StackSort for this purpose:
+
 1. String[][] kSort(int[] nums): Sort the nums array, using k operations, and return the sequence of operations.
 ```
 
