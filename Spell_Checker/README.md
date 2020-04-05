@@ -14,4 +14,4 @@ Your code should be able to look for all the above cases and return possible way
 Your code should also return the time taken by the code to perform method check(Str).
 ```
 
-Taken from **Data Structures and Algorithms in Java, Sixth Edition by Goodrich, Tamassia and  Goldwasser**.
+Modified after taking from **Data Structures and Algorithms in Java, Sixth Edition by Goodrich, Tamassia and  Goldwasser**.
