@@ -7,11 +7,15 @@ The main goal of the assignment is to get familiar with the stack and queue data
 **Part A (25 marks) Problem Statement**:
 ```markdown
 Implement the stack data structure. You must implement the class edu.iitd.col1062020.MyStack<T> with the following methods. It must be a generic class (i.e. you can specify the data type while creating the object). You are being provided the Interface with signatures of the functions and you need to complete the code to implement the desired functionality.
-
+ 
 1. MyStack(): Constructor for MyStack class. Initialize an empty array of type T.
+ 
 2. void push(T value): Insert the value at the top of the stack. Resize if the internal array is full.
+ 
 3. T pop() throws edu.iitd.col1062020.EmptyStackException: Delete the top element of the stack, and return it. If the stack is empty, you must throw the specified exception.
+ 
 4. T top() throws edu.iitd.col1062020.EmptyStackException: Return the top element of the stack. If the stack is empty, you must throw the specified exception.
+ 
 5. boolean isEmpty(): Returns true if the stack is empty, false otherwise.
 ```
 You are NOT allowed to use any inbuilt implementation of stack.
