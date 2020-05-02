@@ -3,6 +3,6 @@ This AI implements BFS algorithm to get the degree of a star from an another sta
 
 Details of the project are available at: https://cs50.harvard.edu/ai/projects/0/degrees/ 
 
-How to run? Open degrees.py and type the name of the first star when cmd prompts and later the name of the other star. 
+How to run? Extract "large.zip" in the current folder, open degrees.py and type the name of the first star when cmd prompts and later the name of the other star. 
 
 Data source: IMDB
