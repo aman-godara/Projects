@@ -1,3 +1,5 @@
+AI to solve Sudoku puzzles
+
 How to run code?
 
 First give your input puzzle in the data/structure0.txt file in the format as prescribed in the file.
