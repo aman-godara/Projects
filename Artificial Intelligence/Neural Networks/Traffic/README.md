@@ -4,3 +4,5 @@ Extract the file and save it in Traffic folder.
 How to run the code:
 Move your terminal to the traffic folder.
 Run the traffic.py using Terminal through the command python traffic.py gtsrb
+
+GTSRB stand for German Traffic Sign Reserve Benchmark[http://benchmark.ini.rub.de/?section=gtsrb&subsection=news]
