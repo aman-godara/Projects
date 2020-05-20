@@ -1,4 +1,4 @@
-Download the required gstrb file from here: https://cdn.cs50.net/ai/2020/x/projects/5/gtsrb.zip
+Download the required gtsrb file from here: https://cdn.cs50.net/ai/2020/x/projects/5/gtsrb.zip
 Extract the file and save it in Traffic folder.
 
 How to run the code:
