@@ -1,4 +1,4 @@
-### _To know more_
+### To know more
 #### Check out the [YouTube playlist](https://www.youtube.com/playlist?list=PLQvAnVnC1GkjdjSjJr6GFT8O2TAc6_Jns) for complete demonstration of the projects: 
 
 
