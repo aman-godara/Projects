@@ -1,4 +1,4 @@
-### Please read this to get more information about the projects in this repository
+### _To know more_
 #### Check out the [YouTube playlist](https://www.youtube.com/playlist?list=PLQvAnVnC1GkjdjSjJr6GFT8O2TAc6_Jns) for complete demonstration of the projects: 
 
 
