@@ -1,4 +1,4 @@
-## This repository is not updated with all projects yet has many
+## This repository is not updated with all projects (31 July, 2020)
 ## Projects
 
 ### This is the repository for my Projects
