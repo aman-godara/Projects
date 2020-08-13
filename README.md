@@ -1,4 +1,4 @@
-## This repository is not updated with all projects but many
+## This repository is not updated with all projects yet consists of many
 ## Projects
 
 ### This is the repository for my Projects
